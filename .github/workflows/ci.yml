@@ -1,0 +1,129 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  api:
+    name: API tests
+    runs-on: ubuntu-24.04
+    services:
+      db:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_DB: delgarmi
+          POSTGRES_USER: delgarmi
+          POSTGRES_PASSWORD: ci-only
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U delgarmi -d delgarmi"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: delgarmi
+      POSTGRES_USER: delgarmi
+      POSTGRES_PASSWORD: ci-only
+    defaults:
+      run:
+        working-directory: api
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: api/requirements*.txt
+      - run: pip install -r requirements.txt -r requirements-dev.txt
+      - name: Django deployment checks
+        run: |
+          DJANGO_SECRET_KEY="$(python -c 'import secrets; print(secrets.token_urlsafe(50))')"
+          export DJANGO_SECRET_KEY
+          PANEL_PATH=panel-ci python manage.py check --deploy --fail-level WARNING
+      - name: Migrations match the models
+        run: DJANGO_SETTINGS_MODULE=config.settings_test python manage.py makemigrations --check --dry-run
+      - run: python -m pytest
+
+  web:
+    name: Web tests
+    runs-on: ubuntu-24.04
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - name: Unit tests
+        run: npm test
+      - name: Build (includes the type check)
+        run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Browser tests (axe, keyboard, widths)
+        run: npm run test:e2e
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-traces
+          path: web/test-results
+          retention-days: 7
+
+  deploy:
+    name: Deploy to the test server
+    needs: [api, web]
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    concurrency:
+      group: deploy-test-server
+      cancel-in-progress: false
+    steps:
+      - name: Check the deploy secrets
+        id: secrets
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+        run: |
+          if [ -n "$HOST" ]; then echo "ready=true" >> "$GITHUB_OUTPUT"
+          else echo "::notice::Deploy secrets are not set yet, so this run only tests."; fi
+      - uses: actions/checkout@v7
+        if: steps.secrets.outputs.ready == 'true'
+      - name: Build images
+        if: steps.secrets.outputs.ready == 'true'
+        run: |
+          docker build -t delgarmi-web:latest web
+          docker build -t delgarmi-api:latest api
+          docker save delgarmi-web:latest delgarmi-api:latest | gzip > images.tar.gz
+          ls -lh images.tar.gz
+      - name: Set up SSH
+        if: steps.secrets.outputs.ready == 'true'
+        env:
+          KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          PORT: ${{ secrets.DEPLOY_PORT }}
+          HOST_KEY: ${{ secrets.DEPLOY_HOST_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s %s\n[%s]:%s %s\n' "$HOST" "$HOST_KEY" "$HOST" "${PORT:-22}" "$HOST_KEY" > ~/.ssh/known_hosts
+      - name: Ship and restart
+        if: steps.secrets.outputs.ready == 'true'
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+        run: deploy/deploy.sh

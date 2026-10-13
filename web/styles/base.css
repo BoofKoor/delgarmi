@@ -1,0 +1,17 @@
+/* Rules every page needs. Component styles live in design/components.css (copied from the design system). */
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { min-height: 100dvh; font-kerning: normal; text-rendering: optimizeLegibility; }
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, h4, p, figure { margin: 0; }
+a { color: var(--action); text-underline-offset: 0.3em; text-decoration-thickness: 1px; }
+a:hover { color: var(--action-hover); }
+button, input, textarea, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.num { direction: ltr; unicode-bidi: isolate; white-space: nowrap; }
+.container { width: min(100% - 2 * var(--space-4), var(--content-max)); margin-inline: auto; }
+@media (min-width: 760px) { .container { width: min(100% - 2 * var(--space-8), var(--content-max)); } }
+/* Pofak needs ss01 for Persian digits. Only for the home hero, the child-care section and the brand name. */
+.font-display { font-family: var(--font-display); font-feature-settings: "ss01"; }

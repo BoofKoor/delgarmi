@@ -1,0 +1,5 @@
+.soon { min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3); text-align: center; padding-block: var(--space-16); }
+.soon-name { margin-top: var(--space-4); font-size: var(--type-display-size); line-height: var(--type-display-line); font-weight: var(--type-display-weight); color: var(--ink); }
+.soon-tag { font-size: var(--type-lead-size); line-height: var(--type-lead-line); color: var(--ink); }
+.soon-note { color: var(--ink-muted); margin-bottom: var(--space-6); }
+@media (max-width: 759px) { .soon-name { font-size: var(--type-display-sm-size); } }
