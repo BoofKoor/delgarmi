@@ -1,6 +1,6 @@
 # Delgarmi: five services on one server. Only nginx is reachable from outside (80 and 443).
-# Values come from .env next to this file. The web and api images are built by GitHub Actions
-# and loaded onto the server; they are never pulled from a registry.
+# Values come from .env next to this file. The server builds the web and api images itself
+# from the tested `release` branch (deploy/update.sh); they never come from a registry.
 name: delgarmi
 
 services:
@@ -21,6 +21,7 @@ services:
 
   api:
     image: delgarmi-api:latest
+    build: ./api
     pull_policy: never
     restart: unless-stopped
     env_file: .env
@@ -56,6 +57,7 @@ services:
 
   web:
     image: delgarmi-web:latest
+    build: ./web
     pull_policy: never
     restart: unless-stopped
     environment:

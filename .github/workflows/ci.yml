@@ -84,46 +84,18 @@ jobs:
           path: web/test-results
           retention-days: 7
 
-  deploy:
-    name: Deploy to the test server
+  release:
+    name: Mark as tested (the server deploys it)
     needs: [api, web]
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
     concurrency:
-      group: deploy-test-server
+      group: release-branch
       cancel-in-progress: false
     steps:
-      - name: Check the deploy secrets
-        id: secrets
-        env:
-          HOST: ${{ secrets.DEPLOY_HOST }}
-        run: |
-          if [ -n "$HOST" ]; then echo "ready=true" >> "$GITHUB_OUTPUT"
-          else echo "::notice::Deploy secrets are not set yet, so this run only tests."; fi
       - uses: actions/checkout@v7
-        if: steps.secrets.outputs.ready == 'true'
-      - name: Build images
-        if: steps.secrets.outputs.ready == 'true'
-        run: |
-          docker build -t delgarmi-web:latest web
-          docker build -t delgarmi-api:latest api
-          docker save delgarmi-web:latest delgarmi-api:latest | gzip > images.tar.gz
-          ls -lh images.tar.gz
-      - name: Set up SSH
-        if: steps.secrets.outputs.ready == 'true'
-        env:
-          KEY: ${{ secrets.DEPLOY_SSH_KEY }}
-          HOST: ${{ secrets.DEPLOY_HOST }}
-          PORT: ${{ secrets.DEPLOY_PORT }}
-          HOST_KEY: ${{ secrets.DEPLOY_HOST_KEY }}
-        run: |
-          install -m 700 -d ~/.ssh
-          printf '%s\n' "$KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          printf '%s %s\n[%s]:%s %s\n' "$HOST" "$HOST_KEY" "$HOST" "${PORT:-22}" "$HOST_KEY" > ~/.ssh/known_hosts
-      - name: Ship and restart
-        if: steps.secrets.outputs.ready == 'true'
-        env:
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-        run: deploy/deploy.sh
+      # The server follows this branch (deploy/update.sh), so only tested commits reach it.
+      - name: Move the release branch to this commit
+        run: git push --force origin HEAD:refs/heads/release
