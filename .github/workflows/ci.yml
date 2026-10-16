@@ -55,7 +55,7 @@ jobs:
       - run: python -m pytest
 
   web:
-    name: Web tests
+    name: Web unit tests and build
     runs-on: ubuntu-24.04
     env:
       NEXT_TELEMETRY_DISABLED: "1"
@@ -74,9 +74,56 @@ jobs:
         run: npm test
       - name: Build (includes the type check)
         run: npm run build
-      - run: npx playwright install --with-deps chromium
-      - name: Browser tests (axe, keyboard, widths)
+
+  stack:
+    name: Whole stack in Docker, browser tests
+    runs-on: ubuntu-24.04
+    env:
+      SITE: stack.delgarmi.test
+    steps:
+      - uses: actions/checkout@v7
+      - name: Settings and a self-signed certificate, as the installer would make them
+        run: |
+          certs="$RUNNER_TEMP/certs"
+          mkdir -p "$certs/live/$SITE"
+          openssl req -x509 -newkey rsa:2048 -nodes -days 2 -subj "/CN=$SITE" -addext "subjectAltName=DNS:$SITE" \
+            -keyout "$certs/live/$SITE/privkey.pem" -out "$certs/live/$SITE/fullchain.pem"
+          {
+            echo "SITE_DOMAIN=$SITE"
+            echo "DJANGO_ALLOWED_HOSTS=$SITE"
+            echo "DJANGO_SECRET_KEY=$(openssl rand -hex 48)"
+            echo "PANEL_PATH=panel-ci-stack"
+            echo "POSTGRES_DB=delgarmi"
+            echo "POSTGRES_USER=delgarmi"
+            echo "POSTGRES_PASSWORD=$(openssl rand -hex 24)"
+            echo "CERTS_DIR=$certs"
+          } > .env
+          echo "127.0.0.1 $SITE" | sudo tee -a /etc/hosts
+      - name: Build the images and start the five services
+        run: docker compose up -d --build --wait --wait-timeout 600
+      - name: Switch two services on in Isfahan, so the tests see both states
+        run: |
+          docker compose exec -T api python manage.py shell -c "
+          from catalog.models import City, Service
+          City.objects.get(slug='isfahan').set_active_services(Service.objects.filter(slug__in=['elderly-care', 'home-nursing']))"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Install the browser tests
+        working-directory: web
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Browser tests through nginx (axe, keyboard, widths, links, availability)
+        working-directory: web
+        env:
+          BASE_URL: https://stack.delgarmi.test
         run: npm run test:e2e
+      - name: Service logs
+        if: failure()
+        run: docker compose logs --no-color --tail 200
       - uses: actions/upload-artifact@v7
         if: failure()
         with:
@@ -86,7 +133,7 @@ jobs:
 
   release:
     name: Mark as tested (the server deploys it)
-    needs: [api, web]
+    needs: [api, web, stack]
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-24.04
     permissions:

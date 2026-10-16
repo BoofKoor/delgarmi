@@ -1,35 +1,49 @@
 'use client';
 
 import { MapPin } from 'lucide-react';
-import { useState, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { searchCities, type City } from '@/lib/city-search';
 import { cx } from '@/lib/cx';
 import { normalizeFa } from '@/lib/text';
 
-export type CitySearchProps = {
+export type CitySearchProps<T extends City> = {
   id: string;
-  cities: readonly City[];
+  cities: readonly T[];
   label?: string;
+  placeholder?: string;
   /** Only a city picked from the list counts; typing again clears it. */
-  value?: City | null;
-  onChange?: (city: City | null) => void;
+  value?: T | null;
+  onChange?: (city: T | null) => void;
   help?: string;
   error?: string;
+  /** The list is still on its way: say so instead of «not found». */
+  loading?: boolean;
 };
 
 /** Combobox with suggestions: ARIA 1.2 pattern, arrows to move, Enter to pick, Esc to close. */
-export function CitySearch({ id, cities, label = 'شهر', value, onChange, help = 'شهر را بنویسید و از فهرست انتخاب کنید.', error }: CitySearchProps) {
-  const [picked, setPicked] = useState<City | null>(value ?? null);
+export function CitySearch<T extends City>({
+  id,
+  cities,
+  label = 'شهر',
+  placeholder,
+  value,
+  onChange,
+  help = 'شهر را بنویسید و از فهرست انتخاب کنید.',
+  error,
+  loading = false,
+}: CitySearchProps<T>) {
+  const [picked, setPicked] = useState<T | null>(value ?? null);
   const city = value === undefined ? picked : value;
   const [text, setText] = useState(city?.name ?? '');
-  const [items, setItems] = useState<City[]>([]);
+  const [items, setItems] = useState<T[]>([]);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
+  const input = useRef<HTMLInputElement>(null);
   const listId = `${id}-list`;
   const helpId = `${id}-help`;
   const errorId = `${id}-error`;
 
-  function choose(next: City | null) {
+  function choose(next: T | null) {
     if (value === undefined) setPicked(next);
     onChange?.(next);
   }
@@ -39,6 +53,11 @@ export function CitySearch({ id, cities, label = 'شهر', value, onChange, help
     setActive(found.length ? 0 : -1);
     setOpen(Boolean(normalizeFa(query)));
   }
+  // The list may arrive after someone started typing: search again then.
+  useEffect(() => {
+    if (document.activeElement === input.current && text && !city) search(text);
+  }, [cities]);
+
   function pick(index: number) {
     const c = items[index];
     if (!c) return;
@@ -66,12 +85,14 @@ export function CitySearch({ id, cities, label = 'شهر', value, onChange, help
         <div className="dg-input-icon">
           <MapPin aria-hidden="true" focusable="false" strokeWidth={1.75} />
           <input
+            ref={input}
             id={id}
             className="dg-input"
             type="text"
             role="combobox"
             autoComplete="off"
             enterKeyHint="search"
+            placeholder={placeholder}
             aria-expanded={open}
             aria-controls={listId}
             aria-autocomplete="list"
@@ -102,7 +123,9 @@ export function CitySearch({ id, cities, label = 'شهر', value, onChange, help
           </div>
         ) : (
           <div className="dg-combo-list" id={listId} hidden={!open}>
-            <div className="dg-combo-empty" role="status">شهری با این نام پیدا نشد. اسم شهر را بدون پیشوند بنویسید.</div>
+            <div className="dg-combo-empty" role="status">
+              {loading ? 'فهرست شهرها در حال آماده شدن است…' : 'شهری با این نام پیدا نشد. اسم شهر را بدون پیشوند بنویسید.'}
+            </div>
           </div>
         )}
       </div>
