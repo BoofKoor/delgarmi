@@ -23,6 +23,15 @@ function inPersonActive(city: CityDetail) {
   return city.services.filter((s) => s.in_person);
 }
 
+/** «الف، ب و ج» */
+function joinFa(items: string[]) {
+  return items.length < 2 ? (items[0] ?? '') : `${items.slice(0, -1).join('، ')} و ${items.at(-1)}`;
+}
+
+function activeNames(city: CityDetail) {
+  return joinFa(inPersonActive(city).map((s) => (s.slug === 'therapy' ? 'روان‌درمانی حضوری' : SERVICES[s.slug]?.name ?? s.name)));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const city = await findCity((await params).slug);
   if (!city) return {};
@@ -30,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `مراقب سالمند، پرستار در منزل و پرستار کودک در ${city.name}`,
     description: active
-      ? `درخواست مراقب سالمند، پرستار در منزل، پرستار کودک و روان‌درمانگر از مراکز دارای مجوز ${city.name}. بدون ثبت‌نام، با پیگیری تا شروع کار.`
+      ? `درخواست ${activeNames(city)} از مراکز دارای مجوز ${city.name}؛ بدون ثبت‌نام، با پیگیری تا شروع کار. روان‌درمانی آنلاین هم فعال است.`
       : `خدمات حضوری دلگرمی هنوز در ${city.name} فعال نیست؛ درخواست در لیست انتظار ثبت می‌شود. روان‌درمانی آنلاین همین حالا فعال است.`,
     alternates: { canonical: `/cities/${city.slug}` },
     // A page that can only say «not yet» stays out of search results until a service starts here.
@@ -55,8 +64,8 @@ export default async function CityPage({ params }: Props) {
           <h1 id="city-title">دلگرمی در {city.name}</h1>
           <p className="lead">
             {active.length
-              ? `در ${city.name} درخواست شما به مرکزی دارای مجوز در همین شهر سپرده می‌شود و همکار دلگرمی تا شروع کار پیگیری می‌کند.`
-              : `هنوز در ${city.name} مرکز همکار نداریم. درخواستتان در لیست انتظار ثبت می‌شود و با فعال شدن ${city.name} پیامک می‌گیرید. روان‌درمانی آنلاین همین حالا فعال است.`}
+              ? `در ${city.name} برای ${activeNames(city)}، درخواست شما به مرکزی دارای مجوز در همین شهر سپرده می‌شود و همکار دلگرمی تا شروع کار پیگیری می‌کند.`
+              : `هنوز در ${city.name} مرکز همکار نداریم. درخواستتان در لیست انتظار ثبت می‌شود و وقتی دلگرمی در ${city.name} فعال شد پیامک می‌گیرید. روان‌درمانی آنلاین همین حالا فعال است.`}
           </p>
           <div className="svc-actions" id="city-actions">
             <Link className="dg-btn dg-btn--primary dg-btn--lg" href={requestHref}>ثبت درخواست در {city.name}</Link>
@@ -67,7 +76,7 @@ export default async function CityPage({ params }: Props) {
       <section className="section section--flush" aria-labelledby="status-title">
         <div className="container">
           <div className="section-head">
-            <h2 className="h-section" id="status-title">خدمت‌ها در {city.name}</h2>
+            <h2 className="h-section" id="status-title">خدمات دلگرمی در {city.name}</h2>
             <p>استان {city.province}</p>
           </div>
           <ul className="svc-status">
@@ -101,7 +110,7 @@ export default async function CityPage({ params }: Props) {
             <p>
               {active.length
                 ? `از بین مراکز دارای مجوز ${city.name}، مرکزی را پیدا می‌کنیم که همین خدمت را دارد.`
-                : 'لیست انتظار یعنی درخواستتان ثبت و نگه داشته می‌شود. وقتی شهر فعال شد پیامک می‌گیرید و درخواست بدون ثبت دوباره بررسی می‌شود.'}{' '}
+                : 'لیست انتظار یعنی درخواستتان ثبت و نگه داشته می‌شود. وقتی دلگرمی در شهرتان فعال شد پیامک می‌گیرید و همکار ما تماس می‌گیرد؛ لازم نیست دوباره درخواست ثبت کنید.'}{' '}
               <Link href="/how-we-vet">چطور مراکز را انتخاب می‌کنیم</Link>
             </p>
           </div>

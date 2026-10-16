@@ -20,7 +20,7 @@ export function SiteFooter() {
               <LogoMark className="brand-mark" size={44} />
               <span className="brand-name font-display" aria-hidden="true">دلگرمی</span>
             </Link>
-            <p>درخواست مراقب سالمند، پرستار در منزل، پرستار کودک و روان‌درمانگر از مراکز دارای مجوز، در همه‌ی ایران.</p>
+            <p>درخواست مراقب سالمند، پرستار در منزل، پرستار کودک و روان‌درمانگر از مراکز دارای مجوز؛ روان‌درمانی آنلاین در همه‌ی ایران.</p>
           </div>
           <nav className="footer-col" aria-labelledby="footer-services">
             <h2 id="footer-services">خدمات</h2>

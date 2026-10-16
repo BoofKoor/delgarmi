@@ -17,6 +17,19 @@ import { BASE_OG, SITE_URL } from '@/lib/site';
 
 type Props = { params: Promise<{ slug: string }> };
 
+/** «برای این کارها پرستاری در منزل را…» with «پرستاری در منزل» as the link. */
+function linkInside(text: string, link?: { href: string; label: string }) {
+  const at = link ? text.indexOf(link.label) : -1;
+  if (!link || at < 0) return text;
+  return (
+    <>
+      {text.slice(0, at)}
+      <Link href={link.href}>{link.label}</Link>
+      {text.slice(at + link.label.length)}
+    </>
+  );
+}
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -128,12 +141,7 @@ export default async function ServicePage({ params }: Props) {
                     <ul>
                       {col.items.map((item) => <li key={item}><Ic icon={col.icon} /><span>{item}</span></li>)}
                     </ul>
-                    {col.note ? (
-                      <p className="note">
-                        {col.note}
-                        {col.link ? <> <Link href={col.link.href}>{col.link.label}</Link></> : null}
-                      </p>
-                    ) : null}
+                    {col.note ? <p className="note">{linkInside(col.note, col.link)}</p> : null}
                   </div>
                 ))}
               </div>

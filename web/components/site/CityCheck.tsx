@@ -71,8 +71,8 @@ function CityResult({ city }: { city: CityItem }) {
       </ul>
       <p className="small">
         {inPerson
-          ? `برای خدمت‌های فعال، درخواست همین حالا به مرکزی در ${city.name} سپرده می‌شود.`
-          : `برای خدمات حضوری، درخواستتان در لیست انتظار ثبت می‌شود و با فعال شدن ${city.name} پیامک می‌گیرید.`}
+          ? `برای خدمت‌های فعال، درخواستتان به مرکزی در ${city.name} سپرده می‌شود.`
+          : `برای خدمات حضوری، درخواستتان در لیست انتظار ثبت می‌شود و وقتی دلگرمی در ${city.name} فعال شد پیامک می‌گیرید.`}
       </p>
       <p className="city-result-actions">
         <Link className="dg-btn dg-btn--secondary" href={`/request?city=${city.code}`}>ثبت درخواست در {city.name}</Link>

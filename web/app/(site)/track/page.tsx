@@ -12,7 +12,7 @@ export default function TrackPage() {
       <div className="container">
         <div className="soon-box">
           <Missing what="صفحه‌ی پیگیری (مرحله‌ی ۵ ساخت)" block>
-            <p>این صفحه همراه با فرم درخواست فعال می‌شود.</p>
+            <p>این صفحه بعد از فعال شدن فرم درخواست راه می‌افتد.</p>
           </Missing>
           <p>تا آن موقع برای پیگیری با پشتیبانی تماس بگیرید: <PhoneLink /></p>
         </div>

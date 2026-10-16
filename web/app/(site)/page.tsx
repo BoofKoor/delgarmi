@@ -44,7 +44,7 @@ export default function Home() {
         <div className="container hero-grid">
           <div className="hero-copy">
             <h1 className="hero-title font-display" id="hero-title">مراقبت از عزیزانتان،<br /> با خیال راحت</h1>
-            <p className="hero-lead">کسی را که برای مراقبت لازم دارید، از مراکز دارای مجوز شهرتان پیدا می‌کنیم و تا شروع کار کنارتان هستیم.</p>
+            <p className="hero-lead">کسی را که برای مراقبت لازم دارید، از مراکز دارای مجوز پیدا می‌کنیم و تا شروع کار کنارتان هستیم.</p>
             <h2 className="hero-ask" id="ask">چه کمکی لازم دارید؟</h2>
             <ul className="quick-services" id="quick-services" aria-labelledby="ask">
               {SERVICE_LIST.map((s) => (
@@ -76,7 +76,7 @@ export default function Home() {
         <ul className="container trust-list">
           <li className="trust-item"><Ic icon={BadgeCheck} /><strong>فقط مراکز دارای مجوز</strong><span>مجوز هر مرکز را پیش از همکاری بررسی می‌کنیم.</span></li>
           <li className="trust-item"><Ic icon={PhoneCall} /><strong>همراهتان تا شروع کار</strong><span>همکار دلگرمی تماس می‌گیرد و درخواست را پیگیری می‌کند.</span></li>
-          <li className="trust-item"><Ic icon={Lock} /><strong>اطلاعاتتان فقط برای یک مرکز</strong><span>جز مرکزی که معرفی می‌شود، کسی اطلاعات شما را نمی‌بیند.</span></li>
+          <li className="trust-item"><Ic icon={Lock} /><strong>اطلاعاتتان فقط برای یک مرکز</strong><span>جز همکاران دلگرمی و مرکزی که معرفی می‌شود، کسی اطلاعات شما را نمی‌بیند.</span></li>
         </ul>
       </section>
 
@@ -99,14 +99,14 @@ export default function Home() {
           <div>
             <div className="section-head">
               <h2 className="h-section" id="how-title">از ثبت درخواست تا شروع کار</h2>
-              <p>شما فقط درخواست را ثبت می‌کنید. پیدا کردن مرکز و هماهنگی‌ها با ماست.</p>
+              <p>شما فقط درخواست را ثبت می‌کنید. پیدا کردن مرکز و پیگیری با ماست.</p>
             </div>
             <ol className="steps-list">
               {[
                 ['درخواست را ثبت می‌کنید', 'چند سؤال درباره‌ی نیاز، زمان و شهر. ثبت‌نام لازم نیست.'],
                 ['با شما تماس می‌گیریم', 'همکار دلگرمی جزئیات را می‌پرسد و به سؤال‌هایتان جواب می‌دهد.'],
                 ['مرکز مناسب را پیدا می‌کنیم', 'از بین مراکز دارای مجوز شهر شما، مرکزی که همین خدمت را دارد.'],
-                ['مرکز با شما هماهنگ می‌کند', 'زمان شروع و هزینه را مرکز پیش از شروع کار با شما قطعی می‌کند.'],
+                ['مرکز با شما هماهنگ می‌کند', 'مرکز زمان شروع و هزینه را با شما قطعی می‌کند؛ تا آن موقع تعهدی ندارید.'],
               ].map(([title, text], i) => (
                 <li key={title}>
                   <span className="step-num font-display" aria-hidden="true">{i + 1}</span>
@@ -132,7 +132,7 @@ export default function Home() {
                 { title: 'در حال ارائه‌ی خدمت', state: 'todo' },
               ]}
             />
-            <figcaption className="track-caption">نمونه‌ی صفحه‌ی پیگیری. وضعیت درخواست را هر وقت خواستید با کد پیگیری ببینید.</figcaption>
+            <figcaption className="track-caption">نمونه‌ی صفحه‌ی پیگیری؛ شماره و زمان‌ها ساختگی‌اند. وضعیت درخواستتان را هر وقت خواستید با شماره‌ی موبایل خودتان می‌بینید.</figcaption>
           </figure>
         </div>
       </section>
@@ -148,17 +148,17 @@ export default function Home() {
             <div className="vet-item">
               <Ic icon={FileBadge} />
               <h3>مجوز از مرجع خودش</h3>
-              <p><Pending policy="licences">مراکز پرستاری در منزل از دانشگاه علوم پزشکی، مراکز مراقبت از بهزیستی و روان‌درمانگران از سازمان نظام روان‌شناسی پروانه دارند.</Pending></p>
+              <p><Pending policy="licences">مراکز پرستاری در منزل از دانشگاه علوم پزشکی، مراکز مراقبت از بهزیستی و روان‌درمانگران از سازمان نظام روان‌شناسی و مشاوره مجوز دارند.</Pending></p>
             </div>
             <div className="vet-item">
               <Ic icon={CalendarDays} />
               <h3>اعتبار مجوز را دنبال می‌کنیم</h3>
-              <p>تاریخ انقضای هر مجوز ثبت می‌شود. مرکزی که مجوزش تمدید نشده باشد معرفی نمی‌شود.</p>
+              <p>تاریخ انقضای هر مجوز را ثبت می‌کنیم و مرکزی را که مجوزش تمدید نشده باشد معرفی نمی‌کنیم.</p>
             </div>
             <div className="vet-item">
               <Ic icon={ShieldCheck} />
               <h3>قرارداد با هر مرکز</h3>
-              <p>درخواست شما فقط به مرکزی سپرده می‌شود که با دلگرمی قرارداد دارد.</p>
+              <p>درخواست شما را فقط به مرکزی می‌سپاریم که با دلگرمی قرارداد دارد.</p>
             </div>
           </div>
           <p className="vet-more"><Link href="/how-we-vet">بیشتر درباره‌ی روش انتخاب مراکز</Link></p>
@@ -168,8 +168,8 @@ export default function Home() {
       <section className="section" id="coverage" aria-labelledby="cov-title">
         <div className="container cover-grid">
           <div className="cover-copy">
-            <h2 className="h-section" id="cov-title">در شهر شما فعال است؟</h2>
-            <p>روان‌درمانی آنلاین در همه‌جای ایران فعال است. خدمات حضوری را در شهرهایی ارائه می‌دهیم که مرکز همکار داریم. اگر شهرتان هنوز در فهرست نیست، درخواستتان در لیست انتظار ثبت می‌شود و با فعال شدن شهر پیامک می‌گیرید.</p>
+            <h2 className="h-section" id="cov-title">دلگرمی در شهر شما فعال است؟</h2>
+            <p>روان‌درمانی آنلاین در همه‌جای ایران فعال است. خدمات حضوری در شهرهایی فعال است که مرکز همکار داریم. اگر در شهرتان هنوز مرکز همکار نداریم، درخواستتان در لیست انتظار ثبت می‌شود و وقتی دلگرمی در شهرتان فعال شد پیامک می‌گیرید.</p>
             <CityCheck id="home-city" />
           </div>
           <figure className="cover-photo">

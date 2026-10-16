@@ -31,7 +31,7 @@ export default async function CitiesPage() {
       <section className="page-head" aria-labelledby="cities-title">
         <div className="container">
           <h1 id="cities-title">دلگرمی در کدام شهرها فعال است؟</h1>
-          <p className="lead">روان‌درمانی آنلاین در همه‌ی ایران فعال است. خدمات حضوری را در شهرهایی ارائه می‌دهیم که مرکز همکار داریم؛ در بقیه‌ی شهرها درخواست در لیست انتظار ثبت می‌شود و با فعال شدن شهر پیامک می‌گیرید.</p>
+          <p className="lead">روان‌درمانی آنلاین در همه‌ی ایران فعال است. خدمات حضوری در شهرهایی فعال است که مرکز همکار داریم؛ در بقیه‌ی شهرها درخواست در لیست انتظار ثبت می‌شود و وقتی دلگرمی در شهرتان فعال شد پیامک می‌گیرید.</p>
           <CityCheck id="cities-city" />
         </div>
       </section>
@@ -57,8 +57,8 @@ export default async function CitiesPage() {
       <section className="section" aria-labelledby="all-title">
         <div className="container">
           <div className="section-head">
-            <h2 className="h-section" id="all-title">صفحه‌ی شهرها</h2>
-            <p>شهر شما اینجا نیست؟ اسمش را در کادر بالا بنویسید؛ همه‌ی ۱٬۳۵۴ شهر ایران را می‌شناسیم.</p>
+            <h2 className="h-section" id="all-title">شهرها به تفکیک استان</h2>
+            <p>شهر شما اینجا نیست؟ اسمش را در کادر بالا بنویسید.</p>
           </div>
           <div className="provinces">
             {provinces.map(([province, list]) => (

@@ -32,8 +32,8 @@ export const FACT_PLACEHOLDERS: Record<FactName, { what: string; sample: string 
   phone: { what: 'شماره‌ی پشتیبانی', sample: '۰۳۱ ۰۰۰۰ ۰۰۰۰' },
   hours: { what: 'ساعت کاری تیم', sample: 'شنبه تا پنجشنبه، ۹ تا ۲۰' },
   callback: { what: 'زمان تماس بعد از ثبت درخواست', sample: 'در ساعت کاری، معمولاً همان روز' },
-  legalName: { what: 'نام حقوقی شرکت', sample: 'شرکت ...' },
-  address: { what: 'نشانی دفتر', sample: 'اصفهان، ...' },
+  legalName: { what: 'نام حقوقی شرکت', sample: 'شرکت …' },
+  address: { what: 'نشانی دفتر', sample: 'اصفهان، …' },
 };
 
 /**
