@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { searchCities } from '@/lib/city-search';
 import { fa, latin } from '@/lib/digits';
@@ -11,7 +12,17 @@ describe('digits', () => {
   });
 });
 
+type FoldCase = { in: string; out: string; why: string };
+const FOLD_CASES: FoldCase[] = JSON.parse(
+  readFileSync(new URL('../../../shared/normalize-fa.json', import.meta.url), 'utf8'),
+);
+
 describe('normalizeFa', () => {
+  it('matches every shared case (the API is tested against the same file)', () => {
+    expect(FOLD_CASES.length).toBeGreaterThan(15);
+    for (const c of FOLD_CASES) expect(normalizeFa(c.in), c.why).toBe(c.out);
+  });
+
   it('folds the variants people type', () => {
     expect(normalizeFa('كرمانشاه')).toBe(normalizeFa('کرمانشاه'));
     expect(normalizeFa('آبادان')).toBe(normalizeFa('ابادان'));

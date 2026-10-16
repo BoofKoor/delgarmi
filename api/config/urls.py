@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
 from config.health import health
 
@@ -10,5 +10,6 @@ admin.site.index_title = 'مدیریت'
 
 urlpatterns = [
     path('api/health', health, name='health'),
+    path('', include('catalog.urls')),
     path(f'{settings.PANEL_PATH}/', admin.site.urls),
 ]

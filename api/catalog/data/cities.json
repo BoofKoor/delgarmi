@@ -1,0 +1,9480 @@
+[
+{
+"code": "2301021576",
+"name": "تهران",
+"province": "تهران",
+"slug": "tehran",
+"priority": 1
+},
+{
+"code": "916051392",
+"name": "مشهد",
+"province": "خراسان رضوی",
+"slug": "mashhad",
+"priority": 2
+},
+{
+"code": "1002031406",
+"name": "اصفهان",
+"province": "اصفهان",
+"slug": "isfahan",
+"priority": 3
+},
+{
+"code": "3001011590",
+"name": "کرج",
+"province": "البرز",
+"slug": "karaj",
+"priority": 4
+},
+{
+"code": "707051309",
+"name": "شیراز",
+"province": "فارس",
+"slug": "shiraz",
+"priority": 5
+},
+{
+"code": "303031214",
+"name": "تبریز",
+"province": "آذربایجان شرقی",
+"slug": "tabriz",
+"priority": 6
+},
+{
+"code": "2501031114",
+"name": "قم",
+"province": "قم",
+"slug": "qom",
+"priority": 7
+},
+{
+"code": "603021272",
+"name": "اهواز",
+"province": "خوزستان",
+"slug": "ahvaz",
+"priority": 8
+},
+{
+"code": "502041258",
+"name": "کرمانشاه",
+"province": "کرمانشاه",
+"slug": "kermanshah",
+"priority": 9
+},
+{
+"code": "401041235",
+"name": "ارومیه",
+"province": "آذربایجان غربی",
+"slug": "urmia",
+"priority": 10
+},
+{
+"code": "105051129",
+"name": "رشت",
+"province": "گیلان",
+"slug": "rasht",
+"priority": 11
+},
+{
+"code": "1105011451",
+"name": "زاهدان",
+"province": "سیستان و بلوچستان",
+"slug": "zahedan",
+"priority": 12
+},
+{
+"code": "1304071475",
+"name": "همدان",
+"province": "همدان",
+"slug": "hamedan",
+"priority": 13
+},
+{
+"code": "808051346",
+"name": "کرمان",
+"province": "کرمان",
+"slug": "kerman",
+"priority": 14
+},
+{
+"code": "2105031562",
+"name": "یزد",
+"province": "یزد",
+"slug": "yazd",
+"priority": 15
+},
+{
+"code": "2401011195",
+"name": "اردبیل",
+"province": "اردبیل",
+"slug": "ardabil",
+"priority": 16
+},
+{
+"code": "2202041567",
+"name": "بندرعباس",
+"province": "هرمزگان",
+"slug": "bandar-abbas",
+"priority": 17
+},
+{
+"code": "1021101",
+"name": "اراک",
+"province": "مرکزی",
+"slug": "arak",
+"priority": 18
+},
+{
+"code": "1904051534",
+"name": "زنجان",
+"province": "زنجان",
+"slug": "zanjan",
+"priority": 19
+},
+{
+"code": "1204031458",
+"name": "سنندج",
+"province": "کردستان",
+"slug": "sanandaj",
+"priority": 20
+},
+{
+"code": "2603051595",
+"name": "قزوین",
+"province": "قزوین",
+"slug": "qazvin",
+"priority": 21
+},
+{
+"code": "1503061496",
+"name": "خرم‌آباد",
+"province": "لرستان",
+"slug": "khorramabad",
+"priority": 22
+},
+{
+"code": "2705021181",
+"name": "گرگان",
+"province": "گلستان",
+"slug": "gorgan",
+"priority": 23
+},
+{
+"code": "207031169",
+"name": "ساری",
+"province": "مازندران",
+"slug": "sari",
+"priority": 24
+},
+{
+"code": "2802041353",
+"name": "بجنورد",
+"province": "خراسان شمالی",
+"slug": "bojnurd",
+"priority": 25
+},
+{
+"code": "2901041355",
+"name": "بیرجند",
+"province": "خراسان جنوبی",
+"slug": "birjand",
+"priority": 26
+},
+{
+"code": "1601031500",
+"name": "ایلام",
+"province": "ایلام",
+"slug": "ilam",
+"priority": 27
+},
+{
+"code": "1801021517",
+"name": "بوشهر",
+"province": "بوشهر",
+"slug": "bushehr",
+"priority": 28
+},
+{
+"code": "1402021482",
+"name": "شهرکرد",
+"province": "چهارمحال و بختیاری",
+"slug": "shahrekord",
+"priority": 29
+},
+{
+"code": "1701031512",
+"name": "یاسوج",
+"province": "کهگیلویه و بویراحمد",
+"slug": "yasuj",
+"priority": 30
+},
+{
+"code": "2002011542",
+"name": "سمنان",
+"province": "سمنان",
+"slug": "semnan",
+"priority": 31
+},
+{
+"code": "1010031425",
+"name": "کاشان",
+"province": "اصفهان",
+"slug": "kashan",
+"priority": 32
+},
+{
+"code": "1014021440",
+"name": "نجف‌آباد",
+"province": "اصفهان",
+"slug": "najafabad",
+"priority": 33
+},
+{
+"code": "1003011410",
+"name": "خمینی‌شهر",
+"province": "اصفهان",
+"slug": "khomeini-shahr",
+"priority": 34
+},
+{
+"code": "1016031401",
+"name": "شاهین‌شهر",
+"province": "اصفهان",
+"slug": "shahin-shahr",
+"priority": 35
+},
+{
+"code": "202021154",
+"name": "بابل",
+"province": "مازندران",
+"slug": "babol",
+"priority": 36
+},
+{
+"code": "201021149",
+"name": "آمل",
+"province": "مازندران",
+"slug": "amol",
+"priority": 37
+},
+{
+"code": "608021282",
+"name": "دزفول",
+"province": "خوزستان",
+"slug": "dezful",
+"priority": 38
+},
+{
+"code": "917041394",
+"name": "نیشابور",
+"province": "خراسان رضوی",
+"slug": "neyshabur",
+"priority": 39
+},
+{
+"code": "908071367",
+"name": "سبزوار",
+"province": "خراسان رضوی",
+"slug": "sabzevar",
+"priority": 40
+},
+{
+"code": "210021176",
+"name": "قائم‌شهر",
+"province": "مازندران",
+"slug": "qaem-shahr",
+"priority": 41
+},
+{
+"code": "6031110",
+"name": "ساوه",
+"province": "مرکزی",
+"slug": "saveh",
+"priority": 42
+},
+{
+"code": "1502021492",
+"name": "بروجرد",
+"province": "لرستان",
+"slug": "borujerd",
+"priority": 43
+},
+{
+"code": "1302031467",
+"name": "ملایر",
+"province": "همدان",
+"slug": "malayer",
+"priority": 44
+},
+{
+"code": "2306031594",
+"name": "ورامین",
+"province": "تهران",
+"slug": "varamin",
+"priority": 45
+},
+{
+"code": "2310021581",
+"name": "اسلامشهر",
+"province": "تهران",
+"slug": "eslamshahr",
+"priority": 46
+},
+{
+"code": "2309021588",
+"name": "شهریار",
+"province": "تهران",
+"slug": "shahriar",
+"priority": 47
+},
+{
+"code": "2313022120",
+"name": "پاکدشت",
+"province": "تهران",
+"slug": "pakdasht",
+"priority": 48
+},
+{
+"code": "2203032193",
+"name": "کیش",
+"province": "هرمزگان",
+"slug": "kish",
+"priority": 49
+},
+{
+"code": "306021223",
+"name": "مراغه",
+"province": "آذربایجان شرقی",
+"slug": "maragheh",
+"priority": 50
+},
+{
+"code": "403021238",
+"name": "خوی",
+"province": "آذربایجان غربی",
+"slug": "khoy",
+"priority": 51
+},
+{
+"code": "806011338",
+"name": "سیرجان",
+"province": "کرمان",
+"slug": "sirjan",
+"priority": 52
+},
+{
+"code": "804021335",
+"name": "رفسنجان",
+"province": "کرمان",
+"slug": "rafsanjan",
+"priority": 53
+},
+{
+"code": "802031330",
+"name": "بم",
+"province": "کرمان",
+"slug": "bam",
+"priority": 54
+},
+{
+"code": "1104041450",
+"name": "زابل",
+"province": "سیستان و بلوچستان",
+"slug": "zabol",
+"priority": 55
+},
+{
+"code": "601021270",
+"name": "آبادان",
+"province": "خوزستان",
+"slug": "abadan",
+"priority": 56
+},
+{
+"code": "606031279",
+"name": "بهبهان",
+"province": "خوزستان",
+"slug": "behbahan",
+"priority": 57
+},
+{
+"code": "712041324",
+"name": "مرودشت",
+"province": "فارس",
+"slug": "marvdasht",
+"priority": 58
+},
+{
+"code": "710041315",
+"name": "کازرون",
+"province": "فارس",
+"slug": "kazerun",
+"priority": 59
+},
+{
+"code": "711041320",
+"name": "لار",
+"province": "فارس",
+"slug": "lar",
+"priority": 60
+},
+{
+"code": "2706041186",
+"name": "گنبد کاووس",
+"province": "گلستان",
+"slug": "gonbad-kavus",
+"priority": 61
+},
+{
+"code": "111021147",
+"name": "لاهیجان",
+"province": "گیلان",
+"slug": "lahijan",
+"priority": 62
+},
+{
+"code": "103011120",
+"name": "بندر انزلی",
+"province": "گیلان",
+"slug": "bandar-anzali",
+"priority": 63
+},
+{
+"code": "2106011552",
+"name": "میبد",
+"province": "یزد",
+"slug": "meybod",
+"priority": 64
+},
+{
+"code": "2101021551",
+"name": "اردکان",
+"province": "یزد",
+"slug": "ardakan",
+"priority": 65
+},
+{
+"code": "905061361",
+"name": "تربت حیدریه",
+"province": "خراسان رضوی",
+"slug": "torbat-heydarieh",
+"priority": 66
+},
+{
+"code": "913031378",
+"name": "قوچان",
+"province": "خراسان رضوی",
+"slug": "quchan",
+"priority": 67
+},
+{
+"code": "315032545",
+"name": "آبش احمد",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "321031201",
+"name": "آذرشهر",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "310022401",
+"name": "آقکند",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "316012935",
+"name": "اربطان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "322021204",
+"name": "اسکو",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "302021200",
+"name": "اهر",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "310042842",
+"name": "اچاچی",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "322011205",
+"name": "ایلخچی",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "303031213",
+"name": "باسمنج",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "316022230",
+"name": "بخشایش",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "313021207",
+"name": "بستان‌آباد",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "312011221",
+"name": "بناب",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "307022589",
+"name": "بناب مرند",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "310032402",
+"name": "ترک",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "310012144",
+"name": "ترکمانچای",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "314031208",
+"name": "تسوج",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "321012763",
+"name": "تیمورلو",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "313012295",
+"name": "تیکمه داش",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "319021225",
+"name": "جلفا",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "325012843",
+"name": "جوان قلعه",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "324012398",
+"name": "خاروانا",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "314021209",
+"name": "خامنه",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "306032331",
+"name": "خداجو(خراجو)",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "303041206",
+"name": "خسروشاه",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "326012332",
+"name": "خمارلو",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "316012146",
+"name": "خواجه",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "312012934",
+"name": "خوشه مهر",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "314022946",
+"name": "داریان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "305022399",
+"name": "دوزدوزان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "316022147",
+"name": "زرنق",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "307021227",
+"name": "زنوز",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "305011220",
+"name": "سراب",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "303031215",
+"name": "سردرود",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "322022033",
+"name": "سهند",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "314022148",
+"name": "سیس",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "319012497",
+"name": "سیه رود",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "314021210",
+"name": "شبستر",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "305022330",
+"name": "شربیان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "314021211",
+"name": "شرفخانه",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "314022101",
+"name": "شندآباد",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "314011212",
+"name": "صوفیان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "326032944",
+"name": "عاشقلو",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "325021222",
+"name": "عجب شیر",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "314022947",
+"name": "علیشاه",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "323022145",
+"name": "قره آغاج",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "326022945",
+"name": "لاریجان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "320012296",
+"name": "لیلان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "320022844",
+"name": "مبارک‌شهر",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "307021228",
+"name": "مرند",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "320021224",
+"name": "ملکان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "321021203",
+"name": "ممقان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "305021216",
+"name": "مهربان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "310041233",
+"name": "میانه",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "311032590",
+"name": "نظرکهریزی",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "319021226",
+"name": "هادیشهر",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "316021217",
+"name": "هریس",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "311021234",
+"name": "هشترود",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "327012294",
+"name": "هوراند",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "314022149",
+"name": "وایقان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "324022142",
+"name": "ورزقان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "307022143",
+"name": "کشکسرای",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "316022333",
+"name": "کلوانق",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "315021199",
+"name": "کلیبر",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "314022544",
+"name": "کوزه کنان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "321011202",
+"name": "گوگان",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "307032400",
+"name": "یامچی",
+"province": "آذربایجان شرقی",
+"slug": null,
+"priority": null
+},
+{
+"code": "414012549",
+"name": "آواجیق",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "413011252",
+"name": "اشنویه",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "403042405",
+"name": "ایواوغلی",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "408052592",
+"name": "باروق",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "406052231",
+"name": "بازرگان",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "410021247",
+"name": "بوکان",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "405011241",
+"name": "تازه‌شهر",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "412022926",
+"name": "تازه‌کند نصرت‌آباد",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "412011249",
+"name": "تکاب",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "416012879",
+"name": "حاجیلار",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "407012734",
+"name": "خلیفان",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "403022043",
+"name": "دیزج دیز",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "404012547",
+"name": "ربط",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "403032735",
+"name": "زرآباد",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "404011240",
+"name": "سردشت",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "401032404",
+"name": "سرو",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "405011242",
+"name": "سلماس",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "401022403",
+"name": "سیلوانه",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "410012548",
+"name": "سیمینه",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "414021245",
+"name": "سیه چشمه",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "411011250",
+"name": "شاهین دژ",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "417021244",
+"name": "شوط",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "403061239",
+"name": "فیرورق",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "416021237",
+"name": "قره ضیاءالدین",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "403052044",
+"name": "قطور",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "401012150",
+"name": "قوشچی",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "402022546",
+"name": "لاجان",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "406041246",
+"name": "ماکو",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "409031253",
+"name": "محمدیار",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "411012591",
+"name": "محمودآباد",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "417012736",
+"name": "مرگنلر",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "407021248",
+"name": "مهاباد",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "408031251",
+"name": "میاندوآب",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "404022406",
+"name": "میرآباد",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "415012733",
+"name": "نازک علیا",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "413022408",
+"name": "نالوس",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "409021254",
+"name": "نقده",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "404022922",
+"name": "نلاس",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "401052151",
+"name": "نوشین",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "415021243",
+"name": "پلدشت",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "402011236",
+"name": "پیرانشهر",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "408042232",
+"name": "چهاربرج",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "411022407",
+"name": "کشاورز",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "407022869",
+"name": "گوگ تپه",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "417022899",
+"name": "یولاگلدی",
+"province": "آذربایجان غربی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2408012493",
+"name": "آبی بیگلو",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2401042949",
+"name": "آراللو",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2410022881",
+"name": "اردیموسی",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2406042750",
+"name": "اسلام‌آباد",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2411012166",
+"name": "اصلاندوز",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2404022948",
+"name": "النی",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2402011230",
+"name": "بیله سوار",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2405012492",
+"name": "تازه‌کند انگوت",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2401062882",
+"name": "ثمرین",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2402022209",
+"name": "جعفرآباد",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2403041219",
+"name": "خلخال",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2404012300",
+"name": "رضی",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2405052880",
+"name": "زهرا",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2410011196",
+"name": "سرعین",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2408032576",
+"name": "عنبران",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2404032704",
+"name": "فخرآباد",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2404052749",
+"name": "قصابه",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2404032301",
+"name": "لاهرود",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2404042723",
+"name": "مرادلو",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2404021229",
+"name": "مشگین‌شهر",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2406032029",
+"name": "مغان سر",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2408021197",
+"name": "نمین",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2409011198",
+"name": "نیر",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2403012164",
+"name": "هشتجین",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2401042299",
+"name": "هیر",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2406011231",
+"name": "پارس‌آباد",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2403032165",
+"name": "کلور",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2409022636",
+"name": "کوراییم",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2405041232",
+"name": "گرمی",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "2407011218",
+"name": "گیوی",
+"province": "اردبیل",
+"slug": null,
+"priority": null
+},
+{
+"code": "1018021423",
+"name": "آران و بیدگل",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1008022252",
+"name": "ابریشم",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1018012279",
+"name": "ابوزیدآباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1001011395",
+"name": "اردستان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1003012755",
+"name": "اصغرآباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1024012250",
+"name": "افوس",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1013011433",
+"name": "انارک",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002062248",
+"name": "اژیه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1008022445",
+"name": "ایمانشهر",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1015021441",
+"name": "بادرود",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1012011429",
+"name": "باغ بهادران",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1012032788",
+"name": "باغشاد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1013032078",
+"name": "بافران",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1010052542",
+"name": "برزک",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1007012569",
+"name": "برف انبار",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1008012444",
+"name": "بهاران‌شهر",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002032611",
+"name": "بهارستان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1024011416",
+"name": "بوئین و میاندشت",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1005032923",
+"name": "بیده",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002022513",
+"name": "تودشک",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1019021436",
+"name": "تیران",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1023012203",
+"name": "جندق",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1014022045",
+"name": "جوزدان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1010022447",
+"name": "جوشقان قالی",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1022011397",
+"name": "حبیب‌آباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002042187",
+"name": "حسن‌آباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1005022249",
+"name": "حنا",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1015022612",
+"name": "خالدآباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1004011413",
+"name": "خوانسار",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1023011434",
+"name": "خور",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1022021398",
+"name": "خورزوق",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1006031417",
+"name": "داران",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1006032251",
+"name": "دامنه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1003011411",
+"name": "درچه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1022021399",
+"name": "دستگرد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1017022937",
+"name": "ده سرخ",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1021011421",
+"name": "دهاقان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1014031437",
+"name": "دهق",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1022021400",
+"name": "دولت‌آباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1017012189",
+"name": "دیزیچه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1020022352",
+"name": "رزوه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1019022573",
+"name": "رضوانشهر",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1008032789",
+"name": "زازران",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1012032504",
+"name": "زاینده رود",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1012031431",
+"name": "زرین‌شهر",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1001021396",
+"name": "زواره",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002032830",
+"name": "زیار",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1017022572",
+"name": "زیباشهر",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002022350",
+"name": "سجزی",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1012031432",
+"name": "سده لنجان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1018022543",
+"name": "سفیدشهر",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1005021414",
+"name": "سمیرم",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1022022756",
+"name": "سین",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1022012094",
+"name": "شاپورآباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1009021422",
+"name": "شهرضا",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1017012204",
+"name": "طالخونچه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1015012754",
+"name": "طرق رود",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1019012449",
+"name": "عسگران",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1014031438",
+"name": "علویجه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1005042936",
+"name": "فتح‌آباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1023012077",
+"name": "فرخی",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1007011418",
+"name": "فریدونشهر",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1008021419",
+"name": "فلاورجان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1012032128",
+"name": "فولادشهر",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1010021424",
+"name": "قمصر",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002032021",
+"name": "قهجاورستان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1008031439",
+"name": "قهدریجان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1016021598",
+"name": "لای بید",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1017011428",
+"name": "مبارکه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1017011599",
+"name": "مجلسی",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002012247",
+"name": "محمدآباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1010032657",
+"name": "مشکات",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1009022446",
+"name": "منظریه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1001032214",
+"name": "مهاباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1016021408",
+"name": "میمه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1013031435",
+"name": "نایین",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002012512",
+"name": "نصرآباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1015011442",
+"name": "نطنز",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1018022505",
+"name": "نوش‌آباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1010042302",
+"name": "نیاسر",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002012186",
+"name": "نیک‌آباد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002061405",
+"name": "هرند",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002051404",
+"name": "ورزنه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1012032112",
+"name": "ورنامخواست",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1016021409",
+"name": "وزوان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1005022351",
+"name": "ونک",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1008012215",
+"name": "پیربکران",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1020021415",
+"name": "چادگان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1012012121",
+"name": "چرمهین",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1012031430",
+"name": "چمگردان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1010022831",
+"name": "کامو و چوگان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1017012448",
+"name": "کرکوند",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1008021420",
+"name": "کلیشادوسودرجان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1022012571",
+"name": "کمشچه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1005012443",
+"name": "کمه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1014022570",
+"name": "کهریزسنگ",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1003012188",
+"name": "کوشک",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1002021403",
+"name": "کوهپایه",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1016031597",
+"name": "گرگاب",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1016031402",
+"name": "گزبرخوار",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1014022122",
+"name": "گلدشت",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1021012093",
+"name": "گلشن",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1011012511",
+"name": "گلشهر",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1011011426",
+"name": "گلپایگان",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1011011427",
+"name": "گوگد",
+"province": "اصفهان",
+"slug": null,
+"priority": null
+},
+{
+"code": "3001032070",
+"name": "آسارا",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3005011584",
+"name": "اشتهارد",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3003022025",
+"name": "تنکمان",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3002012664",
+"name": "شهرجدیدهشتگرد",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3004012169",
+"name": "طالقان",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3001012118",
+"name": "ماهدشت",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3001012273",
+"name": "محمدشهر",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3006022271",
+"name": "مشکین دشت",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3003011586",
+"name": "نظرآباد",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3002011587",
+"name": "هشتگرد",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3005022981",
+"name": "پلنگ‌آباد",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3002042631",
+"name": "چهارباغ",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3001012272",
+"name": "کمال‌شهر",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3002032630",
+"name": "کوهسار",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3001012635",
+"name": "گرمدره",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "3002012026",
+"name": "گلسار",
+"province": "البرز",
+"slug": null,
+"priority": null
+},
+{
+"code": "1606021501",
+"name": "آبدانان",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1604022617",
+"name": "آسمان‌آباد",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1608011508",
+"name": "ارکواز",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1607021498",
+"name": "ایوان",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1610011502",
+"name": "بدره",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1604052851",
+"name": "بلاوه",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1611012574",
+"name": "توحید",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1601042974",
+"name": "جعفرآباد",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1602031503",
+"name": "دره‌شهر",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1608022028",
+"name": "دلگشا",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1603021505",
+"name": "دهلران",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1607012476",
+"name": "زرنه",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1606032056",
+"name": "سراب باغ",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1604021507",
+"name": "سرابله",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1604042850",
+"name": "شباب",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1605021509",
+"name": "صالح‌آباد",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1609012155",
+"name": "لومار",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1602042849",
+"name": "ماژین",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1608022745",
+"name": "مهر",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1605031510",
+"name": "مهران",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1606012616",
+"name": "مورموری",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1603031506",
+"name": "موسیان",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1603041504",
+"name": "میمه",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1603012127",
+"name": "پهله",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1610022909",
+"name": "چشمه شیرین",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1601021499",
+"name": "چوار",
+"province": "ایلام",
+"slug": null,
+"priority": null
+},
+{
+"code": "1803062308",
+"name": "آب پخش",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1802022816",
+"name": "آباد",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1805032484",
+"name": "آبدان",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1808012370",
+"name": "امام حسن",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1809012087",
+"name": "انارستان",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1802021518",
+"name": "اهرم",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1804012818",
+"name": "بادوله",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1803031520",
+"name": "برازجان",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1805012483",
+"name": "بردخون",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1805022737",
+"name": "بردستان",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1805021522",
+"name": "بندردیر",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1808021524",
+"name": "بندردیلم",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1807021525",
+"name": "بندرریگ",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1806021523",
+"name": "بندرکنگان",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1807031526",
+"name": "بندرگناوه",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1806022620",
+"name": "بنک",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1809022933",
+"name": "بهارستان",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1803052817",
+"name": "بوشکان",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1810012932",
+"name": "بیدخون",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1803042618",
+"name": "تنگ ارم",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1809022259",
+"name": "جم",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1801011516",
+"name": "خارک",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1804021521",
+"name": "خورموج",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1803032369",
+"name": "دالکی",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1802012258",
+"name": "دلوار",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1805022819",
+"name": "دوراهک",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1809012662",
+"name": "ریز",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1803011519",
+"name": "سعد‌آباد",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1806022661",
+"name": "سیراف",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1803022157",
+"name": "شبانکاره",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1804032050",
+"name": "شنبه",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1801022867",
+"name": "عالی‌شهر",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1810012621",
+"name": "عسلویه",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1810012622",
+"name": "نخل تقی",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1803012482",
+"name": "وحدتیه",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1810022878",
+"name": "چاه مبارک",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1801032481",
+"name": "چغادک",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1804012131",
+"name": "کاکی",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "1803052619",
+"name": "کلمه",
+"province": "بوشهر",
+"slug": null,
+"priority": null
+},
+{
+"code": "2302022269",
+"name": "آبسرد",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2302032629",
+"name": "آبعلی",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2310032770",
+"name": "احمد‌آباد مستوفی",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2314012634",
+"name": "ارجمند",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2309022633",
+"name": "اندیشه",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2309022632",
+"name": "باغستان",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2303032270",
+"name": "باقرشهر",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2320012268",
+"name": "بومهن",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2304012117",
+"name": "تجریش",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2306022168",
+"name": "جوادآباد",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2303022167",
+"name": "حسن‌آباد",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2302021578",
+"name": "دماوند",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2312021585",
+"name": "رباطکریم",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2302031579",
+"name": "رودهن",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2303042115",
+"name": "ری",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2309022303",
+"name": "شاهدشهر",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2313012490",
+"name": "شریف‌آباد",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2304012778",
+"name": "شمشک",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2319012665",
+"name": "صالحیه",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2309022277",
+"name": "صباشهر",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2317022373",
+"name": "صفادشت",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2309032491",
+"name": "فردوسیه",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2313022705",
+"name": "فرون‌آباد",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2304011582",
+"name": "فشم",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2314021577",
+"name": "فیروزکوه",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2316012116",
+"name": "قدس",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2321011593",
+"name": "قرچک",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2303062887",
+"name": "قلعه نو",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2303052886",
+"name": "قیام دشت",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2304021583",
+"name": "لواسان",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2317012217",
+"name": "ملارد",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2319022208",
+"name": "نسیم‌شهر",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2312022666",
+"name": "نصیرشهر",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2309032293",
+"name": "وحیدیه",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2320012628",
+"name": "پردیس",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2312022826",
+"name": "پرند",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2318011592",
+"name": "پیشوا",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2310012489",
+"name": "چهاردانگه",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2303032488",
+"name": "کهریزک",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2302021580",
+"name": "کیلان",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2319012278",
+"name": "گلستان",
+"province": "تهران",
+"slug": null,
+"priority": null
+},
+{
+"code": "2909032898",
+"name": "آبیز",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2904052645",
+"name": "آرین‌شهر",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2906012346",
+"name": "آیسک",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2908022726",
+"name": "ارسک",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2902032276",
+"name": "اسدیه",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2904022643",
+"name": "اسفدن",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2907031372",
+"name": "اسلامیه",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2908011370",
+"name": "بشرویه",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2909012347",
+"name": "حاجی‌آباد",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2904031374",
+"name": "خضری دشت بیاض",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2910012242",
+"name": "خوسف",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2903032897",
+"name": "درح",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2911032624",
+"name": "دیهوک",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2909022644",
+"name": "زهان",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2906011371",
+"name": "سرایان",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2903011354",
+"name": "سربیشه",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2906022563",
+"name": "سه قلعه",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2905012441",
+"name": "شوسف",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2911021369",
+"name": "طبس",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2902022052",
+"name": "طبس مسینا",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2911012345",
+"name": "عشق‌آباد",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2907031373",
+"name": "فردوس",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2904021375",
+"name": "قاین",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2902012051",
+"name": "قهستان",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2910012019",
+"name": "محمدشهر",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2903022642",
+"name": "مود",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2905021356",
+"name": "نهبندان",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2904032646",
+"name": "نیمبلوک",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2902022725",
+"name": "گزیک",
+"province": "خراسان جنوبی",
+"slug": null,
+"priority": null
+},
+{
+"code": "906042067",
+"name": "احمدآباد صولت",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "923012440",
+"name": "انابد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "913011376",
+"name": "باجگیران",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "937012134",
+"name": "باخرز",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "917042041",
+"name": "بار",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "905012341",
+"name": "بایک",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "931011382",
+"name": "بجستان",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "923021379",
+"name": "بردسکن",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "915021383",
+"name": "بیدخت",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "904021357",
+"name": "تایباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "906021363",
+"name": "تربت جام",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "934011596",
+"name": "جغتای",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "927012606",
+"name": "جنگل",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "936022889",
+"name": "حکم‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "917022349",
+"name": "خرو",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "929021380",
+"name": "خلیل‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "919021358",
+"name": "خواف",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "939012244",
+"name": "داورزن",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "917021393",
+"name": "درود",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "907031365",
+"name": "درگز",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "935012135",
+"name": "دولت‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "905072434",
+"name": "رباط سنگ",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "927021359",
+"name": "رشتخوار",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "916062436",
+"name": "رضویه",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "908052245",
+"name": "روداب",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "934022901",
+"name": "ریواده",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "941012348",
+"name": "ریوش",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "920021387",
+"name": "سرخس",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "922012608",
+"name": "سفیدسنگ",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "919042605",
+"name": "سلامی",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "938012343",
+"name": "سلطان‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "906052888",
+"name": "سمیع‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "919012213",
+"name": "سنگان",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "930012069",
+"name": "شادمهر",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "932021388",
+"name": "شاندیز",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "908062344",
+"name": "ششتمد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "923032090",
+"name": "شهرآباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "928012609",
+"name": "شهرزو",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "940011362",
+"name": "صالح‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "932011389",
+"name": "طرقبه",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "917052438",
+"name": "عشق‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "922022566",
+"name": "فرهادگرد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "922021390",
+"name": "فریمان",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "933012220",
+"name": "فیروزه",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "930021360",
+"name": "فیض‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "919032439",
+"name": "قاسم‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "917022246",
+"name": "قدمگاه",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "937022970",
+"name": "قلعه نوعلیا",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "922012442",
+"name": "قلندرآباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "907021364",
+"name": "لطف‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "920012607",
+"name": "مزدآوند",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "916052526",
+"name": "مشهد ثامن",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "904032654",
+"name": "مشهدریزه",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "938022902",
+"name": "مشکان",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "916012437",
+"name": "ملک‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "919022565",
+"name": "نشتیفان",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "906032342",
+"name": "نصرآباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "936012184",
+"name": "نقاب",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "907041366",
+"name": "نوخندان",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "906042655",
+"name": "نیل‌شهر",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "933022066",
+"name": "همت‌آباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "907012202",
+"name": "چاپشلو",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "935022950",
+"name": "چخماق",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "918021386",
+"name": "چناران",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "917032564",
+"name": "چکنه",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "915031384",
+"name": "کاخک",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "904022562",
+"name": "کاریز",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "914041381",
+"name": "کاشمر",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "905052243",
+"name": "کدکن",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "928021391",
+"name": "کلات",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "929012656",
+"name": "کندر",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "918012854",
+"name": "گلبهار",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "918012068",
+"name": "گلمکان",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "915021385",
+"name": "گناباد",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "931022610",
+"name": "یونسی",
+"province": "خراسان رضوی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2806031352",
+"name": "آشخانه",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2806012848",
+"name": "آوا",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2801021349",
+"name": "اسفراین",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2807012053",
+"name": "ایور",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2805012079",
+"name": "تیتکانلو",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2803031350",
+"name": "جاجرم",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2802052431",
+"name": "حصارگرمخان",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2807012641",
+"name": "درق",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2808012132",
+"name": "راز",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2804022845",
+"name": "زیارت",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2803012432",
+"name": "سنخواست",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2803022433",
+"name": "شوقان",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2804021368",
+"name": "شیروان",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2801012430",
+"name": "صفی‌آباد",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2808022942",
+"name": "غلامان",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2805021377",
+"name": "فاروج",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2806012567",
+"name": "قاضی",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2804032846",
+"name": "قوشخانه",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2804012435",
+"name": "لوجلی",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2806022568",
+"name": "پیش قلعه",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2802042847",
+"name": "چناران‌شهر",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2807012054",
+"name": "گرمه",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2808032943",
+"name": "یکه سعود",
+"province": "خراسان شمالی",
+"slug": null,
+"priority": null
+},
+{
+"code": "621012799",
+"name": "آبژدان",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "602022801",
+"name": "آزادی",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "626011278",
+"name": "آغاجاری",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "609022796",
+"name": "ابوحمیظه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "601011269",
+"name": "اروندکنار",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "603022791",
+"name": "الهایی",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "614012314",
+"name": "الوان",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "616022111",
+"name": "امیدیه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "602021271",
+"name": "اندیمشک",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "604031274",
+"name": "ایذه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "615021273",
+"name": "باغ ملک",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "609011283",
+"name": "بستان",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "605011275",
+"name": "بندرامام خمینی",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "605021276",
+"name": "بندرماهشهر",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "602012803",
+"name": "بیدروبه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "620012007",
+"name": "ترکالکی",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "606042798",
+"name": "تشان",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "616012420",
+"name": "جایزان",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "620022716",
+"name": "جنت مکان",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "626022920",
+"name": "جولکی",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "614022649",
+"name": "حر",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "602012595",
+"name": "حسینیه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "608012035",
+"name": "حمزه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "625012105",
+"name": "حمیدیه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "607011280",
+"name": "خرمشهر",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "611022794",
+"name": "خنافره",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "611032008",
+"name": "دارخوین",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "604022415",
+"name": "دهدز",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "619011286",
+"name": "رامشیر",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "610021287",
+"name": "رامهرمز",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "623012313",
+"name": "رفیع",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "610032929",
+"name": "رود زرد ماشین",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "621022928",
+"name": "زاووت",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "618022650",
+"name": "زهره",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "608012416",
+"name": "سالند",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "612022792",
+"name": "سرداران",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "606022500",
+"name": "سردشت",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "610042921",
+"name": "سلطان‌آباد",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "620012715",
+"name": "سماله",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "609021284",
+"name": "سوسنگرد",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "608022800",
+"name": "سیاه منصور",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "611011288",
+"name": "شادگان",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "614012037",
+"name": "شاوور",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "612022036",
+"name": "شرافت",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "608022100",
+"name": "شمس‌آباد",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "608022417",
+"name": "شهر امام",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "608042927",
+"name": "شهیون",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "614021281",
+"name": "شوش",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "612021290",
+"name": "شوشتر",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "624022310",
+"name": "شیبان",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "620022009",
+"name": "صالح‌شهر",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "608022418",
+"name": "صفی‌آباد",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "615032596",
+"name": "صیدون",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "612042968",
+"name": "عرب حسن",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "613052930",
+"name": "عنبر",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "614032718",
+"name": "فتح المبین",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "615022551",
+"name": "قلعه تل",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "621032550",
+"name": "قلعه خواجه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "617012104",
+"name": "لالی",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "613031291",
+"name": "مسجدسلیمان",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "619022719",
+"name": "مشراگه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "607012334",
+"name": "مقاومت",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "624012106",
+"name": "ملاثانی",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "608022967",
+"name": "منتظران",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "606032797",
+"name": "منصوریه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "608022419",
+"name": "میانرود",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "616022969",
+"name": "میانکوه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "615042720",
+"name": "میداود",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "607022312",
+"name": "مینوشهر",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "622021292",
+"name": "هفتگل",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "618011277",
+"name": "هندیجان",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "623021285",
+"name": "هویزه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "624022309",
+"name": "ویس",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "608032717",
+"name": "چغامیش",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "602022802",
+"name": "چم گلک",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "605022311",
+"name": "چمران",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "601022010",
+"name": "چویبده",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "609022795",
+"name": "کوت سیدنعیم",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "627012790",
+"name": "کوت عبداله",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "620021289",
+"name": "گتوند",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "613042793",
+"name": "گلگیر",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "612032714",
+"name": "گوریه",
+"province": "خوزستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1908022262",
+"name": "آب بر",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1901031528",
+"name": "ابهر",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1904062038",
+"name": "ارمغانخانه",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1906012485",
+"name": "حلب",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1907011529",
+"name": "خرمدره",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1909012261",
+"name": "دندی",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1903022376",
+"name": "زرین رود",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1906022327",
+"name": "زرین‌آباد",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1903042371",
+"name": "سجاس",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1910011527",
+"name": "سلطانیه",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1903032039",
+"name": "سهرورد",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1901031530",
+"name": "صایین قلعه",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1903031533",
+"name": "قیدار",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1909022207",
+"name": "ماه نشان",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1903032833",
+"name": "نوربهار",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1904022764",
+"name": "نیک پی",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1901031531",
+"name": "هیدج",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1908012486",
+"name": "چورزق",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1903032832",
+"name": "کرسف",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1903012260",
+"name": "گرماب",
+"province": "زنجان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2006011549",
+"name": "آرادان",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2001012263",
+"name": "امیریه",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2004011548",
+"name": "ایوانکی",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2003011545",
+"name": "بسطام",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2003022161",
+"name": "بیارجمند",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2001021540",
+"name": "دامغان",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2005022022",
+"name": "درجزین",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2001022264",
+"name": "دیباج",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2003032775",
+"name": "رودیان",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2008011541",
+"name": "سرخه",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2003031547",
+"name": "شاهرود",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2005011543",
+"name": "شهمیرزاد",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2003011546",
+"name": "مجن",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2005021544",
+"name": "مهدی‌شهر",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2007012162",
+"name": "میامی",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2001022759",
+"name": "کلاته",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2003012160",
+"name": "کلاته خیج",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2006022768",
+"name": "کهن‌آباد",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2004021550",
+"name": "گرمسار",
+"province": "سمنان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1113022893",
+"name": "آشار",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1115012353",
+"name": "ادیمی",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1103012979",
+"name": "اسماعیل‌آباد",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1107042506",
+"name": "اسپکه",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1101051443",
+"name": "ایرانشهر",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1101012450",
+"name": "بزمان",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1120012172",
+"name": "بمپور",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1107012456",
+"name": "بنت",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1104042453",
+"name": "بنجار",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1106012191",
+"name": "جالق",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1110012978",
+"name": "جزینک",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1103011449",
+"name": "خاش",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1103032915",
+"name": "ده رییس",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1111012514",
+"name": "دوست محمد",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1108032461",
+"name": "راسک",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1117032912",
+"name": "ریگ ملک",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1109012739",
+"name": "زرآباد",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1110022173",
+"name": "زهک",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1118022892",
+"name": "ساربوک",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1106041453",
+"name": "سراوان",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1123012499",
+"name": "سرباز",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1105042891",
+"name": "سرجنگل",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1114012174",
+"name": "سوران",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1106052455",
+"name": "سیرکان",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1116022046",
+"name": "علی اکبر",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1119012175",
+"name": "فنوج",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1111022916",
+"name": "قرقری",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1118011445",
+"name": "قصرقند",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1116012354",
+"name": "محمدآباد",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1120012049",
+"name": "محمدان",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1106042047",
+"name": "محمدی",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1113012355",
+"name": "مهرستان",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1117011452",
+"name": "میرجاوه",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1105032454",
+"name": "نصرت‌آباد",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1121012452",
+"name": "نوک‌آباد",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1122011444",
+"name": "نگور",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1107051448",
+"name": "نیک‌شهر",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1114022613",
+"name": "هیدوچ",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1108052890",
+"name": "پارود",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1102042894",
+"name": "پلان",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1108012501",
+"name": "پیشین",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1102021446",
+"name": "چابهار",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1112022914",
+"name": "چگرد",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1109021447",
+"name": "کنارک",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1119022913",
+"name": "گتیج",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1106042048",
+"name": "گشت",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1112012451",
+"name": "گلمورتی",
+"province": "سیستان و بلوچستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "701041296",
+"name": "آباده",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "735012199",
+"name": "آباده طشک",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "727022903",
+"name": "ارد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "706021304",
+"name": "اردکان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "717011321",
+"name": "ارسنجان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "702021298",
+"name": "استهبان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "721042708",
+"name": "اسیر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "715032212",
+"name": "اشکنان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "720012653",
+"name": "افزر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "703021299",
+"name": "اقلید",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "720022011",
+"name": "امام‌شهر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "715032235",
+"name": "اهل",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "736011316",
+"name": "اوز",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "702022552",
+"name": "ایج",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "701042335",
+"name": "ایزدخواست",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "734012234",
+"name": "باب انار",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "713022781",
+"name": "بابامنیر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "710012423",
+"name": "بالاده",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "711072182",
+"name": "بنارویه",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "701052198",
+"name": "بهمن",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "716021295",
+"name": "بوانات",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "711052219",
+"name": "بیرم",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "731012503",
+"name": "بیضا",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "705052179",
+"name": "جنت‌شهر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "704041301",
+"name": "جهرم",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "711022183",
+"name": "جویم",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "719021302",
+"name": "حاجی‌آباد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "732012095",
+"name": "حسامی",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "703032082",
+"name": "حسن‌آباد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "707062057",
+"name": "خانه زنیان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "712072776",
+"name": "خانیمن",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "734021300",
+"name": "خاوران",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "729021308",
+"name": "خرامه",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "710062109",
+"name": "خشت",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "724021317",
+"name": "خنج",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "711042553",
+"name": "خور",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "721032820",
+"name": "خوزی",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "713032712",
+"name": "خومه زار",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "729022963",
+"name": "خیرآباد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "705031303",
+"name": "داراب",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "707052298",
+"name": "داریان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "719022651",
+"name": "دبیران",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "722022059",
+"name": "دهرم",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "711042952",
+"name": "دهکویه",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "705042081",
+"name": "دوبرجی",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "704022707",
+"name": "دوزه",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "703012014",
+"name": "دژکرد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "712052080",
+"name": "رامجرد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "705022905",
+"name": "رستاق",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "702012177",
+"name": "رونیز",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "708022107",
+"name": "زاهدشهر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "730011305",
+"name": "زرقان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "712042961",
+"name": "زنگی‌آباد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "703012297",
+"name": "سده",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "725021306",
+"name": "سروستان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "723011322",
+"name": "سعادت‌شهر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "729012782",
+"name": "سلطان‌شهر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "701042597",
+"name": "سورمق",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "712062336",
+"name": "سیدان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "708012180",
+"name": "ششده",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "707052015",
+"name": "شهرصدرا",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "719012558",
+"name": "شهرپیر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "701051297",
+"name": "صغاد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "718021294",
+"name": "صفاشهر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "728022904",
+"name": "طسوج",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "715042236",
+"name": "علامرودشت",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "711082709",
+"name": "عماد‌شهر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "712062951",
+"name": "فاروق",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "721012966",
+"name": "فال",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "705042016",
+"name": "فدامی",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "722011311",
+"name": "فراشبند",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "708031310",
+"name": "فسا",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "709031313",
+"name": "فیروزآباد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "718011323",
+"name": "قادرآباد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "733012108",
+"name": "قایمیه",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "708012762",
+"name": "قره بلاغ",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "704032178",
+"name": "قطب‌آباد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "714042058",
+"name": "قطرویه",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "720021312",
+"name": "قیر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "715011318",
+"name": "لامرد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "711042013",
+"name": "لطیفی",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "730012421",
+"name": "لپویی",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "723022783",
+"name": "مادرسلیمان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "720022012",
+"name": "مبارک‌آباد دیز",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "724012907",
+"name": "محمله",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "716032780",
+"name": "مزایجان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "714022556",
+"name": "مشکان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "726022337",
+"name": "مصیری",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "729022962",
+"name": "معزآباد جابری",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "721022211",
+"name": "مهر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "708022829",
+"name": "میانشهر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "709041314",
+"name": "میمند",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "708042652",
+"name": "نوبندگان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "722012060",
+"name": "نوجین",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "733022424",
+"name": "نودان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "713031325",
+"name": "نورآباد",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "714031326",
+"name": "نی ریز",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "706032711",
+"name": "هماشهر",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "721032559",
+"name": "وراوی",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "715052906",
+"name": "چاه ورز",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "720022422",
+"name": "کارزین (فتح‌آباد)",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "712032555",
+"name": "کامفیروز",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "732012557",
+"name": "کره ای",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "710022181",
+"name": "کنارتخته",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "728011307",
+"name": "کوار",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "725012710",
+"name": "کوهنجان",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "726012777",
+"name": "کوپن",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "727011319",
+"name": "گراش",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "721012425",
+"name": "گله دار",
+"province": "فارس",
+"slug": null,
+"priority": null
+},
+{
+"code": "2606022517",
+"name": "آبگرم",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2604021535",
+"name": "آبیک",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2606011536",
+"name": "آوج",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2601062577",
+"name": "ارداق",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2602012114",
+"name": "اسفرورین",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2603052125",
+"name": "اقبالیه",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2605021539",
+"name": "الوند",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2601041537",
+"name": "بوئین‌زهرا",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2605012578",
+"name": "بیدستان",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2602041532",
+"name": "تاکستان",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2604012637",
+"name": "خاکعلی",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2602022374",
+"name": "خرمدشت",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2601022159",
+"name": "دانسفهان",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2603032495",
+"name": "رازمیان",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2601042638",
+"name": "سگزآباد",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2603042667",
+"name": "سیردان",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2601031538",
+"name": "شال",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2605012040",
+"name": "شریفیه",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2602032158",
+"name": "ضیاآباد",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2605012218",
+"name": "محمدیه",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2603052375",
+"name": "محمودآبادنمونه",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2603022494",
+"name": "معلم کلایه",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2602042639",
+"name": "نرجه",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2603072579",
+"name": "کوهین",
+"province": "قزوین",
+"slug": null,
+"priority": null
+},
+{
+"code": "2501012274",
+"name": "جعفریه",
+"province": "قم",
+"slug": null,
+"priority": null
+},
+{
+"code": "2501022515",
+"name": "دستجرد",
+"province": "قم",
+"slug": null,
+"priority": null
+},
+{
+"code": "2501052027",
+"name": "سلفچگان",
+"province": "قم",
+"slug": null,
+"priority": null
+},
+{
+"code": "2501032516",
+"name": "قنوات",
+"province": "قم",
+"slug": null,
+"priority": null
+},
+{
+"code": "2501042275",
+"name": "کهک",
+"province": "قم",
+"slug": null,
+"priority": null
+},
+{
+"code": "1507021488",
+"name": "ازنا",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1502011490",
+"name": "اشترینان",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1509021493",
+"name": "الشتر",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1501031489",
+"name": "الیگودرز",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1503032475",
+"name": "بیران‌شهر",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1506052615",
+"name": "درب گنبد",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1505021491",
+"name": "دورود",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1503052361",
+"name": "زاغه",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1510012255",
+"name": "سراب دوره",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1511012972",
+"name": "سوری",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1503022474",
+"name": "سپیددشت",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1501052877",
+"name": "شاهپورآباد",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1501022728",
+"name": "شول‌آباد",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1509012367",
+"name": "فیروزآباد",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1508022366",
+"name": "معمولان",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1507012365",
+"name": "مومن‌آباد",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1504021494",
+"name": "نورآباد",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1504012727",
+"name": "هفت چشمه",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1502012971",
+"name": "ونایی",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1510032362",
+"name": "ویسیان",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1508011497",
+"name": "پلدختر",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1505012363",
+"name": "چالانچولان",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1511022256",
+"name": "چقابل",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1510022973",
+"name": "چم پلک",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1501062876",
+"name": "چمن سلطان",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1506031495",
+"name": "کوهدشت",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1506042364",
+"name": "کوهنانی",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1506022257",
+"name": "گراب",
+"province": "لرستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "208021170",
+"name": "آلاشت",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "210022747",
+"name": "ارطه",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "201042772",
+"name": "امامزاده عبدالله",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "202021153",
+"name": "امیرکلا",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "214032648",
+"name": "ایزدشهر",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "216021151",
+"name": "بابلسر",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "201052875",
+"name": "بابکان",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "214012396",
+"name": "بلده",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "204021158",
+"name": "بهشهر",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "216032393",
+"name": "بهنمیر",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "205021161",
+"name": "تنکابن",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "221021175",
+"name": "جویبار",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "205041162",
+"name": "خرم‌آباد",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "204022647",
+"name": "خلیل‌شهر",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "202012389",
+"name": "خوش رودپی",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "201032586",
+"name": "دابودشت",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "206011167",
+"name": "رامسر",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "204021159",
+"name": "رستمکلا",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "214031193",
+"name": "رویان",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "201011148",
+"name": "رینه",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "202052392",
+"name": "زرگرمحله",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "208031172",
+"name": "زیرآب",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "218012395",
+"name": "سرخرود",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "224021163",
+"name": "سلمان‌شهر",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "225012305",
+"name": "سورک",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "205021100",
+"name": "شیرود",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "227011173",
+"name": "شیرگاه",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "225022931",
+"name": "طبقده",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "224011164",
+"name": "عباس‌آباد",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "207072874",
+"name": "فرح‌آباد",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "223021152",
+"name": "فریدونکنار",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "207022588",
+"name": "فریم",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "218021150",
+"name": "محمودآباد",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "220031192",
+"name": "مرزن‌آباد",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "202042391",
+"name": "مرزیکلا",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "205031166",
+"name": "نشتارود",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "214031189",
+"name": "نور",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "215041194",
+"name": "نوشهر",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "219011160",
+"name": "نکا",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "216042394",
+"name": "هادی‌شهر",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "220022748",
+"name": "هچیرود",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "207052746",
+"name": "پایین هولار",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "208021171",
+"name": "پل سفید",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "215022713",
+"name": "پول",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "220021190",
+"name": "چالوس",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "214022119",
+"name": "چمستان",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "206011168",
+"name": "کتالم و سادات‌شهر",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "215022779",
+"name": "کجور",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "224031165",
+"name": "کلارآباد",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "228011191",
+"name": "کلاردشت",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "221012397",
+"name": "کوهی خیل",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "207012170",
+"name": "کیاسر",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "226011177",
+"name": "کیاکلا",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "202062587",
+"name": "گتاب",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "201012388",
+"name": "گزنک",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "222021157",
+"name": "گلوگاه",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "202032390",
+"name": "گلوگاه (بابل)",
+"province": "مازندران",
+"slug": null,
+"priority": null
+},
+{
+"code": "7011112",
+"name": "آستانه",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2011103",
+"name": "آشتیان",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "6032827",
+"name": "آوه",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "3021104",
+"name": "تفرش",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "13022941",
+"name": "تلخاب",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "7032582",
+"name": "توره",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "12012073",
+"name": "جاورسیان",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "10022017",
+"name": "خشکرود",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "4011105",
+"name": "خمین",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "13022773",
+"name": "خنجین",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "12022304",
+"name": "خنداب",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "1022536",
+"name": "داودآباد",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "5011106",
+"name": "دلیجان",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "10012378",
+"name": "رازقان",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "10021108",
+"name": "زاویه",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "1032074",
+"name": "ساروق",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "7011113",
+"name": "شازند",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "7042774",
+"name": "شهباز",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "6041111",
+"name": "غرق‌آباد",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "13012136",
+"name": "فرمهین",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "4022541",
+"name": "قورچی باشی",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "10021109",
+"name": "مامونیه",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "9011115",
+"name": "محلات",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "7032032",
+"name": "مهاجران",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "11022379",
+"name": "میلاجرد",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "5011107",
+"name": "نراق",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "6042137",
+"name": "نوبران",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "9011116",
+"name": "نیمور",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "7022380",
+"name": "هندودر",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "10022228",
+"name": "پرندک",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "1041600",
+"name": "کارچان",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "11011102",
+"name": "کمیجان",
+"province": "مرکزی",
+"slug": null,
+"priority": null
+},
+{
+"code": "2201021563",
+"name": "ابوموسی",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2207032911",
+"name": "بالاشهر",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2209021568",
+"name": "بستک",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2206021565",
+"name": "بندرجاسک",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2203051571",
+"name": "بندرلنگه",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2205052910",
+"name": "بندزرک",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2207042006",
+"name": "بیکاء",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2202042812",
+"name": "تازیان پایین",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2202052088",
+"name": "تخت",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2205032814",
+"name": "تیرور",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2209012625",
+"name": "جناح",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2208021566",
+"name": "حاجی‌آباد",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2210021564",
+"name": "خمیر",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2204022627",
+"name": "درگهان",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2211022751",
+"name": "دشتی",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2207021574",
+"name": "دهبارز",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2210012005",
+"name": "رویدر",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2207012663",
+"name": "زیارتعلی",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2213012061",
+"name": "سردشت",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2208032092",
+"name": "سرگز",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2205022064",
+"name": "سندرک",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2204012487",
+"name": "سوزا",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2212022267",
+"name": "سیریک",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2204042940",
+"name": "طبل",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2208012626",
+"name": "فارغان",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2202032307",
+"name": "فین",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2204021573",
+"name": "قشم",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2202062063",
+"name": "قلعه قاضی",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2203062813",
+"name": "لمزان",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2206032872",
+"name": "لیردف",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2205031575",
+"name": "میناب",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2202071572",
+"name": "هرمز",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2205042003",
+"name": "هشتبندی",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2209012959",
+"name": "هنگوییه",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2211021569",
+"name": "پارسیان",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2210022939",
+"name": "پل",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2203022266",
+"name": "چارک",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2203051570",
+"name": "کنگ",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2211012004",
+"name": "کوشکنار",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2212012815",
+"name": "کوهستک",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2209022960",
+"name": "کوهیچ",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2212022724",
+"name": "گروک",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2213022062",
+"name": "گوهران",
+"province": "هرمزگان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1306022758",
+"name": "آجین",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1302012253",
+"name": "ازندریان",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1306011469",
+"name": "اسدآباد",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1302032871",
+"name": "اسلام‌شهر آق گل",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1303032659",
+"name": "برزول",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1307021471",
+"name": "بهار",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1301021464",
+"name": "تویسرکان",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1304072254",
+"name": "جورقان",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1302012468",
+"name": "جوکار",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1308012357",
+"name": "دمق",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1308032171",
+"name": "رزن",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1302042658",
+"name": "زنگنه",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1302021466",
+"name": "سامن",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1301021465",
+"name": "سرکان",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1305032470",
+"name": "شیرین سو",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1307032216",
+"name": "صالح‌آباد",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1309012192",
+"name": "فامنین",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1301012467",
+"name": "فرسفج",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1303012206",
+"name": "فیروزان",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1310021470",
+"name": "قروه درگزین",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1304052356",
+"name": "قهاوند",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1307011472",
+"name": "لالجین",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1304071474",
+"name": "مریانج",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1307012757",
+"name": "مهاجران",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1303021468",
+"name": "نهاوند",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1305021473",
+"name": "کبودرآهنگ",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1310012870",
+"name": "کرفس",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1305012469",
+"name": "گل تپه",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1303042660",
+"name": "گیان",
+"province": "همدان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1410012473",
+"name": "آلونی",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1405011476",
+"name": "اردل",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1403032124",
+"name": "باباحیدر",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1406012841",
+"name": "بازفت",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1401031478",
+"name": "بروجن",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1401041477",
+"name": "بلداجی",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1409011480",
+"name": "بن",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1403041485",
+"name": "جونقان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1407012729",
+"name": "دستنا",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1405012808",
+"name": "دشتک",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1408011481",
+"name": "سامان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1405022809",
+"name": "سرخون",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1404052840",
+"name": "سردشت",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1401032306",
+"name": "سفیددشت",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1402052614",
+"name": "سودجان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1402052113",
+"name": "سورشجان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1407012153",
+"name": "شلمزار",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1406032839",
+"name": "صمصامی",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1402022359",
+"name": "طاقانک",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1403021486",
+"name": "فارسان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1401031479",
+"name": "فرادبنه",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1402061483",
+"name": "فرخ‌شهر",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1403032938",
+"name": "فیل‌آباد",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1404021487",
+"name": "لردگان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1404012472",
+"name": "مال خلیفه",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1404042731",
+"name": "منج",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1407022154",
+"name": "ناغان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1402022471",
+"name": "نافچ",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1401032706",
+"name": "نقنه",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1402052838",
+"name": "هارونی",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1402021484",
+"name": "هفشجان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1408022918",
+"name": "هوره",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1409012732",
+"name": "وردنجان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1403042730",
+"name": "پردنجان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1406022360",
+"name": "چلگرد",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1403042806",
+"name": "چلیچه",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1405012807",
+"name": "کاج",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1402022123",
+"name": "کیان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1401022152",
+"name": "گندمان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1407012358",
+"name": "گهرو",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1403022805",
+"name": "گوجان",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1409022919",
+"name": "یان چشمه",
+"province": "چهارمحال و بختیاری",
+"slug": null,
+"priority": null
+},
+{
+"code": "1201012457",
+"name": "آرمرده",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1209012752",
+"name": "اورامان تخت",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1202012460",
+"name": "بابارشانی",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1201021454",
+"name": "بانه",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1206012753",
+"name": "برده رشه",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1210022042",
+"name": "بلبان‌آباد",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1201042459",
+"name": "بویین سفلی",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1202031455",
+"name": "بیجار",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1202032784",
+"name": "توپ آغاج",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1204052895",
+"name": "حسین‌آباد",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1205042463",
+"name": "دزج",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1205052426",
+"name": "دلبران",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1210011460",
+"name": "دهگلان",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1207021459",
+"name": "دیواندره",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1207012465",
+"name": "زرینه",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1209022205",
+"name": "سروآباد",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1205031461",
+"name": "سریش‌آباد",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1203021456",
+"name": "سقز",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1203042924",
+"name": "سنته",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1204042462",
+"name": "شویشه",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1203012502",
+"name": "صاحب",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1205021462",
+"name": "قروه",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1206031463",
+"name": "مریوان",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1208022466",
+"name": "موچش",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1207032925",
+"name": "هزارکانیان",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1202012785",
+"name": "پیرتاج",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1206022464",
+"name": "چناره",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1208011457",
+"name": "کامیاران",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1206032055",
+"name": "کانی دینار",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1201032458",
+"name": "کانی سور",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "1202022190",
+"name": "یاسوکند",
+"province": "کردستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808052428",
+"name": "اختیارآباد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "823012315",
+"name": "ارزوییه",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "820012318",
+"name": "امین‌شهر",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "820011334",
+"name": "انار",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808022603",
+"name": "اندوهجرد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808052239",
+"name": "باغین",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "801031328",
+"name": "بافت",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "810011348",
+"name": "بردسیر",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "802071331",
+"name": "بروات",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "801032200",
+"name": "بزنجان",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "806052825",
+"name": "بلورد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "803052769",
+"name": "بلوک",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "804042427",
+"name": "بهرمان",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "803022237",
+"name": "جبالبارز",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "804042954",
+"name": "جوادیه الهیه",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "807022031",
+"name": "جوزم",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808041343",
+"name": "جوپار",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "803041332",
+"name": "جیرفت",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "807012086",
+"name": "خاتون‌آباد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "805022201",
+"name": "خانوک",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "806032823",
+"name": "خواجو‌شهر",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "807012030",
+"name": "خورسند",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "803012339",
+"name": "درب بهشت",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "810012824",
+"name": "دشتکار",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "809042956",
+"name": "ده کهان",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "807022238",
+"name": "دهج",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "812012721",
+"name": "دوساری",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "818011327",
+"name": "رابر",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "811021340",
+"name": "راور",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808061329",
+"name": "راین",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "816012957",
+"name": "رمشک",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "815022325",
+"name": "رودبار",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "805022600",
+"name": "ریحان",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "805021337",
+"name": "زرند",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808052323",
+"name": "زنگی‌آباد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "815012821",
+"name": "زهکلوت",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "806042320",
+"name": "زیدآباد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "805032955",
+"name": "سیریز",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808021341",
+"name": "شهداد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "807011339",
+"name": "شهربابک",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "804052085",
+"name": "صفاییه",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "803042953",
+"name": "علی‌آباد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "812011333",
+"name": "عنبرآباد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "822012429",
+"name": "فاریاب",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "819012317",
+"name": "فهرج",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "816022176",
+"name": "قلعه گنج",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "810022065",
+"name": "لاله زار",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808041344",
+"name": "ماهان",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "817022316",
+"name": "محمدآباد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808042321",
+"name": "محی‌آباد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "812032602",
+"name": "مردهک",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "804022227",
+"name": "مس سرچشمه",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "813012240",
+"name": "منوجان",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "806012340",
+"name": "نجف‌شهر",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "821012338",
+"name": "نرماشیر",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "821022598",
+"name": "نظام‌شهر",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "813022604",
+"name": "نودژ",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "810042326",
+"name": "نگار",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "811012599",
+"name": "هجدک",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "806022722",
+"name": "هماشهر",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "818022771",
+"name": "هنزا",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "806022561",
+"name": "پاریز",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "816012908",
+"name": "چاه دادخدا",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808071345",
+"name": "چترود",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808072324",
+"name": "کاظم‌آباد",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "804032319",
+"name": "کشکوییه",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "809041347",
+"name": "کهنوج",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "814021336",
+"name": "کوهبنان",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "814012110",
+"name": "کیانشهر",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "808031342",
+"name": "گلباف",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "810032241",
+"name": "گلزار",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "817012822",
+"name": "گنبکی",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "805032601",
+"name": "یزدان‌شهر",
+"province": "کرمان",
+"slug": null,
+"priority": null
+},
+{
+"code": "512022593",
+"name": "ازگله",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "501031256",
+"name": "اسلام‌آباد غرب",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "503012761",
+"name": "بانوره",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "503012103",
+"name": "باینگان",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "511012233",
+"name": "بیستون",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "512012185",
+"name": "تازه‌آباد",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "509031260",
+"name": "جوانرود",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "501012411",
+"name": "حمیل",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "502062196",
+"name": "رباط",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "514022102",
+"name": "روانسر",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "513022760",
+"name": "ریجاب",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "508022413",
+"name": "سرمست",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "504011264",
+"name": "سرپل ذهاب",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "505022594",
+"name": "سطر",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "505011265",
+"name": "سنقر",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "506012197",
+"name": "سومار",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "514012034",
+"name": "شاهو",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "509042900",
+"name": "شروینه",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "510021257",
+"name": "صحنه",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "506021266",
+"name": "قصرشیرین",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "502082896",
+"name": "قلعه",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "510012414",
+"name": "میان راهان",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "512032977",
+"name": "میرآباد",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "503031262",
+"name": "نودشه",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "503031263",
+"name": "نوسود",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "511021259",
+"name": "هرسین",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "502032410",
+"name": "هلشی",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "503021261",
+"name": "پاوه",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "513021255",
+"name": "کرند",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "507011267",
+"name": "کنگاور",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "502072412",
+"name": "کوزران",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "513012409",
+"name": "گهواره",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "507012834",
+"name": "گودین",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "508011268",
+"name": "گیلانغرب",
+"province": "کرمانشاه",
+"slug": null,
+"priority": null
+},
+{
+"code": "1707012130",
+"name": "باشت",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1707022917",
+"name": "بوستان",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1702051514",
+"name": "دهدشت",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1703021515",
+"name": "دوگنبدان",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1702062480",
+"name": "دیشموک",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1706022828",
+"name": "سرفاریاب",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1702072156",
+"name": "سوق",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1704031511",
+"name": "سی سخت",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1702022479",
+"name": "قلعه رییسی",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1708012129",
+"name": "لنده",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1705022368",
+"name": "لیکک",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1701032023",
+"name": "مادوان",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1709012477",
+"name": "مارگون",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1704012084",
+"name": "پاتاوه",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1706011513",
+"name": "چرام",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1701052083",
+"name": "چیتاب",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "1701042478",
+"name": "گراب سفلی",
+"province": "کهگیلویه و بویراحمد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2710021182",
+"name": "آزادشهر",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2708021180",
+"name": "آق قلا",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2708012509",
+"name": "انبارآلوم",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2706022496",
+"name": "اینچه برون",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2702021156",
+"name": "بندرترکمن",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2701011178",
+"name": "بندرگز",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2711022765",
+"name": "تاتارعلیا",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2705022018",
+"name": "جلین",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2711011183",
+"name": "خان ببین",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2711022195",
+"name": "دلند",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2707052883",
+"name": "دوزین",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2711021184",
+"name": "رامیان",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2705032508",
+"name": "سرخنکلاته",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2703012837",
+"name": "سنگدوین",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2702032975",
+"name": "سیجوال",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2713022580",
+"name": "سیمین‌شهر",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2714022884",
+"name": "صادق‌آباد",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2703011174",
+"name": "علی‌آباد",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2703022507",
+"name": "فاضل‌آباد",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2709032835",
+"name": "فراغی",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2705032868",
+"name": "قرق",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2712012498",
+"name": "مراوه",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2703012836",
+"name": "مزرعه",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2707041188",
+"name": "مینودشت",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2710012581",
+"name": "نوده خاندوز",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2701022194",
+"name": "نوکنده",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2710022640",
+"name": "نگین‌شهر",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2704011179",
+"name": "کردکوی",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2709021185",
+"name": "کلاله",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2714011187",
+"name": "گالیکش",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2712022885",
+"name": "گلیداغ",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2713011155",
+"name": "گمیش تپه",
+"province": "گلستان",
+"slug": null,
+"priority": null
+},
+{
+"code": "101011117",
+"name": "آستارا",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "102021119",
+"name": "آستانه اشرفیه",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "112012387",
+"name": "احمدسرگوراب",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "104052382",
+"name": "اسالم",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "110022385",
+"name": "اطاقور",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "113021134",
+"name": "املش",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "116012510",
+"name": "بازار جمعه",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "106042383",
+"name": "بره سر",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "106012229",
+"name": "توتکابن",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "106022138",
+"name": "جیرنده",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "104062584",
+"name": "حویق",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "105061125",
+"name": "خشکبیجار",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "105011126",
+"name": "خمام",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "115012329",
+"name": "دیلمان",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "113012519",
+"name": "رانکوه",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "107021136",
+"name": "رحیم‌آباد",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "106032139",
+"name": "رستم‌آباد",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "114021122",
+"name": "رضوانشهر",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "106031132",
+"name": "رودبار",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "111042386",
+"name": "رودبنه",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "107031137",
+"name": "رودسر",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "105021130",
+"name": "سنگر",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "115021146",
+"name": "سیاهکل",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "112021141",
+"name": "شفت",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "110032141",
+"name": "شلمان",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "108021140",
+"name": "صومعه سرا",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "109021142",
+"name": "فومن",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "105041128",
+"name": "لشت نشاء",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "110011145",
+"name": "لنگرود",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "106031131",
+"name": "لوشان",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "105032075",
+"name": "لولمان",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "101022583",
+"name": "لوندویل",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "104042381",
+"name": "لیسار",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "116021123",
+"name": "ماسال",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "109031143",
+"name": "ماسوله",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "109032804",
+"name": "ماکلوان",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "108012140",
+"name": "مرجقل",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "106031133",
+"name": "منجیل",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "104031124",
+"name": "هشتپر (تالش)",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "107051139",
+"name": "واجارگاه",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "114011121",
+"name": "پره سر",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "107041135",
+"name": "چابکسر",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "110012076",
+"name": "چاف و چمخاله",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "104062585",
+"name": "چوبر",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "107051138",
+"name": "کلاچای",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "110031144",
+"name": "کومله",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "105031127",
+"name": "کوچصفهان",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "102011118",
+"name": "کیاشهر",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "108032328",
+"name": "گوراب زرمیخ",
+"province": "گیلان",
+"slug": null,
+"priority": null
+},
+{
+"code": "2107021293",
+"name": "ابرکوه",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2101022265",
+"name": "احمدآباد",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2108021560",
+"name": "اشکذر",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2102021554",
+"name": "بافق",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2103042976",
+"name": "بخ",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2106032024",
+"name": "بفروییه",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2111021553",
+"name": "بهاباد",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2103021555",
+"name": "تفت",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2105032163",
+"name": "حمیدیا",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2108012377",
+"name": "خضرآباد",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2105041561",
+"name": "زارچ",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2105032126",
+"name": "شاهدیه",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2101032623",
+"name": "عقدا",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2109021557",
+"name": "مروست",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2107012372",
+"name": "مهردشت",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2104011558",
+"name": "مهریز",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2106022322",
+"name": "ندوشن",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2103031556",
+"name": "نیر",
+"province": "یزد",
+"slug": null,
+"priority": null
+},
+{
+"code": "2109011559",
+"name": "هرات",
+"province": "یزد",
+"slug": null,
+"priority": null
+}
+]

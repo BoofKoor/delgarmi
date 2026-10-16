@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { d2g, d2j, g2d, isLeapJalali, j2d, monthLength, tehranToday, weekday } from '@/lib/jalali';
 
@@ -43,5 +44,19 @@ describe('jalali calendar', () => {
   it('uses Tehran time for today', () => {
     expect(tehranToday(new Date('2026-10-13T20:29:00Z'))).toBe(g2d(2026, 10, 13)); // 23:59 in Tehran
     expect(tehranToday(new Date('2026-10-13T20:31:00Z'))).toBe(g2d(2026, 10, 14)); // 00:01 in Tehran
+  });
+});
+
+describe('shared reference dates (the panel is tested against the same file)', () => {
+  const vectors: { gregorian: [number, number, number]; jalali: [number, number, number] }[] = JSON.parse(
+    readFileSync(new URL('../../../shared/jalali.json', import.meta.url), 'utf8'),
+  );
+
+  it('converts every one', () => {
+    expect(vectors.length).toBeGreaterThan(10);
+    for (const { gregorian, jalali } of vectors) {
+      const j = d2j(g2d(...gregorian));
+      expect([j.jy, j.jm, j.jd], gregorian.join('-')).toEqual(jalali);
+    }
   });
 });

@@ -1,0 +1,23 @@
+[
+ {"in": "كرمانشاه", "out": "کرمانشاه", "why": "Arabic kaf"},
+ {"in": "مسجدسليمان", "out": "مسجدسلیمان", "why": "Arabic yeh"},
+ {"in": "ﻛﺮﺝ", "out": "کرج", "why": "presentation forms copied from a PDF"},
+ {"in": "آبادان", "out": "ابادان", "why": "alef with madda"},
+ {"in": "أهواز", "out": "اهواز", "why": "alef with hamza above"},
+ {"in": "إیلام", "out": "ایلام", "why": "alef with hamza below"},
+ {"in": "نجف\u200cآباد", "out": "نجفاباد", "why": "zero-width non-joiner"},
+ {"in": "نجف آباد", "out": "نجفاباد", "why": "space instead of a half-space"},
+ {"in": "نجفاباد", "out": "نجفاباد", "why": "no space at all"},
+ {"in": "قائم\u200cشهر", "out": "قایمشهر", "why": "yeh with hamza"},
+ {"in": "قایم شهر", "out": "قایمشهر", "why": "plain yeh and a space"},
+ {"in": "مؤمن آباد", "out": "مومناباد", "why": "waw with hamza"},
+ {"in": "خانه\u0654 سبز", "out": "خانهسبز", "why": "hamza mark above heh"},
+ {"in": "خانۀ سبز", "out": "خانهسبز", "why": "heh with yeh above"},
+ {"in": "شیء", "out": "شی", "why": "lone hamza"},
+ {"in": "ـكـرج", "out": "کرج", "why": "tatweel"},
+ {"in": "تهران\u0650", "out": "تهران", "why": "short vowel mark"},
+ {"in": "\u200fکرج\u200e", "out": "کرج", "why": "direction marks"},
+ {"in": "  رامسر\u00a0 ", "out": "رامسر", "why": "spaces and a no-break space"},
+ {"in": "\ufeffبم", "out": "بم", "why": "byte order mark"},
+ {"in": "", "out": "", "why": "empty"}
+]
