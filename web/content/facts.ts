@@ -37,19 +37,19 @@ export const FACT_PLACEHOLDERS: Record<FactName, { what: string; sample: string 
 };
 
 /**
- * Answers that are policies the team and the partner centres still have to agree on.
- * They are shown as drafts (marked) until confirmed: then delete the key from here.
+ * Text that is still a draft or still to be confirmed. The site shows it with a small tag
+ * («پیش‌نویس» or «نیاز به تأیید») until it is settled: then delete the key here, and TypeScript
+ * lists every place that pointed at it.
  */
 export const PENDING_POLICIES = {
-  price: 'سیاست هزینه و پرداخت',
-  replace: 'سیاست جایگزینی مراقب',
-  cancel: 'سیاست لغو درخواست',
-  licences: 'مرجع مجوز هر خدمت',
-  scope: 'فهرست کارها (تأیید مراکز)',
-  meeting: 'آشنایی با پرستار پیش از شروع',
-  online: 'روش برگزاری جلسه‌ی آنلاین',
-  retention: 'مدت نگهداری اطلاعات',
-  legal: 'بازبینی حقوقی متن',
+  price: { tag: 'پیش‌نویس', what: 'سیاست هزینه و پرداخت' },
+  replace: { tag: 'پیش‌نویس', what: 'سیاست جایگزینی مراقب' },
+  cancel: { tag: 'پیش‌نویس', what: 'سیاست لغو درخواست' },
+  licences: { tag: 'نیاز به تأیید', what: 'مرجع مجوز' },
+  scope: { tag: 'نیاز به تأیید', what: 'این فهرست را مراکز باید تأیید کنند' },
+  meeting: { tag: 'پیش‌نویس', what: 'آشنایی با پرستار پیش از شروع' },
+  online: { tag: 'پیش‌نویس', what: 'روش برگزاری جلسه‌ی آنلاین' },
+  legal: { tag: 'پیش‌نویس', what: 'این متن بازبینی حقوقی لازم دارد' },
 } as const;
 
 export type PolicyKey = keyof typeof PENDING_POLICIES;

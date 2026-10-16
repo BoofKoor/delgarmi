@@ -51,8 +51,8 @@ export type ServiceContent = {
     title: string;
     intro: string;
     /** «yes» items are ticked in green; «other» items point elsewhere; «plain» is neutral. */
-    /** In `note`, the words of `link.label` become the link. */
-    columns: { title: string; items: string[]; icon: LucideIcon; tone: 'yes' | 'other' | 'plain'; note?: string; link?: Link }[];
+    /** `note` is a design-system notice under the list; in its text, the words of `link.label` become the link. */
+    columns: { title: string; items: string[]; icon: LucideIcon; tone: 'yes' | 'other' | 'plain'; note?: { title: string; text: string }; link?: Link }[];
     photo?: Photo;
     pending?: PolicyKey;
   };
@@ -108,7 +108,7 @@ export const SERVICES: Record<ServiceSlug, ServiceContent> = {
         tone: 'other', icon: Stethoscope,
         title: 'این‌ها پرستار لازم دارد',
         items: ['تزریق و سرم', 'پانسمان زخم', 'سوند و مراقبت بعد از ترخیص'],
-        note: 'برای این کارها پرستاری در منزل را درخواست کنید. اگر هر دو را لازم دارید، در تماس بگویید.',
+        note: { title: 'پرستار لازم دارید؟', text: 'پرستاری در منزل را درخواست کنید. اگر مراقب و پرستار هر دو لازم است، در تماس بگویید.' },
         link: { href: '/services/home-nursing', label: 'پرستاری در منزل' },
       }],
       photo: { src: '/images/caregiver.webp', alt: 'زن سالمندی با چادر سفید گلدار که لبخند می‌زند', width: 800, height: 1000 },
@@ -170,7 +170,7 @@ export const SERVICES: Record<ServiceSlug, ServiceContent> = {
         tone: 'other', icon: HeartHandshake,
         title: 'این‌ها مراقب سالمند لازم دارد',
         items: ['همراهی و کمک در کارهای روزانه', 'کمک در حمام، غذا خوردن و جابه‌جایی', 'ماندن شبانه یا شبانه‌روزی کنار بیمار'],
-        note: 'برای این کارها مراقبت سالمند را درخواست کنید. اگر هر دو را لازم دارید، در تماس بگویید.',
+        note: { title: 'مراقب لازم دارید؟', text: 'مراقبت سالمند را درخواست کنید. اگر پرستار و مراقب هر دو لازم است، در تماس بگویید.' },
         link: { href: '/services/elderly-care', label: 'مراقبت سالمند' },
       }],
       pending: 'scope',
@@ -233,7 +233,7 @@ export const SERVICES: Record<ServiceSlug, ServiceContent> = {
         tone: 'other', icon: Minus,
         title: 'این‌ها جزو کار پرستار کودک نیست',
         items: ['نظافت خانه و آشپزی برای همه‌ی خانواده', 'مراقبت پزشکی از کودک بیمار'],
-        note: 'برای تزریق یا مراقبت پزشکی از کودک، پرستاری در منزل را درخواست کنید.',
+        note: { title: 'کودک مراقبت پزشکی لازم دارد؟', text: 'برای تزریق یا مراقبت پزشکی از کودک، پرستاری در منزل را درخواست کنید.' },
         link: { href: '/services/home-nursing', label: 'پرستاری در منزل' },
       }],
       pending: 'scope',
@@ -265,7 +265,7 @@ export const SERVICES: Record<ServiceSlug, ServiceContent> = {
       { title: 'ثبت درخواست', text: 'نوع جلسه، برای چه کسی، و اگر خواستید موضوع.' },
       { title: 'تماس همکار دلگرمی', text: 'ترجیح‌هایتان را می‌پرسیم و به سؤال‌هایتان جواب می‌دهیم.' },
       { title: 'معرفی درمانگر', text: 'درمانگری دارای پروانه که با همین گروه کار کرده است.' },
-      { title: 'جلسه‌ی اول', text: 'زمان و هزینه‌ی جلسه را پیش از شروع با شما قطعی می‌کنند.' },
+      { title: 'جلسه‌ی اول', text: 'مرکز زمان و هزینه‌ی جلسه را پیش از شروع با شما قطعی می‌کند.' },
     ],
     card: { src: '/images/card-therapy.webp', alt: 'دو استکان چای کنار هم روی میز', width: 800, height: 600 },
     short: 'آنلاین یا حضوری',
@@ -278,9 +278,9 @@ export const SERVICES: Record<ServiceSlug, ServiceContent> = {
     photo: { src: '/images/card-therapy.webp', alt: 'دو استکان چای کنار هم روی میز', width: 800, height: 600 },
     warning: {
       title: 'روان‌درمانی برای شرایط اورژانسی نیست',
-      text: 'اگر در خطر فوری هستید یا به آسیب زدن به خودتان فکر می‌کنید، همین حالا تماس بگیرید:',
+      text: 'اگر در خطر فوری هستید یا به آسیب زدن به خودتان فکر می‌کنید، همین حالا تماس بگیرید. هر دو شماره شبانه‌روزی و رایگان است:',
       numbers: [
-        { label: 'اورژانس اجتماعی ۱۲۳ (شبانه‌روزی و رایگان)', tel: '123' },
+        { label: 'اورژانس اجتماعی ۱۲۳', tel: '123' },
         { label: 'اورژانس ۱۱۵', tel: '115' },
       ],
     },
@@ -306,7 +306,7 @@ export const SERVICES: Record<ServiceSlug, ServiceContent> = {
         tone: 'plain', icon: MapPin,
         title: 'حضوری',
         items: ['در مطب یا مرکز مشاوره، در شهر خودتان', 'فقط در شهرهایی که مرکز همکار داریم'],
-        note: 'اگر جلسه‌ی حضوری در شهرتان هنوز فعال نیست، درخواستتان در لیست انتظار می‌ماند و تا آن موقع می‌توانید آنلاین شروع کنید.',
+        note: { title: 'حضوری در شهرتان فعال نیست؟', text: 'درخواستتان در لیست انتظار می‌ماند و تا آن موقع می‌توانید آنلاین شروع کنید.' },
       }],
       pending: 'online',
     },

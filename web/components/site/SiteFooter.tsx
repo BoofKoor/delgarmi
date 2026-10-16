@@ -4,10 +4,10 @@ import { LogoMark } from '@/components/ui';
 import { FACTS } from '@/content/facts';
 import { FOOTER_NAV } from '@/content/nav';
 import { SERVICE_LIST } from '@/content/services';
-import { d2j, tehranToday } from '@/lib/jalali';
 import { fa } from '@/lib/digits';
+import { d2j, tehranToday } from '@/lib/jalali';
 import { Ic } from './Ic';
-import { Fact, Missing, PhoneLink } from './Missing';
+import { Fact, PhoneLink } from './Missing';
 
 export function SiteFooter() {
   const year = d2j(tehranToday()).jy;
@@ -26,17 +26,17 @@ export function SiteFooter() {
             <h2 id="footer-services">خدمات</h2>
             {SERVICE_LIST.map((s) => <Link key={s.slug} href={`/services/${s.slug}`}>{s.name}</Link>)}
           </nav>
-          <nav className="footer-col" aria-labelledby="footer-delgarmi">
-            <h2 id="footer-delgarmi">دلگرمی</h2>
-            {FOOTER_NAV.map((l) => <Link key={l.href} href={l.href}>{l.label}</Link>)}
-          </nav>
+          {FOOTER_NAV.map((group, i) => (
+            <nav className="footer-col" aria-labelledby={`footer-nav-${i}`} key={group.title}>
+              <h2 id={`footer-nav-${i}`}>{group.title}</h2>
+              {group.links.map((l) => <Link key={l.href} href={l.href}>{l.label}</Link>)}
+            </nav>
+          ))}
           <div className="footer-col footer-contact">
             <h2>تماس</h2>
             <div className="row"><Ic icon={Phone} /><PhoneLink className="footer-phone" /></div>
             <div className="row"><Ic icon={Clock} /><span><Fact name="hours" /></span></div>
-            <Missing what="نماد اعتماد الکترونیکی (اینماد)" block>
-              <div className="enamad">نماد اعتماد<br />الکترونیکی</div>
-            </Missing>
+            <div className="enamad" title="جای خالی: نماد اعتماد الکترونیکی (اینماد)">جای نماد اعتماد الکترونیکی</div>
           </div>
         </div>
         <div className="footer-bottom">

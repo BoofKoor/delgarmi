@@ -23,7 +23,7 @@ export default function ContactPage() {
           <Link className="dg-btn dg-btn--primary dg-btn--lg" href="/request">ثبت درخواست</Link>
         </div>
       </PageHead>
-      <div className="container">
+      <div className="container page-body">
         <ul className="contact-list">
           <li><Ic icon={Phone} /><strong>تلفن پشتیبانی</strong><span><PhoneLink /></span></li>
           <li><Ic icon={Clock} /><strong>ساعت کاری</strong><span><Fact name="hours" /></span></li>

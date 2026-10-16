@@ -93,7 +93,8 @@ test('the city check shows what the API says is active in that city', async ({ p
   await input.fill('اصفه');
   await page.getByRole('option', { name: /^اصفهان/ }).first().click();
   const result = page.locator('.city-result');
-  await expect(result.getByRole('heading', { name: 'اصفهان، استان اصفهان' })).toBeVisible();
+  await expect(result.getByRole('heading', { name: 'اصفهان', exact: true })).toBeVisible();
+  await expect(page.locator('#home-city-help')).toHaveText('استان اصفهان');
   const expected: Record<string, string> = {
     'مراقبت سالمند': isfahan.active.includes('elderly-care') ? 'فعال' : 'لیست انتظار',
     'پرستاری در منزل': isfahan.active.includes('home-nursing') ? 'فعال' : 'لیست انتظار',
@@ -111,8 +112,41 @@ test('the city check shows what the API says is active in that city', async ({ p
   await expect(page.getByRole('option', { name: /گلوگاه \(بابل\)/ })).toBeVisible();
   await input.fill('بويين زهرا');
   await page.getByRole('option', { name: /بوئین‌زهرا/ }).click();
-  await expect(result.getByRole('heading', { name: /^بوئین‌زهرا، استان قزوین$/ })).toBeVisible();
+  await expect(result.getByRole('heading', { name: 'بوئین‌زهرا', exact: true })).toBeVisible();
+  await expect(page.locator('#home-city-help')).toHaveText('استان قزوین');
   await expect(result.getByRole('link', { name: /درباره‌ی دلگرمی در/ })).toHaveCount(0);
+});
+
+test('when the city list cannot load, the field says so instead of «not found»', async ({ page }) => {
+  await page.route('**/api/cities', (route) => route.fulfill({ status: 503, body: '' }));
+  await page.goto('/cities');
+  const input = page.getByRole('combobox', { name: 'شهرتان را بنویسید' });
+  await input.focus();
+  await expect(page.getByText('فهرست شهرها باز نشد.', { exact: false })).toBeVisible();
+  await input.fill('اصفهان');
+  await expect(input).toHaveAttribute('aria-expanded', 'false');
+  await expect(page.getByText('شهری با این نام پیدا نشد', { exact: false })).toBeHidden();
+});
+
+test('the cities page shows active cities as cards and every province with its cities', async ({ page, request }) => {
+  const cities: CityItem[] = await (await request.get('/api/cities')).json();
+  await page.goto('/cities');
+  const cards = page.locator('.city-card');
+  const active = cities.filter((c) => c.active.length);
+  await expect(cards).toHaveCount(active.length);
+  for (const c of active.filter((x) => x.slug)) {
+    const card = cards.filter({ has: page.getByRole('heading', { name: c.name, exact: true }) });
+    await expect(card.getByRole('link', { name: c.name, exact: true })).toHaveAttribute('href', `/cities/${c.slug}`);
+    await expect(card.locator('.dg-badge')).toHaveCount(c.active.length);
+  }
+  const withPages = cities.filter((c) => c.slug);
+  await expect(page.locator('.provinces details')).toHaveCount(new Set(withPages.map((c) => c.province)).size);
+  const isfahan = withPages.find((c) => c.slug === 'isfahan')!;
+  const province = page.locator('.provinces details', { hasText: `استان ${isfahan.province}` });
+  await province.locator('summary').click();
+  const chip = province.getByRole('link', { name: isfahan.active.length ? `${isfahan.name} (خدمت حضوری دارد)` : isfahan.name, exact: true });
+  await expect(chip).toBeVisible();
+  await expect(chip).toHaveAttribute('href', '/cities/isfahan');
 });
 
 test('a city page lists the API availability and stays out of search until a service starts', async ({ page, request }) => {
@@ -127,6 +161,25 @@ test('a city page lists the API availability and stays out of search until a ser
   if (city.services.some((s) => s.in_person)) await expect(robots).toHaveCount(0);
   else await expect(robots).toHaveAttribute('content', /noindex/);
   await expect(page.getByRole('link', { name: 'ثبت درخواست در اصفهان' }).first()).toHaveAttribute('href', /^\/request\?city=\d+$/);
+  // Each service has its own button: a request where it runs, the waiting list where it does not yet.
+  const cityCode = new URL(await page.getByRole('link', { name: 'ثبت درخواست در اصفهان' }).first().getAttribute('href') ?? '', 'http://x').searchParams.get('city');
+  for (const svc of city.services) {
+    const name = svc.online || svc.in_person ? `ثبت درخواست ${svc.name} در اصفهان` : `ثبت در لیست انتظار برای ${svc.name} در اصفهان`;
+    await expect(page.getByRole('link', { name, exact: true })).toHaveAttribute('href', `/request?service=${svc.slug}&city=${cityCode}`);
+    await expect(page.getByRole('link', { name: `درباره‌ی این خدمت (${svc.name})`, exact: true })).toHaveAttribute('href', `/services/${svc.slug}`);
+  }
+});
+
+test('the request page repeats what the visitor picked on the way in', async ({ page, request }) => {
+  const isfahan: CityItem = (await (await request.get('/api/cities')).json()).find((c: CityItem) => c.slug === 'isfahan');
+  await page.goto(`/request?service=elderly-care&type=night&city=${isfahan.code}`);
+  const picked = page.locator('.picked');
+  await expect(picked).toContainText('مراقبت سالمند');
+  await expect(picked).toContainText('شبانه');
+  await expect(picked).toContainText(`${isfahan.name}، استان ${isfahan.province}`);
+  // Nothing made up for odd addresses: an unknown service or city is simply left out.
+  await page.goto('/request?service=massage&city=abc&type=night');
+  await expect(page.locator('.picked')).toHaveCount(0);
 });
 
 test('service pages send the request form the service they are about', async ({ page }) => {

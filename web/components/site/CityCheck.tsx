@@ -1,6 +1,5 @@
 'use client';
 
-import { Check } from 'lucide-react';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { CitySearch } from '@/components/ui';
@@ -11,7 +10,7 @@ import type { CityItem } from '@/lib/api';
  * «Is it active in your city?» Loads the whole city list once (about 18 KB) when someone
  * reaches for the field, then searches it on the device: no waiting while typing.
  */
-export function CityCheck({ id = 'city-check' }: { id?: string }) {
+export function CityCheck({ id = 'city-check', level = 3 }: { id?: string; level?: 2 | 3 }) {
   const [cities, setCities] = useState<CityItem[] | null>(null);
   const [failed, setFailed] = useState(false);
   const [city, setCity] = useState<CityItem | null>(null);
@@ -42,17 +41,19 @@ export function CityCheck({ id = 'city-check' }: { id?: string }) {
         value={city}
         onChange={setCity}
         error={failed ? 'فهرست شهرها باز نشد. اتصال اینترنت را بررسی کنید و دوباره روی کادر بزنید.' : undefined}
+        unavailable={failed}
       />
-      <div aria-live="polite">{city ? <CityResult city={city} /> : null}</div>
+      <div aria-live="polite">{city ? <CityResult city={city} level={level} /> : null}</div>
     </div>
   );
 }
 
-function CityResult({ city }: { city: CityItem }) {
+function CityResult({ city, level }: { city: CityItem; level: 2 | 3 }) {
   const inPerson = city.active.length > 0;
+  const Heading = level === 2 ? 'h2' : 'h3';
   return (
     <div className="city-result">
-      <h3>{city.name}، استان {city.province}</h3>
+      <Heading>{city.name}</Heading>
       <ul className="avail">
         {SERVICE_LIST.map((s) => {
           const on = city.active.includes(s.slug);
@@ -60,11 +61,7 @@ function CityResult({ city }: { city: CityItem }) {
           return (
             <li key={s.slug}>
               <span>{s.name}</span>
-              {label ? (
-                <span className="on"><Check className="ic" strokeWidth={2.5} aria-hidden="true" focusable="false" />{label}</span>
-              ) : (
-                <span className="wait">لیست انتظار</span>
-              )}
+              <span className={label ? 'dg-badge dg-badge--in-service' : 'dg-badge dg-badge--waitlist'}>{label ?? 'لیست انتظار'}</span>
             </li>
           );
         })}

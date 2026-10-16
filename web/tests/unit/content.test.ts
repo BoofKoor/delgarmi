@@ -27,7 +27,7 @@ describe('service content', () => {
 
   it('writes each linked service into its note, where it becomes the link', () => {
     for (const s of SERVICE_LIST) {
-      for (const col of s.scope.columns) if (col.link) expect(col.note ?? '', s.slug).toContain(col.link.label);
+      for (const col of s.scope.columns) if (col.link) expect(col.note?.text ?? '', s.slug).toContain(col.link.label);
     }
   });
 

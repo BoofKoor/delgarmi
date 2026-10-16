@@ -1,4 +1,4 @@
-import { Check, ChevronLeft } from 'lucide-react';
+import { Check, ChevronLeft, Phone } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -28,6 +28,13 @@ function linkInside(text: string, link?: { href: string; label: string }) {
       {text.slice(at + link.label.length)}
     </>
   );
+}
+
+/** A display title breaks after its comma, as the home title does: «پرستار کودک،⏎ با دلِ آسوده». */
+function breakAfterComma(title: string, display?: boolean) {
+  const at = title.indexOf('، ');
+  if (!display || at < 0) return title;
+  return <>{title.slice(0, at + 1)}<br /> {title.slice(at + 2)}</>;
 }
 
 export const dynamicParams = false;
@@ -78,7 +85,7 @@ export default async function ServicePage({ params }: Props) {
       <section className="svc-hero" aria-labelledby="svc-title">
         <div className="container svc-hero-grid">
           <div>
-            <h1 id="svc-title" className={cx(s.displayTitle && 'font-display')}>{s.title}</h1>
+            <h1 id="svc-title" className={cx(s.displayTitle && 'font-display')}>{breakAfterComma(s.title, s.displayTitle)}</h1>
             <p className="lead">{s.lead}</p>
             <ul className="check-list">
               {s.checks.map((c) => <li key={c}><Ic icon={Check} /><span>{c}</span></li>)}
@@ -87,6 +94,16 @@ export default async function ServicePage({ params }: Props) {
               <Link className="dg-btn dg-btn--primary dg-btn--lg" href={requestHref}>{s.cta}</Link>
               <Link className="dg-btn dg-btn--secondary dg-btn--lg" href="#svc-faq">سؤال‌های این خدمت</Link>
             </div>
+            {s.warning ? (
+              <Notice tone="warning" title={s.warning.title} className="svc-warning" live={false}>
+                {s.warning.text}
+                <span className="numbers">
+                  {s.warning.numbers.map((n) => (
+                    <a className="dg-btn dg-btn--secondary" key={n.tel} href={`tel:${n.tel}`}><Ic icon={Phone} />{n.label}</a>
+                  ))}
+                </span>
+              </Notice>
+            ) : null}
           </div>
           <figure className="svc-figure">
             <div className="slab" aria-hidden="true" />
@@ -95,17 +112,6 @@ export default async function ServicePage({ params }: Props) {
           </figure>
         </div>
       </section>
-
-      {s.warning ? (
-        <div className="container">
-          <Notice tone="warning" title={s.warning.title} className="svc-warning" live={false}>
-            {s.warning.text}
-            <span className="numbers">
-              {s.warning.numbers.map((n) => <a key={n.tel} href={`tel:${n.tel}`}>{n.label}</a>)}
-            </span>
-          </Notice>
-        </div>
-      ) : null}
 
       <section className="section section--flush" aria-labelledby="choices-title">
         <div className="container">
@@ -141,7 +147,9 @@ export default async function ServicePage({ params }: Props) {
                     <ul>
                       {col.items.map((item) => <li key={item}><Ic icon={col.icon} /><span>{item}</span></li>)}
                     </ul>
-                    {col.note ? <p className="note">{linkInside(col.note, col.link)}</p> : null}
+                    {col.note ? (
+                      <Notice title={col.note.title} className="scope-note" live={false}>{linkInside(col.note.text, col.link)}</Notice>
+                    ) : null}
                   </div>
                 ))}
               </div>
@@ -157,9 +165,9 @@ export default async function ServicePage({ params }: Props) {
 
       {s.more ? (
         <section className="section" aria-labelledby="more-title">
-          <div className="container">
-            <div className="more-block">
-              <h2 className="h-section" id="more-title">{s.more.title}</h2>
+          <div className="container split">
+            <h2 className="h-section" id="more-title">{s.more.title}</h2>
+            <div className="split-body">
               <Pending policy={s.more.pending} block>
                 {s.more.paragraphs.map((p) => <p key={p}>{p}</p>)}
               </Pending>
@@ -190,7 +198,9 @@ export default async function ServicePage({ params }: Props) {
 
       <section className="section section--flush" aria-labelledby="others-title">
         <div className="container">
-          <h2 className="h-card" id="others-title" style={{ marginBottom: 'var(--space-6)' }}>خدمات دیگر</h2>
+          <div className="section-head section-head--sub">
+            <h2 className="h-card" id="others-title">خدمات دیگر</h2>
+          </div>
           <div className="others">
             {others.map((o) => (
               <Link className="other-link" href={`/services/${o.slug}`} key={o.slug}>

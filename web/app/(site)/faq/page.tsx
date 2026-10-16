@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FaqList, faqJsonLd } from '@/components/site/FaqList';
 import { JsonLd } from '@/components/site/JsonLd';
-import { PageHead } from '@/components/site/PageHead';
+import { TextPage } from '@/components/site/TextPage';
 import { FAQ_GROUPS } from '@/content/faq';
 import { SERVICE_LIST } from '@/content/services';
 
@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 };
 
 export default function FaqPage() {
+  const toc = [...FAQ_GROUPS.map((g, i) => ({ id: `faq-group-${i}`, label: g.title })), { id: 'faq-services', label: 'سؤال‌های هر خدمت' }];
   return (
     <>
       <JsonLd data={faqJsonLd(FAQ_GROUPS.flatMap((g) => g.items))} />
-      <PageHead title="سؤال‌های پرتکرار" lead="جواب سؤالتان اینجا نبود؟ بعد از ثبت درخواست همکار ما تماس می‌گیرد و می‌توانید همه‌چیز را بپرسید." />
-      <div className="container">
+      <TextPage title="سؤال‌های پرتکرار" lead="جواب سؤالتان اینجا نبود؟ بعد از ثبت درخواست همکار ما تماس می‌گیرد و می‌توانید همه‌چیز را بپرسید." toc={toc}>
         <div className="faq-groups">
           {FAQ_GROUPS.map((group, i) => (
             <section key={group.title} aria-labelledby={`faq-group-${i}`}>
@@ -32,7 +32,7 @@ export default function FaqPage() {
             </nav>
           </section>
         </div>
-      </div>
+      </TextPage>
     </>
   );
 }

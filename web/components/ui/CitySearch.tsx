@@ -18,6 +18,8 @@ export type CitySearchProps<T extends City> = {
   error?: string;
   /** The list is still on its way: say so instead of «not found». */
   loading?: boolean;
+  /** The list could not be loaded: no suggestions open (the error under the field says why). */
+  unavailable?: boolean;
 };
 
 /** Combobox with suggestions: ARIA 1.2 pattern, arrows to move, Enter to pick, Esc to close. */
@@ -31,6 +33,7 @@ export function CitySearch<T extends City>({
   help = 'شهر را بنویسید و از فهرست انتخاب کنید.',
   error,
   loading = false,
+  unavailable = false,
 }: CitySearchProps<T>) {
   const [picked, setPicked] = useState<T | null>(value ?? null);
   const city = value === undefined ? picked : value;
@@ -51,7 +54,7 @@ export function CitySearch<T extends City>({
     const found = searchCities(cities, query);
     setItems(found);
     setActive(found.length ? 0 : -1);
-    setOpen(Boolean(normalizeFa(query)));
+    setOpen(!unavailable && Boolean(normalizeFa(query)));
   }
   // The list may arrive after someone started typing: search again then.
   useEffect(() => {

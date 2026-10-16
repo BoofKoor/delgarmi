@@ -138,8 +138,8 @@ export default function Home() {
       </section>
 
       <section className="section vetting" id="vetting" aria-labelledby="vet-title">
-        <Rays />
         <div className="container">
+          <Rays />
           <div className="section-head">
             <h2 className="h-section" id="vet-title">فقط مراکز دارای مجوز</h2>
             <p>کسی که به خانه‌ی شما می‌آید از طرف یک مرکز رسمی می‌آید. پیش از همکاری با هر مرکز، این‌ها را بررسی می‌کنیم.</p>
@@ -188,14 +188,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container" id="closing" aria-labelledby="closing-title">
-        <div className="closing">
-          <Rays />
-          <h2 className="font-display" id="closing-title">چند سؤال کوتاه، بقیه‌اش با ما</h2>
-          <p>درخواست را ثبت کنید؛ همکار دلگرمی تماس می‌گیرد و تا شروع کار کنارتان است.</p>
-          <div className="actions">
-            <Link className="dg-btn dg-btn--primary dg-btn--lg" href="/request">ثبت درخواست</Link>
-            <PhoneLink className="dg-btn dg-btn--secondary dg-btn--lg" withIcon label="تماس با پشتیبانی" />
+      <section className="section section--flush" id="closing" aria-labelledby="closing-title">
+        <div className="container">
+          <div className="closing">
+            <Rays />
+            <h2 className="font-display" id="closing-title">چند سؤال کوتاه، بقیه‌اش با ما</h2>
+            <p>درخواست را ثبت کنید؛ همکار دلگرمی تماس می‌گیرد و تا شروع کار کنارتان است.</p>
+            <div className="actions">
+              <Link className="dg-btn dg-btn--primary dg-btn--lg" href="/request">ثبت درخواست</Link>
+              <PhoneLink className="dg-btn dg-btn--secondary dg-btn--lg" withIcon label="تماس با پشتیبانی" button />
+            </div>
           </div>
         </div>
       </section>

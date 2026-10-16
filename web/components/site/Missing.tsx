@@ -1,29 +1,54 @@
-import { Phone as PhoneIcon } from 'lucide-react';
+import { CircleDashed, Phone as PhoneIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { FACTS, FACT_PLACEHOLDERS, PENDING_POLICIES, type FactName, type PolicyKey } from '@/content/facts';
 import { cx } from '@/lib/cx';
 
-/**
- * Marks text that stands in for a fact or a decision we do not have yet. The marker is meant
- * to be seen on the test site; content/facts.ts lists what is still open.
+/*
+ * Markers for what the team has not given yet (content/facts.ts). They follow the design system:
+ * the amber tint with its status colour, pill corners, no text under 15px, and the content keeps
+ * its own layout. A missing fact is highlighted sample text; a draft policy carries a small tag.
  */
-export function Missing({ what, children, block = false }: { what: string; children: ReactNode; block?: boolean }) {
-  const Tag = block ? 'div' : 'span';
+
+/** A fact we do not have yet: the sample text, highlighted. */
+export function Missing({ what, children }: { what: string; children: ReactNode }) {
   return (
-    <Tag className={cx('missing', block && 'missing--block')} data-missing={what} title={`هنوز قطعی نیست: ${what}`}>
-      {children}
-      <span className="vh"> (هنوز قطعی نیست: {what})</span>
-    </Tag>
+    <>
+      <span className="missing" title={`جای خالی: ${what}`}>{children}</span>
+      <span className="vh"> (جای خالی: {what})</span>
+    </>
   );
 }
 
-/** A policy answer that is still a draft: shown marked until its key leaves PENDING_POLICIES. */
+/**
+ * Text that is still a draft. Inline, a small tag follows the text; as a block, the tag sits
+ * above the content. Once the policy is confirmed, its key leaves PENDING_POLICIES.
+ */
 export function Pending({ policy, children, block = false }: { policy?: PolicyKey; children: ReactNode; block?: boolean }) {
   if (!policy) return <>{children}</>;
-  return <Missing what={PENDING_POLICIES[policy]} block={block}>{children}</Missing>;
+  const { tag, what } = PENDING_POLICIES[policy];
+  if (block) {
+    return (
+      <div className="pending">
+        <p className="pending-tag">
+          <CircleDashed className="ic" strokeWidth={1.75} aria-hidden="true" focusable="false" />
+          {tag}: {what}
+        </p>
+        {children}
+      </div>
+    );
+  }
+  // A no-break space keeps the tag with the last word when the line wraps.
+  return (
+    <>
+      {children}&nbsp;<span className="pending-pill" title={`${tag}: ${what}`}>
+        {tag}
+        <span className="vh"> ({what})</span>
+      </span>
+    </>
+  );
 }
 
-/** One of the team's facts as plain text, or its marked placeholder. */
+/** One of the team's facts as plain text, or its highlighted sample. */
 export function Fact({ name }: { name: Exclude<FactName, 'phone'> }) {
   const value = FACTS[name];
   if (value) return <>{value}</>;
@@ -31,8 +56,12 @@ export function Fact({ name }: { name: Exclude<FactName, 'phone'> }) {
   return <Missing what={what}>{sample}</Missing>;
 }
 
-/** The support number as a tap-to-call link, or its marked placeholder. */
-export function PhoneLink({ className, withIcon = false, label }: { className?: string; withIcon?: boolean; label?: ReactNode }) {
+/**
+ * The support number: a tap-to-call link, or a button (`button`). Without a number the text form
+ * shows the highlighted sample and the button form shows as not yet available (the design
+ * system's disabled look).
+ */
+export function PhoneLink({ className, withIcon = false, label, button = false }: { className?: string; withIcon?: boolean; label?: ReactNode; button?: boolean }) {
   const icon = withIcon ? <PhoneIcon className="ic" strokeWidth={1.75} aria-hidden="true" focusable="false" /> : null;
   const phone = FACTS.phone;
   if (phone) {
@@ -44,6 +73,15 @@ export function PhoneLink({ className, withIcon = false, label }: { className?: 
     );
   }
   const { what, sample } = FACT_PLACEHOLDERS.phone;
+  if (button) {
+    return (
+      <span className={cx(className, 'placeholder-btn')} title={`جای خالی: ${what}`}>
+        {icon}
+        {label ?? sample}
+        <span className="vh"> (جای خالی: {what})</span>
+      </span>
+    );
+  }
   return (
     <Missing what={what}>
       <span className={className}>

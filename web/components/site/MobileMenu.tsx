@@ -57,7 +57,7 @@ export function MobileMenu() {
         </nav>
         <div className="sheet-foot">
           <Link className="dg-btn dg-btn--primary dg-btn--lg" href="/request" onClick={close}>ثبت درخواست</Link>
-          <PhoneLink className="dg-btn dg-btn--secondary" withIcon label="تماس با پشتیبانی" />
+          <PhoneLink className="dg-btn dg-btn--secondary" withIcon label="تماس با پشتیبانی" button />
         </div>
       </dialog>
     </>
