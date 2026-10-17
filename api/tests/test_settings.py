@@ -45,3 +45,13 @@ def test_times_are_stored_in_utc_and_shown_in_tehran_time():
 def test_cookies_are_https_only():
     assert settings.SESSION_COOKIE_SECURE is True
     assert settings.CSRF_COOKIE_SECURE is True
+
+
+def test_an_unknown_sms_backend_stops_the_start():
+    result = load_settings(DJANGO_SECRET_KEY='x' * 50, PANEL_PATH='panel-abc123', SMS_BACKEND='kavenegar')
+    assert result.returncode != 0
+    assert 'SMS_BACKEND must be one of: log' in result.stderr
+
+
+def test_sms_go_to_the_log_until_an_account_is_connected():
+    assert settings.SMS_BACKEND == 'log'

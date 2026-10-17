@@ -5,5 +5,6 @@ from . import api
 urlpatterns = [
     path('api/services', api.services, name='services'),
     path('api/cities', api.cities, name='cities'),
+    path('api/form', api.form, name='form'),
     re_path(r'^api/cities/(?P<key>[a-z0-9-]{1,40})$', api.city, name='city'),
 ]

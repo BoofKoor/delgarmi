@@ -407,10 +407,84 @@ dialog { color: var(--ink); }
 .contact-list strong { font-size: var(--type-label-size); color: var(--ink-muted); font-weight: 700; }
 .contact-list a { font-weight: 700; }
 .soon-box { max-width: var(--text-max); display: grid; gap: var(--space-6); }
-.picked { display: grid; gap: var(--space-3); padding: var(--space-4) var(--space-6); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); background: var(--surface-card); }
-.picked div { display: grid; grid-template-columns: 4em minmax(0, 1fr); gap: var(--space-3); align-items: baseline; }
-.picked dt { color: var(--ink-muted); font-size: var(--type-label-size); }
-.picked dd { margin: 0; font-weight: 700; }
+
+/* ---------- Request form ---------- */
+/* A button that reads as a link: «ویرایش», «شروع از اول», «ارسال دوباره». At least 48px to touch. */
+.link-btn { display: inline-flex; align-items: center; min-height: var(--control-md); padding: 0 var(--space-1); border: 0; background: none; color: var(--action); font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 0.3em; text-decoration-thickness: 1px; cursor: pointer; }
+.link-btn:hover { color: var(--action-hover); }
+.link-btn:disabled { color: var(--ink-muted); cursor: default; }
+.form-page { padding-block: var(--space-6) var(--space-16); }
+.form-grid { display: grid; gap: var(--space-12); align-items: start; }
+.form-main { min-width: 0; max-width: var(--text-max); }
+.form-top { margin-bottom: var(--space-8); }
+.resume { margin-bottom: var(--space-8); }
+.screen-head { margin-bottom: var(--space-8); }
+.screen-title { font-size: var(--type-heading-1-size); line-height: var(--type-heading-1-line); font-weight: var(--type-heading-1-weight); }
+.screen-title:focus { outline: none; }
+.screen-sub { margin-top: var(--space-2); color: var(--ink-muted); }
+.screen-body { display: grid; gap: var(--space-8); }
+.screen-body .dg-group { margin: 0; }
+.screen-body .svc-warning { margin-top: 0; }
+.place-city { display: grid; gap: var(--space-4); }
+.therapy-switch { display: block; margin-top: var(--space-2); }
+.start-cal { display: grid; gap: var(--space-3); margin-top: var(--space-4); max-width: 420px; }
+.start-picked { font-weight: 700; min-height: 1.9em; }
+.consent .dg-error { margin-top: var(--space-2); }
+.consent--error .dg-check { outline: 2px solid var(--status-danger); outline-offset: 4px; border-radius: var(--radius-sm); }
+.submit-error { margin-top: var(--space-8); }
+.form-nav { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-12); }
+.form-nav .next { margin-inline-start: auto; }
+.form-nav .back svg { width: 22px; height: 22px; }
+/* Phones: «مرحله‌ی قبل» and «مرحله‌ی بعد» stay at the bottom of the screen (design system). */
+@media (max-width: 759px) {
+  .form-nav { position: sticky; bottom: 0; z-index: 20; margin: var(--space-8) calc(-1 * var(--space-4)) 0; padding: var(--space-3) var(--space-4) calc(var(--space-3) + env(safe-area-inset-bottom)); background: var(--surface-card); border-top: 1px solid var(--line-soft); }
+  .form-nav .dg-btn { flex: 1 1 0; padding-inline: var(--space-4); }
+  .form-nav .back { flex: 0 1 auto; }
+}
+
+/* The number check: the field and «ارسال کد» side by side where they fit. */
+.otp { display: grid; gap: var(--space-4); }
+.otp-row { display: grid; gap: var(--space-3); align-items: start; }
+/* Two columns only while «ارسال کد» is there; afterwards the number is as wide as the name. */
+@media (min-width: 480px) { .otp-row--send { grid-template-columns: minmax(0, 1fr) auto; } .otp-row--send .otp-send { margin-top: calc(var(--type-label-size) * 1.6 + var(--space-2)); } }
+.otp-code { display: grid; gap: var(--space-2); max-width: 260px; }
+.otp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--space-4); color: var(--ink-muted); font-size: var(--type-small-size); }
+.otp-ok { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); color: var(--status-success); font-weight: 700; }
+.otp-ok svg { width: 22px; height: 22px; }
+
+/* Desktop: the answers so far beside the form, each with «ویرایش». Phones do not get it. */
+.form-aside { display: none; }
+@media (min-width: 1000px) {
+  .form-grid { grid-template-columns: minmax(0, 680px) minmax(0, 1fr); gap: var(--space-16); }
+  .form-aside { display: grid; gap: var(--space-6); position: sticky; top: calc(var(--header-h) + var(--space-8)); max-width: 380px; }
+}
+.summary { padding: var(--space-6); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); background: var(--surface-card); }
+.summary h2 { font-size: var(--type-body-size); line-height: 1.6; font-weight: 750; margin-bottom: var(--space-3); }
+.summary dl { display: grid; margin: 0; }
+.summary dl > div { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: var(--space-2); align-items: baseline; padding-block: var(--space-1); border-top: 1px solid var(--line-soft); }
+.summary dl > div:first-child { border-top: 0; }
+.summary dt { color: var(--ink-muted); font-size: var(--type-small-size); }
+/* The edit button sits inside dd: a dl may hold only dt and dd. */
+.summary dd { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); margin: 0; font-size: var(--type-small-size); font-weight: 700; line-height: 1.7; }
+.summary dd > span { min-width: 0; overflow-wrap: anywhere; }
+.summary .link-btn { flex: none; font-size: var(--type-small-size); }
+.summary-empty { color: var(--ink-muted); font-size: var(--type-small-size); line-height: var(--type-small-line); }
+.reassure { display: grid; gap: var(--space-3); color: var(--ink-muted); font-size: var(--type-small-size); line-height: var(--type-small-line); }
+.reassure li { display: flex; gap: var(--space-2); align-items: flex-start; }
+.reassure .ic { width: 20px; height: 20px; margin-top: 3px; }
+
+/* «ثبت شد» */
+.done { display: grid; gap: var(--space-6); max-width: var(--text-max); padding-block: var(--space-12) var(--space-16); }
+.done-title { font-size: var(--type-title-sm-size); line-height: var(--type-title-sm-line); font-weight: var(--type-title-sm-weight); }
+.done-title:focus { outline: none; }
+@media (min-width: 900px) { .done-title { font-size: var(--type-title-size); line-height: var(--type-title-line); } }
+.done-code-box { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-6); padding: var(--space-6); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); background: var(--surface-card); }
+.done-code-label { color: var(--ink-muted); font-size: var(--type-label-size); font-weight: 700; }
+.done-code { font-size: var(--type-heading-1-size); font-weight: 800; letter-spacing: .08em; }
+.done-code-box .dg-btn .ic { width: 20px; height: 20px; }
+.done-copy-failed { flex-basis: 100%; }
+.done-next { margin-top: var(--space-4); }
+.done-help { color: var(--ink-muted); }
 
 @media (prefers-reduced-motion: reduce) {
   .qs, .site-header, .type-card, .city-card { transition: none; }

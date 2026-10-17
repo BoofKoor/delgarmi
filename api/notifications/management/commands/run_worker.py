@@ -4,13 +4,16 @@ import time
 from pathlib import Path
 
 from django.core.management.base import BaseCommand
+from django.db import close_old_connections
+
+from notifications.outbox import send_due
 
 log = logging.getLogger('worker')
 HEARTBEAT = Path('/tmp/worker-heartbeat')
 
 
 class Command(BaseCommand):
-    help = 'Background worker. Sends queued SMS (milestone 3) and builds hourly panel alerts (milestone 4).'
+    help = 'Background worker. Sends queued SMS; hourly panel alerts arrive with milestone 4.'
 
     def add_arguments(self, parser):
         parser.add_argument('--interval', type=float, default=5.0, help='Seconds between rounds.')
@@ -27,8 +30,14 @@ class Command(BaseCommand):
         signal.signal(signal.SIGINT, stop)
         log.info('worker started')
         while True:
-            self.run_jobs()
-            HEARTBEAT.write_text(str(time.time()))
+            # The heartbeat is written only after a round that worked, so the health check turns
+            # red when the jobs keep failing (for example while the database is unreachable).
+            try:
+                self.run_jobs()
+            except Exception:
+                log.exception('worker round failed')
+            else:
+                HEARTBEAT.write_text(str(time.time()))
             if once:
                 break
             deadline = time.monotonic() + interval
@@ -36,7 +45,10 @@ class Command(BaseCommand):
                 time.sleep(0.2)
             if stopping:
                 break
+            # As after each web request: drop a connection that broke or is too old, so a database
+            # restart does not leave the worker failing.
+            close_old_connections()
         log.info('worker stopped')
 
     def run_jobs(self) -> None:
-        """Jobs arrive with their milestones; the loop and the heartbeat are ready now."""
+        send_due()

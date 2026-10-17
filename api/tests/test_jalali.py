@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from common.jalali import format_jalali, to_jalali
+from common.jalali import format_jalali, format_jalali_time, to_jalali
 
 VECTORS = json.loads((Path(__file__).resolve().parents[2] / 'shared' / 'jalali.json').read_text())
 
@@ -31,3 +31,8 @@ def test_format_uses_persian_digits_and_tehran_time():
     assert format_jalali(date(2026, 10, 16)) == '۲۴ مهر ۱۴۰۵'
     # 22:00 UTC on 16 Oct is already 17 Oct in Tehran (UTC+3:30).
     assert format_jalali(datetime(2026, 10, 16, 22, 0, tzinfo=dt_timezone.utc)) == '۲۵ مهر ۱۴۰۵'
+
+
+def test_format_with_time_is_in_tehran_time():
+    # 22:05 UTC is 01:35 the next morning in Tehran.
+    assert format_jalali_time(datetime(2026, 10, 16, 22, 5, tzinfo=dt_timezone.utc)) == '۲۵ مهر ۱۴۰۵، ۰۱:۳۵'

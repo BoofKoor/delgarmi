@@ -120,6 +120,8 @@ jobs:
         working-directory: web
         env:
           BASE_URL: https://stack.delgarmi.test
+          # Without an SMS account the code is only in the API log; the form tests read it there.
+          OTP_LOG_CMD: docker compose -f ../docker-compose.yml logs --no-color api
         run: npm run test:e2e
       - name: Service logs
         if: failure()

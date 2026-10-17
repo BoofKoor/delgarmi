@@ -1,9 +1,10 @@
-"""Read-only endpoints for the site: services, cities, and what is active in a city."""
+"""Read-only endpoints for the site: services, cities, what is active in a city, and the form."""
 
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from .form import FORM
 from .models import City, CityService, Service
 
 
@@ -44,3 +45,9 @@ def city(request, key: str):
             for s in Service.objects.all()
         ],
     }, 60)
+
+
+@api_view(['GET'])
+def form(request):
+    """The request form's questions, options, conditions and texts (catalog/form.json)."""
+    return _cached(FORM, 60)

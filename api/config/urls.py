@@ -11,5 +11,7 @@ admin.site.index_title = 'مدیریت'
 urlpatterns = [
     path('api/health', health, name='health'),
     path('', include('catalog.urls')),
+    path('', include('accounts.urls')),
+    path('', include('care_requests.urls')),
     path(f'{settings.PANEL_PATH}/', admin.site.urls),
 ]

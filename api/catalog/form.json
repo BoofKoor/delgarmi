@@ -1,0 +1,324 @@
+{
+  "version": 1,
+  "steps": ["خدمت", "جزئیات", "زمان و مکان", "تماس"],
+  "choiceErrors": {
+    "single": "یکی از گزینه‌ها را انتخاب کنید.",
+    "multiple": "دست‌کم یک گزینه را انتخاب کنید."
+  },
+  "service": {
+    "title": "چه کمکی لازم دارید؟",
+    "sub": "یکی از چهار خدمت را انتخاب کنید.",
+    "legend": "خدمت",
+    "error": "یکی از چهار خدمت را انتخاب کنید."
+  },
+  "services": {
+    "elderly-care": {
+      "screens": [
+        {
+          "title": "درباره‌ی کسی که مراقبت لازم دارد",
+          "sub": "فقط چیزهایی را می‌پرسیم که برای پیدا کردن مراقب مناسب لازم است.",
+          "questions": ["for", "age", "mobility"]
+        },
+        {
+          "title": "چه نوع مراقبتی لازم دارید؟",
+          "sub": "اگر مطمئن نیستید، نزدیک‌ترین را انتخاب کنید؛ در تماس دقیق‌ترش می‌کنیم.",
+          "questions": ["type", "gender"]
+        }
+      ],
+      "questions": {
+        "for": {
+          "label": "برای چه کسی؟", "control": "chips", "summary": "برای",
+          "options": [
+            { "value": "father", "label": "پدر" },
+            { "value": "mother", "label": "مادر" },
+            { "value": "spouse", "label": "همسر" },
+            { "value": "grandparent", "label": "پدربزرگ یا مادربزرگ" },
+            { "value": "self", "label": "خودم" },
+            { "value": "other", "label": "دیگری" }
+          ]
+        },
+        "age": {
+          "label": "سن تقریبی", "control": "chips", "summary": "سن",
+          "options": [
+            { "value": "under-65", "label": "زیر ۶۵ سال" },
+            { "value": "65-74", "label": "۶۵ تا ۷۴ سال" },
+            { "value": "75-84", "label": "۷۵ تا ۸۴ سال" },
+            { "value": "85-plus", "label": "۸۵ سال به بالا" }
+          ]
+        },
+        "mobility": {
+          "label": "توان حرکتی", "control": "cards", "summary": "توان حرکتی",
+          "why": "می‌پرسیم تا مراقبی معرفی شود که برای همین وضعیت آموزش دیده است.",
+          "options": [
+            { "value": "independent", "label": "مستقل", "hint": "خودش راه می‌رود و بیشتر کارهایش را انجام می‌دهد" },
+            { "value": "assisted", "label": "با کمک", "hint": "برای راه رفتن، حمام یا لباس پوشیدن کمک لازم دارد" },
+            { "value": "bedridden", "label": "بستری", "hint": "بیشتر وقت در تخت است" }
+          ]
+        },
+        "type": {
+          "label": "نوع مراقبت", "hideLegend": true, "control": "cards", "summary": "نوع مراقبت", "param": "type",
+          "options": [
+            { "value": "hourly", "label": "ساعتی", "hint": "چند ساعت در روز، چند روز در هفته" },
+            { "value": "day", "label": "روزانه", "hint": "از صبح تا عصر" },
+            { "value": "night", "label": "شبانه", "hint": "از شب تا صبح" },
+            { "value": "live-in", "label": "شبانه‌روزی", "hint": "مراقب در خانه می‌ماند" }
+          ]
+        },
+        "gender": {
+          "label": "مراقب خانم باشد یا آقا؟", "control": "chips", "summary": "مراقب",
+          "why": "اگر ترجیحی دارید، مرکز را بر همین اساس انتخاب می‌کنیم.",
+          "options": [
+            { "value": "any", "label": "فرقی نمی‌کند" },
+            { "value": "female", "label": "خانم" },
+            { "value": "male", "label": "آقا" }
+          ]
+        }
+      },
+      "timeWindow": { "q": "type", "in": ["hourly"] }
+    },
+    "home-nursing": {
+      "screens": [
+        {
+          "title": "چه خدمتی لازم است؟",
+          "sub": "هر چند مورد که لازم است را انتخاب کنید.",
+          "questions": ["tasks", "order"]
+        },
+        {
+          "title": "از کی و با چه کسی؟",
+          "questions": ["timing", "gender"]
+        }
+      ],
+      "questions": {
+        "tasks": {
+          "label": "نوع خدمت", "control": "chips", "multiple": true, "summary": "خدمت پرستاری", "param": "task",
+          "options": [
+            { "value": "injection", "label": "تزریق" },
+            { "value": "iv", "label": "سرم" },
+            { "value": "dressing", "label": "پانسمان" },
+            { "value": "catheter", "label": "سوند" },
+            { "value": "post-discharge", "label": "مراقبت بعد از ترخیص" },
+            { "value": "other", "label": "کار دیگر" }
+          ]
+        },
+        "order": {
+          "label": "دستور پزشک دارید؟", "control": "chips", "summary": "دستور پزشک",
+          "why": "برای بعضی خدمات مثل تزریق و سرم دستور پزشک لازم است. اگر ندارید هم درخواست بدهید؛ در تماس راهنمایی‌تان می‌کنیم.",
+          "options": [
+            { "value": "yes", "label": "بله" },
+            { "value": "no", "label": "نه" },
+            { "value": "unknown", "label": "نمی‌دانم" }
+          ]
+        },
+        "timing": {
+          "label": "زمان", "hideLegend": true, "control": "cards", "summary": "زمان",
+          "options": [
+            { "value": "urgent", "label": "فوری", "hint": "امروز یا هر چه زودتر" },
+            { "value": "scheduled", "label": "زمان‌بندی‌شده", "hint": "برای روز و ساعت مشخص" }
+          ]
+        },
+        "gender": {
+          "label": "پرستار خانم باشد یا آقا؟", "control": "chips", "summary": "پرستار",
+          "options": [
+            { "value": "any", "label": "فرقی نمی‌کند" },
+            { "value": "female", "label": "خانم" },
+            { "value": "male", "label": "آقا" }
+          ]
+        }
+      },
+      "start": { "q": "timing", "in": ["scheduled"] },
+      "timeWindow": { "q": "timing", "in": ["scheduled"] },
+      "urgentWarning": { "q": "timing", "in": ["urgent"] }
+    },
+    "child-care": {
+      "screens": [
+        {
+          "title": "درباره‌ی کودکان",
+          "questions": ["count", "ages"]
+        },
+        {
+          "title": "چه ساعت‌هایی؟",
+          "questions": ["hours", "gender"]
+        }
+      ],
+      "questions": {
+        "count": {
+          "label": "تعداد کودکان", "control": "counter", "summary": "تعداد کودکان", "min": 1, "max": 6, "default": 1
+        },
+        "ages": {
+          "label": "سن کودکان", "control": "chips", "multiple": true, "summary": "سن",
+          "why": "برای نوزاد، پرستاری معرفی می‌شود که تجربه‌ی نگهداری از نوزاد دارد.",
+          "options": [
+            { "value": "under-1", "label": "زیر ۱ سال" },
+            { "value": "1-3", "label": "۱ تا ۳ سال" },
+            { "value": "3-6", "label": "۳ تا ۶ سال" },
+            { "value": "over-6", "label": "بالای ۶ سال" }
+          ]
+        },
+        "hours": {
+          "label": "ساعت‌ها", "hideLegend": true, "control": "cards", "summary": "ساعت‌ها", "param": "hours",
+          "options": [
+            { "value": "few", "label": "چند ساعت در روز", "hint": "مثلاً عصرها یا وقتی بیرون هستید" },
+            { "value": "day", "label": "تمام روز", "hint": "از صبح تا عصر" },
+            { "value": "live-in", "label": "شبانه‌روزی", "hint": "پرستار در خانه می‌ماند" }
+          ]
+        },
+        "gender": {
+          "label": "پرستار خانم باشد یا آقا؟", "control": "chips", "summary": "پرستار",
+          "options": [
+            { "value": "any", "label": "فرقی نمی‌کند" },
+            { "value": "female", "label": "خانم" },
+            { "value": "male", "label": "آقا" }
+          ]
+        }
+      },
+      "timeWindow": { "q": "hours", "in": ["few"] }
+    },
+    "therapy": {
+      "screens": [
+        {
+          "title": "جلسه‌ها چطور باشد؟",
+          "sub": "این سؤال‌ها برای انتخاب درمانگر مناسب است.",
+          "questions": ["session", "for", "gender"]
+        }
+      ],
+      "questions": {
+        "session": {
+          "label": "نوع جلسه", "hideLegend": true, "control": "cards", "summary": "جلسه",
+          "options": [
+            { "value": "online", "label": "آنلاین", "hint": "تماس تصویری، از هر جای ایران" },
+            { "value": "in-person", "label": "حضوری", "hint": "در مطب درمانگر، در شهر شما" }
+          ]
+        },
+        "for": {
+          "label": "برای چه کسی؟", "control": "chips", "summary": "برای", "param": "for",
+          "options": [
+            { "value": "self", "label": "فردی" },
+            { "value": "couple", "label": "زوج" },
+            { "value": "child", "label": "کودک و نوجوان" },
+            { "value": "family", "label": "خانواده" }
+          ]
+        },
+        "gender": {
+          "label": "درمانگر خانم باشد یا آقا؟", "control": "chips", "summary": "درمانگر",
+          "options": [
+            { "value": "any", "label": "فرقی نمی‌کند" },
+            { "value": "female", "label": "خانم" },
+            { "value": "male", "label": "آقا" }
+          ]
+        }
+      },
+      "inPerson": { "q": "session", "in": ["in-person"] },
+      "timeWindow": true
+    }
+  },
+  "place": {
+    "title": "کجا و از کی؟",
+    "titleOnline": "از کی شروع کنیم؟",
+    "sub": "شهر را انتخاب کنید تا ببینیم مرکز همکار نزدیک شما داریم یا نه.",
+    "subOnline": "جلسه‌ی آنلاین است؛ نشانی لازم نیست.",
+    "city": {
+      "label": "شهر",
+      "placeholder": "نام شهر را بنویسید",
+      "help": "شهر را بنویسید و از فهرست انتخاب کنید.",
+      "error": "شهر را از فهرست انتخاب کنید.",
+      "loadError": "فهرست شهرها باز نشد. اتصال اینترنت را بررسی کنید و دوباره روی کادر بزنید."
+    },
+    "neighbourhood": {
+      "label": "محله",
+      "placeholder": "مثلاً جلفا",
+      "help": "برای پیدا کردن نزدیک‌ترین مرکز. نشانی دقیق را مرکز تلفنی می‌پرسد.",
+      "max": 60,
+      "tooLong": "محله را کوتاه‌تر بنویسید؛ نشانی دقیق را مرکز تلفنی می‌پرسد."
+    },
+    "start": {
+      "label": "از کی شروع شود؟",
+      "asap": "هر چه زودتر",
+      "tomorrow": "فردا، {day}",
+      "date": "تاریخ دیگر",
+      "picked": "شروع: {day}",
+      "error": "زمان شروع را انتخاب کنید.",
+      "dateError": "روز شروع را از تقویم انتخاب کنید.",
+      "maxDays": 90
+    },
+    "timeWindow": {
+      "label": "چه ساعتی مناسب است؟",
+      "why": "ساعت دقیق را در تماس هماهنگ می‌کنیم.",
+      "error": "یکی از بازه‌ها را انتخاب کنید.",
+      "options": [
+        { "value": "morning", "label": "صبح (۸ تا ۱۲)" },
+        { "value": "noon", "label": "ظهر (۱۲ تا ۱۶)" },
+        { "value": "evening", "label": "عصر (۱۶ تا ۲۰)" },
+        { "value": "night", "label": "شب (۲۰ به بعد)" }
+      ]
+    },
+    "active": {
+      "title": "در {city} مرکز همکار داریم",
+      "text": "درخواستتان مستقیم به یکی از مراکز دارای مجوز همین شهر سپرده می‌شود."
+    },
+    "waitlist": {
+      "title": "هنوز در {city} مرکز همکار {service} نداریم",
+      "text": "درخواستتان در لیست انتظار ثبت می‌شود و با فعال شدن {city} پیامک می‌گیرید."
+    },
+    "therapyOnline": {
+      "text": "روان‌درمانی آنلاین همین حالا در همه‌ی شهرها فعال است.",
+      "button": "تغییر به جلسه‌ی آنلاین",
+      "done": "نوع جلسه به آنلاین تغییر کرد."
+    }
+  },
+  "contact": {
+    "title": "با چه شماره‌ای تماس بگیریم؟",
+    "sub": "همکار دلگرمی با همین شماره تماس می‌گیرد. ثبت‌نام لازم نیست.",
+    "name": {
+      "label": "نام و نام خانوادگی",
+      "error": "نام و نام خانوادگی را بنویسید.",
+      "max": 80,
+      "tooLong": "نام را کوتاه‌تر بنویسید."
+    },
+    "mobile": {
+      "label": "شماره‌ی موبایل",
+      "placeholder": "۰۹۱۲ ۳۴۵ ۶۷۸۹",
+      "help": "کد تأیید به همین شماره پیامک می‌شود.",
+      "error": "شماره‌ی موبایل ۱۱ رقم است و با ۰۹ شروع می‌شود.",
+      "send": "ارسال کد"
+    },
+    "code": {
+      "label": "کد ۵ رقمی",
+      "sentTo": "کد به {mobile} پیامک شد.",
+      "resendIn": "ارسال دوباره تا {time}",
+      "resend": "ارسال دوباره",
+      "edit": "ویرایش شماره",
+      "verified": "شماره تأیید شد",
+      "editVerified": "ویرایش",
+      "missing": "کد ۵ رقمی پیامک‌شده را وارد کنید.",
+      "notVerified": "شماره را با کد پیامکی تأیید کنید. «ارسال کد» را بزنید."
+    },
+    "bestTime": {
+      "label": "چه وقت تماس بگیریم؟",
+      "options": [
+        { "value": "any", "label": "هر وقت" },
+        { "value": "morning", "label": "صبح" },
+        { "value": "noon", "label": "ظهر" },
+        { "value": "evening", "label": "عصر" }
+      ]
+    },
+    "consent": {
+      "text": "موافقم اطلاعات این درخواست را همکاران دلگرمی و مرکزی که معرفی می‌شود ببینند.",
+      "link": "حریم خصوصی",
+      "error": "برای ثبت درخواست، این مورد را تأیید کنید.",
+      "version": "1"
+    }
+  },
+  "errors": {
+    "wrong": { "title": "کد تأیید درست نیست", "text": "کد ۵ رقمی پیامک‌شده را دوباره وارد کنید یا کد جدید بخواهید." },
+    "expired": { "title": "کد تأیید منقضی شده است", "text": "هر کد دو دقیقه اعتبار دارد. «ارسال دوباره» را بزنید." },
+    "voided": { "title": "این کد دیگر پذیرفته نمی‌شود", "text": "پنج بار کد اشتباه وارد شد. یک کد تازه بخواهید." },
+    "wait": { "title": "کد قبلی همین الان فرستاده شد", "text": "تا {time} دیگر می‌توانید کد تازه بخواهید." },
+    "too-many": { "title": "در یک ساعت گذشته پنج کد برای این شماره فرستاده شده است", "text": "{time} دیگر دوباره امتحان کنید." },
+    "too-many-ip": { "title": "از این اینترنت در یک ساعت گذشته کد زیادی خواسته شده است", "text": "{time} دیگر دوباره امتحان کنید." },
+    "sms-failed": { "title": "پیامک فرستاده نشد", "text": "چند لحظه بعد دوباره «ارسال کد» را بزنید." },
+    "token": { "title": "تأیید شماره منقضی شد", "text": "از تأیید شماره بیش از نیم ساعت گذشته است. دوباره کد بخواهید؛ پاسخ‌هایتان سر جایشان است." },
+    "invalid": { "title": "درخواست ثبت نشد", "text": "یکی از پاسخ‌ها پذیرفته نشد. مرحله‌ها را دوباره ببینید." },
+    "network": { "title": "اتصال برقرار نشد", "text": "اتصال اینترنت را بررسی کنید و دوباره امتحان کنید. پاسخ‌هایتان سر جایشان است." },
+    "server": { "title": "درخواست ثبت نشد", "text": "مشکل از ماست. چند لحظه بعد دوباره امتحان کنید؛ پاسخ‌هایتان سر جایشان است." }
+  }
+}

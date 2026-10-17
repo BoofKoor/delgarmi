@@ -131,6 +131,23 @@ REST_FRAMEWORK = {
     'UNAUTHENTICATED_USER': None,
 }
 
+# SMS. Until an SMS account is connected, 'log' writes each message to the log instead of sending it
+# (on the server: docker compose logs api | grep OTP).
+SMS_BACKENDS = ['log']
+SMS_BACKEND = env('SMS_BACKEND', 'log')
+if SMS_BACKEND not in SMS_BACKENDS:
+    raise RuntimeError(f'SMS_BACKEND must be one of: {", ".join(SMS_BACKENDS)}.')
+
+# Checking a mobile number with a code by SMS. The form's error texts name these numbers
+# (two minutes, five codes, half an hour): change both together.
+OTP_LENGTH = 5
+OTP_TTL = 120                  # seconds a code is valid
+OTP_RESEND_AFTER = 120         # seconds before the same number may ask again
+OTP_MAX_PER_HOUR = 5           # codes per number per hour
+OTP_MAX_PER_HOUR_IP = 20       # codes per client IP per hour
+OTP_MAX_ATTEMPTS = 5           # wrong tries that void a code
+OTP_TOKEN_TTL = 1800           # seconds the checked-number token lasts
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

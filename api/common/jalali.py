@@ -67,3 +67,9 @@ def format_jalali(value: date | datetime) -> str:
         value = timezone.localtime(value).date()
     jy, jm, jd = to_jalali(value)
     return f'{jd} {MONTHS[jm - 1]} {jy}'.translate(_FA_DIGITS)
+
+
+def format_jalali_time(value: datetime) -> str:
+    """۲۵ مهر ۱۴۰۵، ۱۴:۰۵ — in Tehran time."""
+    local = timezone.localtime(value)
+    return f'{format_jalali(local)}، {local:%H:%M}'.translate(_FA_DIGITS)

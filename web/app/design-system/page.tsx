@@ -107,8 +107,8 @@ export default function DesignSystemPage() {
         <Card name="TextField" note="عادی، موبایل، خطا">
           <div className="ds-stack">
             <TextField id="tf-name" label="نام و نام خانوادگی" autoComplete="name" defaultValue="مریم احمدی" />
-            <TextField id="tf-mobile" label="شماره موبایل" type="tel" inputMode="numeric" autoComplete="tel" ltr placeholder="۰۹۱۲ ۳۴۵ ۶۷۸۹" help="کد تأیید به همین شماره پیامک می‌شود." />
-            <TextField id="tf-mobile-bad" label="شماره موبایل" type="tel" inputMode="numeric" ltr defaultValue="0912345" error="شماره‌ی موبایل ۱۱ رقم است و با ۰۹ شروع می‌شود." />
+            <TextField id="tf-mobile" label="شماره‌ی موبایل" type="tel" inputMode="numeric" autoComplete="tel" ltr placeholder="۰۹۱۲ ۳۴۵ ۶۷۸۹" help="کد تأیید به همین شماره پیامک می‌شود." />
+            <TextField id="tf-mobile-bad" label="شماره‌ی موبایل" type="tel" inputMode="numeric" ltr defaultValue="0912345" error="شماره‌ی موبایل ۱۱ رقم است و با ۰۹ شروع می‌شود." />
           </div>
         </Card>
 
@@ -131,7 +131,7 @@ export default function DesignSystemPage() {
 
         <Card name="ChoiceChip" note="تک‌انتخابی، چندانتخابی، خطا">
           <QuestionGroup legend="برای چه کسی؟">
-            <ChoiceChips name="who" defaultValue="مادر" options={['پدر', 'مادر', 'همسر', 'خودم', 'دیگری']} />
+            <ChoiceChips name="who" defaultValue="مادر" options={['پدر', 'مادر', 'همسر', 'پدربزرگ یا مادربزرگ', 'خودم', 'دیگری']} />
           </QuestionGroup>
           <QuestionGroup legend="سن کودکان">
             <ChoiceChips name="kid-ages" multiple defaultValue={['زیر ۱ سال', '۱ تا ۳ سال']} options={['زیر ۱ سال', '۱ تا ۳ سال', '۳ تا ۶ سال', 'بالای ۶ سال']} />
@@ -150,9 +150,8 @@ export default function DesignSystemPage() {
         <Card name="Checkbox" note="رضایت ارسال اطلاعات">
           <div className="ds-stack">
             <Checkbox id="cb-consent" defaultChecked>
-              موافقم اطلاعات این درخواست فقط برای مرکزی که معرفی می‌شود فرستاده شود. <a href="#privacy">حریم خصوصی</a>
+              موافقم اطلاعات این درخواست را همکاران دلگرمی و مرکزی که معرفی می‌شود ببینند. <a href="#privacy">حریم خصوصی</a>
             </Checkbox>
-            <Checkbox id="cb-sms">پیامک‌های پیگیری را دریافت کنم.</Checkbox>
           </div>
         </Card>
 
@@ -169,7 +168,7 @@ export default function DesignSystemPage() {
         </Card>
 
         <Card name="Stepper" note="پیشرفت فرم درخواست">
-          <Stepper step={2} total={4} name="جزئیات مراقبت" />
+          <Stepper step={2} total={4} name="جزئیات" />
         </Card>
       </Group>
 
@@ -194,8 +193,8 @@ export default function DesignSystemPage() {
 
         <Card name="Notice" note="اطلاع‌رسانی، هشدار، موفقیت، خطا">
           <div className="ds-stack">
-            <Notice title="هنوز در یزد مرکز همکار نداریم">
-              درخواستتان در لیست انتظار ثبت می‌شود و به محض فعال شدن شهر خبرتان می‌کنیم. <a href="#waitlist">ثبت در لیست انتظار</a>
+            <Notice title="هنوز در یزد مرکز همکار مراقبت سالمند نداریم">
+              درخواستتان در لیست انتظار ثبت می‌شود و با فعال شدن یزد پیامک می‌گیرید.
             </Notice>
             <Notice tone="warning" title="دستور پزشک لازم است">
               برای سرم و تزریق، نسخه یا دستور پزشک را هنگام مراجعه‌ی پرستار آماده داشته باشید.

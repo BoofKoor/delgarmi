@@ -1,0 +1,20 @@
+[
+ {"in": "09123456789", "out": "09123456789", "why": "as stored"},
+ {"in": "۰۹۱۲۳۴۵۶۷۸۹", "out": "09123456789", "why": "Persian digits"},
+ {"in": "٠٩١٢٣٤٥٦٧٨٩", "out": "09123456789", "why": "Arabic-Indic digits"},
+ {"in": "+989123456789", "out": "09123456789", "why": "international, plus"},
+ {"in": "00989123456789", "out": "09123456789", "why": "international, double zero"},
+ {"in": "989123456789", "out": "09123456789", "why": "country code without plus"},
+ {"in": "9123456789", "out": "09123456789", "why": "without the leading zero"},
+ {"in": "0912 345 6789", "out": "09123456789", "why": "spaces"},
+ {"in": "0912-345-6789", "out": "09123456789", "why": "dashes"},
+ {"in": " ۰۹۱۲ ۳۴۵ ۶۷۸۹ ", "out": "09123456789", "why": "as the site shows it, with spaces around"},
+ {"in": "", "out": null, "why": "empty"},
+ {"in": "091234", "out": null, "why": "too short"},
+ {"in": "08123456789", "out": null, "why": "a landline prefix"},
+ {"in": "091234567890", "out": null, "why": "too long"},
+ {"in": "abc", "out": null, "why": "letters"},
+ {"in": "+18005550100", "out": null, "why": "another country"},
+ {"in": "09१२३४५६७८९", "out": null, "why": "digits of another script are not read as numbers"},
+ {"in": "０９１２３４５６７８９", "out": null, "why": "full-width digits are not read as numbers"}
+]

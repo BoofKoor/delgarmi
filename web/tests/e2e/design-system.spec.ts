@@ -110,7 +110,8 @@ test('choice chips and cards select by tapping anywhere on them', async ({ page 
   const card = (text: string) => page.locator('label.dg-choice').filter({ has: page.locator('.dg-choice-title', { hasText: new RegExp(`^${text}$`) }) });
   await chip('همسر').click();
   await expect(page.getByRole('radio', { name: 'همسر' })).toBeChecked();
-  await expect(page.getByRole('radio', { name: 'مادر' })).not.toBeChecked();
+  // exact: «پدربزرگ یا مادربزرگ» contains the word too.
+  await expect(page.getByRole('radio', { name: 'مادر', exact: true })).not.toBeChecked();
   await card('شبانه').click({ position: { x: 20, y: 20 } });
   await expect(card('شبانه').locator('input')).toBeChecked();
   await expect(card('روزانه').locator('input')).not.toBeChecked();

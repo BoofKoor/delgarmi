@@ -1,6 +1,7 @@
 import { Check } from 'lucide-react';
+import type { ReactNode } from 'react';
 
-export type TimelineItem = { title: string; meta?: string; state: 'done' | 'current' | 'todo' };
+export type TimelineItem = { title: string; meta?: ReactNode; state: 'done' | 'current' | 'todo' };
 
 const SPOKEN = { done: '(انجام شد)', current: '(وضعیت فعلی)', todo: '' } as const;
 

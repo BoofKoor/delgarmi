@@ -170,18 +170,6 @@ test('a city page lists the API availability and stays out of search until a ser
   }
 });
 
-test('the request page repeats what the visitor picked on the way in', async ({ page, request }) => {
-  const isfahan: CityItem = (await (await request.get('/api/cities')).json()).find((c: CityItem) => c.slug === 'isfahan');
-  await page.goto(`/request?service=elderly-care&type=night&city=${isfahan.code}`);
-  const picked = page.locator('.picked');
-  await expect(picked).toContainText('مراقبت سالمند');
-  await expect(picked).toContainText('شبانه');
-  await expect(picked).toContainText(`${isfahan.name}، استان ${isfahan.province}`);
-  // Nothing made up for odd addresses: an unknown service or city is simply left out.
-  await page.goto('/request?service=massage&city=abc&type=night');
-  await expect(page.locator('.picked')).toHaveCount(0);
-});
-
 test('service pages send the request form the service they are about', async ({ page }) => {
   for (const slug of ['elderly-care', 'home-nursing', 'child-care', 'therapy']) {
     await page.goto(`/services/${slug}`);

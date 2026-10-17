@@ -1,5 +1,6 @@
 import { connection } from 'next/server';
 import type { ServiceSlug } from '@/content/services';
+import type { FormDefinition } from './form';
 
 /**
  * Server-side reads from the Django API. Pages that call these render per request (never at
@@ -24,6 +25,24 @@ async function get<T>(path: string): Promise<T | null> {
   if (response.status === 404) return null;
   if (!response.ok) throw new Error(`API ${path} answered ${response.status}`);
   return (await response.json()) as T;
+}
+
+/** The request form's questions and texts (api/catalog/form.json). */
+export async function getForm(): Promise<FormDefinition> {
+  const form = await get<FormDefinition>('/api/form');
+  if (!form) throw new Error('API /api/form answered 404');
+  return form;
+}
+
+/** The line under each service's name in the form (Service.hint in the panel). */
+export async function getServiceHints(): Promise<Partial<Record<ServiceSlug, string>>> {
+  const list = (await get<{ slug: ServiceSlug; hint: string }[]>('/api/services')) ?? [];
+  return Object.fromEntries(list.map((s) => [s.slug, s.hint]));
+}
+
+/** A city as the city list has it (the form's city field takes this shape). */
+export function asCityItem(city: CityDetail): CityItem {
+  return { code: city.code, name: city.name, province: city.province, slug: city.slug, active: city.services.filter((s) => s.in_person).map((s) => s.slug) };
 }
 
 export async function getCities(): Promise<CityItem[]> {
