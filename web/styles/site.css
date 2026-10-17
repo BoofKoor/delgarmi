@@ -48,7 +48,8 @@ main:focus { outline: none; }
 .brand { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--control-md); color: var(--ink); text-decoration: none; }
 .brand:hover { color: var(--ink); }
 .brand-mark { width: 44px; height: 40px; }
-.brand-name { font-weight: 800; font-size: 30px; line-height: 1; padding-top: 4px; }
+/* display-sm, as the design system sets the name beside the mark; line-height 1 centres it on the mark. */
+.brand-name { font-weight: var(--type-display-sm-weight); font-size: var(--type-display-sm-size); line-height: 1; padding-top: 4px; }
 .main-nav { display: none; gap: var(--space-1); margin-inline-start: var(--space-4); }
 .main-nav a, .header-link { display: inline-flex; align-items: center; min-height: var(--control-md); padding: 0 var(--space-3); border-radius: var(--radius-sm); color: var(--ink); text-decoration: none; font-size: var(--type-body-size); font-weight: 500; white-space: nowrap; }
 .main-nav a:hover, .header-link:hover { background: var(--surface-sand); color: var(--ink); }
@@ -150,7 +151,7 @@ dialog { color: var(--ink); }
 .how-grid { display: grid; gap: var(--space-12); align-items: start; }
 .steps-list { display: grid; gap: var(--space-8); }
 .steps-list li { display: grid; grid-template-columns: 56px 1fr; gap: var(--space-4); }
-.step-num { font-weight: 800; font-size: 48px; line-height: 1; color: var(--brand-coral); text-align: center; padding-top: 2px; }
+.step-num { font-weight: var(--type-number-weight); font-size: var(--type-number-size); line-height: var(--type-number-line); color: var(--brand-coral); text-align: center; padding-top: 2px; }
 .steps-list h3 { font-size: var(--type-lead-size); line-height: 1.6; font-weight: 750; }
 .steps-list p { color: var(--ink-muted); }
 @media (min-width: 900px) { .how-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: var(--space-16); } }
@@ -250,10 +251,11 @@ dialog { color: var(--ink); }
 .crumbs [aria-current="page"] { color: var(--ink); }
 .crumbs .ic { width: 16px; height: 16px; }
 .page-head { padding-block: var(--space-6) var(--space-12); }
-.page-head h1 { font-size: var(--type-heading-1-size); line-height: var(--type-heading-1-line); font-weight: var(--type-heading-1-weight); }
+/* Page titles: title-sm below 900px, title from there (design system v6). */
+.page-head h1 { font-size: var(--type-title-sm-size); line-height: var(--type-title-sm-line); font-weight: var(--type-title-sm-weight); }
 .page-head .eyebrow { margin-top: var(--space-1); color: var(--ink-muted); font-size: var(--type-small-size); }
 .page-head .lead { margin-top: var(--space-3); max-width: var(--text-max); }
-@media (min-width: 900px) { .page-head h1 { font-size: 40px; line-height: 1.45; } }
+@media (min-width: 900px) { .page-head h1 { font-size: var(--type-title-size); line-height: var(--type-title-line); font-weight: var(--type-title-weight); } }
 
 /* Text pages: the text, and beside it on wide screens a column with the page's sections and help. */
 .text-layout { display: grid; gap: var(--space-12); align-items: start; }
@@ -276,7 +278,7 @@ dialog { color: var(--ink); }
 /* Service page */
 .svc-hero { padding-block: var(--space-6) var(--space-16); }
 .svc-hero-grid { display: grid; gap: var(--space-12); align-items: center; }
-.svc-hero h1 { font-size: var(--type-heading-1-size); line-height: var(--type-heading-1-line); font-weight: var(--type-heading-1-weight); }
+.svc-hero h1 { font-size: var(--type-title-sm-size); line-height: var(--type-title-sm-line); font-weight: var(--type-title-sm-weight); }
 .svc-hero h1.font-display { font-size: var(--type-display-sm-size); line-height: var(--type-display-sm-line); font-weight: var(--type-display-sm-weight); }
 .svc-hero .lead { margin-top: var(--space-3); max-width: 32em; }
 .check-list { display: grid; gap: var(--space-2); margin-top: var(--space-6); }
@@ -286,7 +288,7 @@ dialog { color: var(--ink); }
 .svc-figure img { position: relative; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius-xl); }
 @media (min-width: 900px) {
   .svc-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-16); }
-  .svc-hero h1 { font-size: 40px; line-height: 1.45; }
+  .svc-hero h1 { font-size: var(--type-title-size); line-height: var(--type-title-line); font-weight: var(--type-title-weight); }
   .svc-figure { --rs: .8; margin: var(--space-16) 0 var(--space-6) var(--space-6); }
 }
 @media (min-width: 900px) and (max-width: 1199px) { .hero-figure, .svc-figure { --rs: .6; } }
