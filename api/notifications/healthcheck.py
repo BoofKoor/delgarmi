@@ -3,7 +3,7 @@
 import sys
 import time
 
-from notifications.management.commands.run_worker import HEARTBEAT
+from notifications.heartbeat import HEARTBEAT
 
 try:
     age = time.time() - float(HEARTBEAT.read_text())

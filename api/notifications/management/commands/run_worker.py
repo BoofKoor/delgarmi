@@ -1,15 +1,14 @@
 import logging
 import signal
 import time
-from pathlib import Path
 
 from django.core.management.base import BaseCommand
 from django.db import close_old_connections
 
+from notifications.heartbeat import HEARTBEAT
 from notifications.outbox import send_due
 
 log = logging.getLogger('worker')
-HEARTBEAT = Path('/tmp/worker-heartbeat')
 
 
 class Command(BaseCommand):
