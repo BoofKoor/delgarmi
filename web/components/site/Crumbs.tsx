@@ -1,23 +1,33 @@
 import { ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
-import { Fragment } from 'react';
 import { SITE_URL } from '@/lib/site';
 import { JsonLd } from './JsonLd';
 
 export type Crumb = { label: string; href?: string };
 
-/** «خانه › خدمات › مراقبت سالمند», plus the same path for search engines. */
+/**
+ * «خانه › خدمات › مراقبت سالمند» (design system v8 Breadcrumb: every link 48px high and at
+ * least 44px wide), plus the same path for search engines.
+ */
 export function Crumbs({ items }: { items: Crumb[] }) {
   const all: Crumb[] = [{ label: 'خانه', href: '/' }, ...items];
   return (
     <>
-      <nav className="crumbs" aria-label="مسیر صفحه">
-        {all.map((item, i) => (
-          <Fragment key={item.label}>
-            {i > 0 ? <ChevronLeft className="ic" strokeWidth={1.75} aria-hidden="true" focusable="false" /> : null}
-            {item.href && i < all.length - 1 ? <Link href={item.href}>{item.label}</Link> : <span aria-current="page">{item.label}</span>}
-          </Fragment>
-        ))}
+      <nav className="dg-crumbs" aria-label="مسیر صفحه">
+        <ol>
+          {all.map((item, i) => (
+            <li key={item.label}>
+              {item.href && i < all.length - 1 ? (
+                <>
+                  <Link href={item.href}>{item.label}</Link>
+                  <ChevronLeft aria-hidden="true" focusable="false" strokeWidth={1.75} />
+                </>
+              ) : (
+                <span aria-current="page">{item.label}</span>
+              )}
+            </li>
+          ))}
+        </ol>
       </nav>
       <JsonLd
         data={{

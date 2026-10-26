@@ -30,4 +30,4 @@
 .ds-type-row:last-child { padding-bottom: 0; border-bottom: 0; }
 .ds-type-meta { align-self: flex-end; color: var(--ink-muted); }
 /* Hex codes and specs: Latin digits (IRANYekanX FaNum draws every digit in Persian). */
-.ds-code { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 13px; }
+.ds-code { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: var(--type-small-size); }

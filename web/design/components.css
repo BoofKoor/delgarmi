@@ -1,49 +1,113 @@
-/* دلگرمی — کامپوننت‌ها. همه‌ی مقادیر از tokens.json می‌آیند. پیشوند کلاس‌ها: dg- */
+/* دلگرمی — کامپوننت‌ها، نسخه‌ی ۸. همه‌ی مقادیر از tokens.json می‌آیند. پیشوند کلاس‌ها: dg- */
+
+/* آیکن‌هایی که CSS خودش می‌کشد (Lucide، لایسنس ISC). سفیدِ داخل آیکن روی action همان on-action است. */
+:root {
+  color-scheme: light;
+  --dg-icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  --dg-icon-check-on-action: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  --dg-icon-alert: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E%3C/svg%3E");
+}
 
 *, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; font-family: var(--font-text); font-size: 18px; line-height: 1.9; background: var(--surface-page); color: var(--ink); }
+/* سربرگ چسبان بالا و نوار چسبان پایین: چیزی که فوکوس می‌گیرد همیشه بینشان دیده شود (WCAG 2.4.11). */
+html { scroll-padding-top: calc(var(--header-h) + var(--space-4)); }
+html:has(.dg-flow) { scroll-padding-top: var(--space-4); }
+@media (max-width: 999.98px) { html { scroll-padding-bottom: calc(var(--bar-h-form) + env(safe-area-inset-bottom) + var(--space-4)); } }
+body { margin: 0; font-family: var(--font-text); font-size: var(--type-body-size); line-height: var(--type-body-line); background: var(--surface-page); color: var(--ink); }
 .dg-demo { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; padding: var(--space-6); }
 .dg-demo--stack { flex-direction: column; align-items: stretch; max-width: var(--text-max); }
+.dg-demo svg { flex: none; }
 
 /* ---------- Button ---------- */
-.dg-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: var(--control-md); padding: 0 var(--space-6); border: 1.5px solid transparent; border-radius: var(--radius-md); font-family: var(--font-text); font-size: 18px; line-height: 1.2; font-weight: 700; text-decoration: none; cursor: pointer; transition: background-color .15s ease-out, border-color .15s ease-out; }
+.dg-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: var(--control-md); padding: 0 var(--space-6); border: 1.5px solid transparent; border-radius: var(--radius-md); font-family: var(--font-text); font-size: var(--type-button-size); line-height: var(--type-button-line); font-weight: var(--type-button-weight); text-decoration: none; cursor: pointer; transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out); }
+.dg-btn svg { flex: none; width: 20px; height: 20px; }
 .dg-btn--primary { background: var(--action); color: var(--on-action); }
-.dg-btn--primary:hover { background: var(--action-hover); }
+.dg-btn--primary:hover { background: var(--action-hover); color: var(--on-action); }
 .dg-btn--secondary { background: var(--surface-card); color: var(--ink); border-color: var(--line-strong); }
-.dg-btn--secondary:hover { background: var(--surface-sand); }
+.dg-btn--secondary:hover { background: var(--surface-sand); color: var(--ink); }
 .dg-btn--on-photo { background: transparent; color: var(--on-action); border-color: var(--on-action); }
+/* متنی: کاری کوچک کنار متن، مثل «ویرایش». ناحیه‌ی لمس همان ۴۸px است. */
+.dg-btn--text { padding: 0 var(--space-2); background: transparent; color: var(--action); }
+.dg-btn--text:hover { color: var(--action-hover); text-decoration: underline; text-underline-offset: .3em; }
+.dg-btn--text svg { width: 18px; height: 18px; }
+/* بی‌قاب: دکمه‌های سربرگ (منو، خروج، تلفن)؛ برچسب کوتاه با سبک label. */
+.dg-btn--ghost { padding: 0 var(--space-3); background: transparent; color: var(--ink); font-size: var(--type-label-size); line-height: 1; }
+.dg-btn--ghost:hover, .dg-btn--ghost[aria-expanded="true"] { background: var(--surface-sand); color: var(--ink); }
+.dg-btn--ghost svg { width: 24px; height: 24px; }
+/* آیکن تنها: مربع ۴۸px، همیشه با aria-label. */
+.dg-btn--icon { width: var(--control-md); padding: 0; }
+.dg-btn--icon svg { width: 22px; height: 22px; }
 .dg-btn--lg { min-height: var(--control-lg); padding: 0 var(--space-8); }
 .dg-btn:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
 .dg-btn:disabled, .dg-btn[aria-disabled="true"] { background: var(--surface-sand); color: var(--ink-muted); border-color: transparent; cursor: not-allowed; }
+.dg-btn--text:disabled { background: transparent; }
 .dg-btn--loading { pointer-events: none; }
-.dg-btn--loading::before { content: ""; width: 18px; height: 18px; border-radius: var(--radius-pill); border: 2.5px solid currentColor; border-inline-end-color: transparent; animation: dg-spin .8s linear infinite; }
+.dg-btn--loading::before { content: ""; flex: none; width: 18px; height: 18px; border-radius: var(--radius-pill); border: 2.5px solid currentColor; border-inline-end-color: transparent; animation: dg-spin .8s linear infinite; }
 @keyframes dg-spin { to { transform: rotate(-360deg); } }
 
 /* ---------- TextField ---------- */
 .dg-field { display: flex; flex-direction: column; gap: var(--space-2); }
-.dg-label { font-size: 15px; line-height: 1.6; font-weight: 700; color: var(--ink); }
-.dg-input { min-height: var(--control-md); padding: 0 var(--space-4); border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface-card); color: var(--ink); font-family: var(--font-text); font-size: 18px; }
-.dg-input::placeholder { color: var(--ink-muted); }
-.dg-input:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; border-color: var(--action); }
+.dg-label { font-size: var(--type-label-size); line-height: var(--type-label-line); font-weight: var(--type-label-weight); color: var(--ink); }
+.dg-input { width: 100%; min-height: var(--control-md); padding: 0 var(--space-4); border: 1.5px solid var(--line-strong); border-radius: var(--radius-md); background: var(--surface-card); color: var(--ink); font-family: var(--font-text); font-size: var(--type-body-size); }
+.dg-input::placeholder { color: var(--ink-placeholder); opacity: 1; }
+.dg-input:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; border: 2px solid var(--action); padding-inline: calc(var(--space-4) - .5px); }
 .dg-input--ltr { direction: ltr; text-align: right; letter-spacing: .04em; }
-.dg-help { font-size: 15px; line-height: 1.8; color: var(--ink-muted); }
-.dg-field--error .dg-input { border-color: var(--status-danger); }
-.dg-error { display: flex; gap: var(--space-2); align-items: center; font-size: 15px; line-height: 1.8; color: var(--status-danger); }
-.dg-error::before { content: "!"; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: var(--radius-pill); background: var(--status-danger); color: var(--on-action); font-size: 13px; font-weight: 700; line-height: 1; }
+.dg-help { font-size: var(--type-small-size); line-height: var(--type-small-line); color: var(--ink-muted); }
+.dg-field--error .dg-input { border: 2px solid var(--status-danger); padding-inline: calc(var(--space-4) - .5px); }
+/* پیام خطا: آیکن circle-alert و متن پررنگ؛ رنگ تنها نشانه نیست. */
+.dg-error { display: flex; gap: var(--space-2); align-items: flex-start; margin: 0; font-size: var(--type-small-size); line-height: var(--type-small-line); font-weight: 700; color: var(--status-danger); }
+.dg-error::before { content: ""; flex: none; width: 20px; height: 20px; margin-top: 4px; background-color: currentColor; -webkit-mask: var(--dg-icon-alert) center / 20px no-repeat; mask: var(--dg-icon-alert) center / 20px no-repeat; }
+
+/* ---------- OtpField: کد تأیید ---------- */
+/* یک فیلد، نه پنج خانه؛ چسباندن کد کار می‌کند. اندازه‌ی رقم‌ها در همه‌ی عرض‌ها ۲۴px است. */
+.dg-otp { min-height: var(--control-lg); text-align: center; direction: ltr; font-size: 1.5rem; font-weight: 700; letter-spacing: .3em; }
+.dg-ok { display: flex; gap: var(--space-2); align-items: center; margin: 0; font-size: var(--type-small-size); line-height: var(--type-small-line); font-weight: 700; color: var(--status-success); }
+.dg-ok svg { flex: none; width: 20px; height: 20px; }
+
+/* ---------- QuestionGroup: یک سؤال فرم ---------- */
+.dg-group { margin: 0; min-inline-size: 0; inline-size: 100%; }
+.dg-group fieldset { margin: 0; padding: 0; border: 0; min-inline-size: 0; }
+.dg-group legend, .dg-group-label { display: block; padding: 0; font-size: var(--type-body-size); line-height: 1.6; font-weight: 750; }
+.dg-group fieldset > * + *, .dg-group-label + * { margin-top: var(--space-3); }
+.dg-group .dg-error { margin-top: var(--space-1); }
+/* A question without a fieldset (one checkbox): the message first, then the control. */
+.dg-group > .dg-error { margin-top: 0; }
+.dg-group > .dg-error + * { margin-top: var(--space-2); }
+.dg-optional { font-weight: 400; font-size: var(--type-small-size); color: var(--ink-muted); }
+.dg-why { display: flex; gap: var(--space-2); align-items: flex-start; font-size: var(--type-small-size); line-height: var(--type-small-line); color: var(--ink-muted); }
+.dg-why svg { flex: none; width: 18px; height: 18px; margin-top: 4px; }
+/* خطا: نوار ۴px کنار کل سؤال، در فاصله‌ی کناری صفحه؛ چیزی جابه‌جا نمی‌شود (-۱۲ + ۸ + ۴ = ۰). */
+.dg-group--error { margin-inline-start: calc(-1 * var(--space-3)); padding-inline-start: var(--space-2); border-inline-start: 4px solid var(--status-danger); }
+
+/* ---------- ChoiceChip ---------- */
+.dg-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.dg-chip { position: relative; display: inline-flex; }
+.dg-chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.dg-chip span { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--control-md); padding: 0 var(--space-4); border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface-card); font-size: var(--type-body-size); font-weight: 400; line-height: 1.3; cursor: pointer; transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out); }
+.dg-chip span svg { flex: none; width: 18px; height: 18px; }
+.dg-chip:hover span { border-color: var(--ink-muted); }
+/* انتخاب: زمینه‌ی tint-coral، حاشیه‌ی ۲px، تیک و متن پررنگ؛ تیک و وزن متن بدون رنگ هم دیده می‌شوند. */
+.dg-chip input:checked + span { border: 2px solid var(--action); background: var(--tint-coral); font-weight: 700; padding-inline: calc(var(--space-4) - .5px); }
+.dg-chip input:checked + span svg { display: none; }
+.dg-chip input:checked + span::before { content: ""; flex: none; width: 18px; height: 18px; background-color: var(--action); -webkit-mask: var(--dg-icon-check) center / 18px no-repeat; mask: var(--dg-icon-check) center / 18px no-repeat; }
+.dg-chip input:focus-visible + span { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.dg-chip input:disabled + span { border-color: transparent; background: var(--surface-sand); color: var(--ink-muted); cursor: not-allowed; }
 
 /* ---------- ChoiceCard ---------- */
 .dg-choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3); border: 0; margin: 0; padding: 0; min-inline-size: 0; inline-size: 100%; }
-.dg-choices legend { font-size: 21px; line-height: 1.8; font-weight: 750; margin-bottom: var(--space-3); padding: 0; }
-.dg-choice { position: relative; display: flex; flex-direction: column; gap: var(--space-1); min-height: var(--control-lg); padding-block: var(--space-4); padding-inline: var(--space-4) var(--space-12); border: 1.5px solid var(--line-strong); border-radius: var(--radius-md); background: var(--surface-card); cursor: pointer; transition: background-color .15s ease-out, border-color .15s ease-out; }
+.dg-choices legend { grid-column: 1 / -1; padding: 0; margin-bottom: var(--space-3); font-size: var(--type-body-size); line-height: 1.6; font-weight: 750; }
+.dg-choice { position: relative; display: flex; }
 .dg-choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-.dg-choice-title { font-size: 18px; line-height: 1.6; font-weight: 700; color: var(--ink); }
-.dg-choice-hint { font-size: 15px; line-height: 1.7; color: var(--ink-muted); }
-.dg-choice::after { content: ""; position: absolute; inset-inline-end: var(--space-4); top: var(--space-4); width: 22px; height: 22px; border-radius: var(--radius-pill); border: 1.5px solid var(--line-strong); background: var(--surface-card); box-sizing: border-box; }
-.dg-choice:hover { border-color: var(--ink-muted); }
-.dg-choice:has(input:checked) { border: 2px solid var(--action); background: var(--tint-coral); }
-.dg-choice:has(input:checked)::after { border: 6px solid var(--action); }
-.dg-choice:has(input:focus-visible) { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-.dg-group--error .dg-choice { border-color: var(--status-danger); }
+/* نشانه‌ی انتخاب در سمت شروع، همان‌جا که چشم سطر را شروع می‌کند. */
+.dg-choice-box { flex: 1; display: grid; grid-template-columns: 24px minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); align-content: start; min-height: var(--control-lg); padding: var(--space-4); border: 1.5px solid var(--line-strong); border-radius: var(--radius-md); background: var(--surface-card); cursor: pointer; transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out); }
+.dg-choice-box::before { content: ""; grid-row: 1 / span 2; width: 24px; height: 24px; margin-top: 3px; border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface-card) center / 16px no-repeat; }
+.dg-choice-title, .dg-choice-hint { grid-column: 2; }
+.dg-choice-title { font-size: var(--type-body-size); line-height: 1.6; font-weight: 700; color: var(--ink); }
+.dg-choice-hint { font-size: var(--type-small-size); line-height: 1.7; color: var(--ink-muted); }
+.dg-choice:hover .dg-choice-box { border-color: var(--ink-muted); }
+.dg-choice input:checked + .dg-choice-box { border: 2px solid var(--action); padding: calc(var(--space-4) - .5px); background-color: var(--tint-coral); }
+.dg-choice input:checked + .dg-choice-box::before { border-color: var(--action); background-color: var(--action); background-image: var(--dg-icon-check-on-action); }
+.dg-choice input:focus-visible + .dg-choice-box { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
 /* ستون‌ها به تعداد گزینه‌ها؛ عرض خود ستون فرم اندازه گرفته می‌شود */
 .dg-form { container-type: inline-size; }
 @container (min-width: 600px) { .dg-choices--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -52,17 +116,15 @@ body { margin: 0; font-family: var(--font-text); font-size: 18px; line-height: 1
 @container (max-width: 439px) { .dg-choices--2, .dg-choices--4 { grid-template-columns: 1fr; } }
 
 /* ---------- Checkbox ---------- */
-.dg-check { display: flex; gap: var(--space-3); align-items: flex-start; font-size: 15px; line-height: 1.8; color: var(--ink); cursor: pointer; }
-.dg-check input { appearance: none; flex: none; width: 24px; height: 24px; margin: 2px 0 0; border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface-card); display: grid; place-items: center; cursor: pointer; }
-.dg-check input::after { content: ""; width: 6px; height: 11px; border: solid var(--on-action); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) translate(-1px, -1px); opacity: 0; }
-.dg-check input:checked { background: var(--action); border-color: var(--action); }
-.dg-check input:checked::after { opacity: 1; }
+.dg-check { display: grid; grid-template-columns: 24px minmax(0, 1fr); column-gap: var(--space-3); align-items: start; font-size: var(--type-small-size); line-height: var(--type-small-line); color: var(--ink); cursor: pointer; }
+.dg-check input { appearance: none; width: 24px; height: 24px; margin: 2px 0 0; border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface-card) center / 16px no-repeat; cursor: pointer; }
+.dg-check input:checked { background-color: var(--action); background-image: var(--dg-icon-check-on-action); border-color: var(--action); }
 .dg-check input:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-.dg-check a { color: var(--action); }
+.dg-check a { color: var(--action); font-weight: 700; }
 
 /* ---------- Stepper ---------- */
 .dg-steps { display: flex; flex-direction: column; gap: var(--space-2); }
-.dg-steps-text { display: flex; justify-content: space-between; font-size: 15px; line-height: 1.6; }
+.dg-steps-text { display: flex; justify-content: space-between; align-items: baseline; font-size: var(--type-label-size); line-height: var(--type-label-line); }
 .dg-steps-count { font-weight: 700; color: var(--ink); }
 .dg-steps-name { color: var(--ink-muted); }
 .dg-steps-bar { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-1); }
@@ -70,17 +132,40 @@ body { margin: 0; font-family: var(--font-text); font-size: 18px; line-height: 1
 .dg-steps-bar span.is-done, .dg-steps-bar span.is-current { background: var(--action); }
 
 /* ---------- ServiceCard ---------- */
-.dg-service { display: flex; flex-direction: column; max-width: 360px; border-radius: var(--radius-lg); overflow: hidden; background: var(--surface-card); box-shadow: var(--shadow-card); color: var(--ink); text-decoration: none; transition: box-shadow .25s ease-out, transform .25s ease-out; }
+.dg-service { display: flex; flex-direction: column; max-width: 360px; border-radius: var(--radius-lg); overflow: hidden; background: var(--surface-card); box-shadow: var(--shadow-card); color: var(--ink); text-decoration: none; transition: box-shadow var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out); }
 .dg-service img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-.dg-service-body { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); }
-.dg-service-title { margin: 0; font-size: 24px; line-height: 1.5; font-weight: 750; }
-.dg-service-text { margin: 0; font-size: 18px; line-height: 1.9; color: var(--ink-muted); }
-.dg-service-link { margin-top: var(--space-2); font-size: 18px; font-weight: 700; color: var(--action); white-space: nowrap; }
-.dg-service:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); }
+.dg-service-body { display: flex; flex: 1; flex-direction: column; gap: var(--space-2); padding: var(--space-6); }
+.dg-service-title { margin: 0; font-size: var(--type-heading-2-size); line-height: var(--type-heading-2-line); font-weight: var(--type-heading-2-weight); }
+.dg-service-text { margin: 0; font-size: var(--type-body-size); line-height: var(--type-body-line); color: var(--ink-muted); }
+.dg-service-link { margin-top: auto; padding-top: var(--space-2); font-size: var(--type-body-size); font-weight: 700; color: var(--action); white-space: nowrap; }
+.dg-service-go { display: none; }
+.dg-service:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); color: var(--ink); }
 .dg-service:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+/* ردیف فشرده: عکس کوچک ۷۲px، نام، یک خط و فلش. در .dg-service-list روی گوشی همه‌ی کارت‌ها ردیف می‌شوند. */
+.dg-service--row { flex-direction: row; align-items: center; gap: var(--space-3); max-width: none; padding: var(--space-3); }
+.dg-service--row img { flex: none; width: 72px; height: 72px; aspect-ratio: auto; border-radius: var(--radius-md); }
+.dg-service--row .dg-service-body { gap: 2px; padding: 0; min-width: 0; }
+.dg-service--row .dg-service-title { font-size: var(--type-body-size); line-height: 1.6; font-weight: 700; }
+.dg-service--row .dg-service-text { font-size: var(--type-small-size); line-height: 1.7; }
+.dg-service--row .dg-service-link { display: none; }
+.dg-service--row .dg-service-go { display: block; flex: none; width: 20px; height: 20px; color: var(--ink-muted); }
+.dg-service--row:hover { transform: none; }
+.dg-service--quiet { background: var(--surface-page); box-shadow: none; border: 1px solid var(--line-soft); }
+.dg-service--quiet:hover { box-shadow: none; border-color: var(--line-strong); }
+.dg-service-list { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+@media (max-width: 759.98px) {
+  .dg-service-list .dg-service { flex-direction: row; align-items: center; gap: var(--space-3); max-width: none; padding: var(--space-3); }
+  .dg-service-list .dg-service img { flex: none; width: 72px; height: 72px; aspect-ratio: auto; border-radius: var(--radius-md); }
+  .dg-service-list .dg-service-body { gap: 2px; padding: 0; min-width: 0; }
+  .dg-service-list .dg-service-title { font-size: var(--type-body-size); line-height: 1.6; font-weight: 700; }
+  .dg-service-list .dg-service-text { font-size: var(--type-small-size); line-height: 1.7; }
+  .dg-service-list .dg-service-link { display: none; }
+  .dg-service-list .dg-service-go { display: block; flex: none; width: 20px; height: 20px; color: var(--ink-muted); }
+  .dg-service-list .dg-service:hover { transform: none; }
+}
 
 /* ---------- StatusBadge ---------- */
-.dg-badge { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 32px; padding: 0 var(--space-3); border-radius: var(--radius-pill); font-size: 15px; line-height: 1.4; font-weight: 700; white-space: nowrap; }
+.dg-badge { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 32px; padding: 0 var(--space-3); border-radius: var(--radius-pill); font-size: var(--type-label-size); line-height: 1.4; font-weight: 700; white-space: nowrap; }
 .dg-badge::before { content: ""; width: 8px; height: 8px; border-radius: var(--radius-pill); background: currentColor; }
 .dg-badge--new { background: var(--tint-info); color: var(--status-info); }
 .dg-badge--calling, .dg-badge--matching { background: var(--tint-amber); color: var(--status-warning); }
@@ -90,74 +175,66 @@ body { margin: 0; font-family: var(--font-text); font-size: 18px; line-height: 1
 .dg-badge--cancelled { background: var(--tint-danger); color: var(--status-danger); }
 
 /* ---------- Notice ---------- */
+/* آیکن Lucide خطی هم‌رنگ وضعیت: info، triangle-alert، circle-check، circle-x (یا یک آیکن مناسب‌تر مثل clock برای لیست انتظار). */
 .dg-notice { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-4); border-radius: var(--radius-md); background: var(--tint-info); color: var(--ink); }
-.dg-notice-icon { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: var(--radius-pill); background: var(--status-info); color: var(--on-action); font-size: 15px; font-weight: 700; line-height: 1; }
-.dg-notice-body { display: flex; flex-direction: column; gap: var(--space-1); font-size: 15px; line-height: 1.8; }
-.dg-notice-title { font-size: 18px; line-height: 1.6; font-weight: 700; }
+.dg-notice-icon { flex: none; display: grid; place-items: center; width: 24px; height: 24px; margin-top: 2px; color: var(--status-info); }
+.dg-notice-icon svg { width: 24px; height: 24px; }
+.dg-notice-body { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; font-size: var(--type-small-size); line-height: var(--type-small-line); }
+.dg-notice-title { font-size: var(--type-body-size); line-height: 1.6; font-weight: 700; }
 .dg-notice a { color: var(--action); font-weight: 700; }
 .dg-notice--warning { background: var(--tint-amber); }
-.dg-notice--warning .dg-notice-icon { background: var(--status-warning); }
+.dg-notice--warning .dg-notice-icon { color: var(--status-warning); }
 .dg-notice--success { background: var(--tint-success); }
-.dg-notice--success .dg-notice-icon { background: var(--status-success); }
+.dg-notice--success .dg-notice-icon { color: var(--status-success); }
 .dg-notice--danger { background: var(--tint-danger); }
-.dg-notice--danger .dg-notice-icon { background: var(--status-danger); }
-
-/* ---------- QuestionGroup: یک سؤال فرم ---------- */
-.dg-group { border: 0; margin: 0 0 var(--space-8); padding: 0; min-inline-size: 0; inline-size: 100%; }
-.dg-group > legend, .dg-group-label { display: block; padding: 0; margin-bottom: var(--space-3); font-size: 18px; line-height: 1.6; font-weight: 750; }
-.dg-optional { font-weight: 400; font-size: 15px; color: var(--ink-muted); }
-.dg-why { display: flex; gap: var(--space-2); align-items: flex-start; margin-top: var(--space-3); font-size: 15px; line-height: 1.8; color: var(--ink-muted); }
-.dg-why svg { flex: none; width: 18px; height: 18px; margin-top: 4px; }
-.dg-group .dg-error { margin-top: var(--space-2); }
-
-/* ---------- ChoiceChip ---------- */
-.dg-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.dg-chip { position: relative; display: inline-flex; }
-.dg-chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-.dg-chip span { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--control-md); padding: 0 var(--space-4); border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface-card); font-size: 17px; font-weight: 500; line-height: 1.3; cursor: pointer; transition: background-color .15s ease-out, border-color .15s ease-out; }
-.dg-chip:hover span { border-color: var(--ink-muted); }
-.dg-chip input:checked + span { border: 2px solid var(--action); background: var(--tint-coral); font-weight: 700; padding-inline: calc(var(--space-4) - .5px); }
-.dg-chip input[type="checkbox"]:checked + span::before { content: ""; width: 7px; height: 12px; margin-inline-start: 2px; border: solid var(--action); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) translate(-1px, -2px); }
-.dg-chip input:focus-visible + span { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-.dg-group--error .dg-chip span { border-color: var(--status-danger); }
+.dg-notice--danger .dg-notice-icon { color: var(--status-danger); }
+/* دکمه‌ی داخل پیام رنگ خودش را نگه می‌دارد. */
+.dg-notice a.dg-btn--secondary { color: var(--ink); font-weight: var(--type-button-weight); }
 
 /* ---------- Counter ---------- */
 .dg-counter { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-1); border: 1.5px solid var(--line-strong); border-radius: var(--radius-md); background: var(--surface-card); }
-.dg-counter button { display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: var(--radius-sm); background: var(--surface-sand); color: var(--ink); font: 700 22px/1 var(--font-text); cursor: pointer; }
-.dg-counter button:disabled { color: var(--ink-muted); cursor: not-allowed; }
+.dg-counter button { display: grid; place-items: center; width: var(--control-md); height: var(--control-md); border: 0; border-radius: calc(var(--radius-md) - var(--space-1)); background: var(--surface-sand); color: var(--ink); cursor: pointer; }
+.dg-counter button svg { width: 22px; height: 22px; }
+.dg-counter button:disabled { color: var(--line-strong); cursor: not-allowed; }
 .dg-counter button:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-.dg-counter output { min-width: 48px; text-align: center; font-size: 20px; font-weight: 750; }
+.dg-counter output { min-width: var(--control-md); text-align: center; font-size: var(--type-heading-2-size); font-weight: 750; }
 
 /* ---------- CitySearch ---------- */
 .dg-input-icon { position: relative; }
-.dg-input-icon svg { position: absolute; inset-inline-start: var(--space-3); top: 50%; width: 22px; height: 22px; transform: translateY(-50%); color: var(--ink-muted); pointer-events: none; }
-.dg-input-icon .dg-input { width: 100%; padding-inline-start: 44px; }
+.dg-input-icon svg { position: absolute; inset-inline-start: 14px; top: 50%; width: 22px; height: 22px; transform: translateY(-50%); color: var(--ink-muted); pointer-events: none; }
+.dg-input-icon .dg-input { width: 100%; padding-inline-start: 46px; }
+.dg-input-icon .dg-input:focus-visible, .dg-field--error .dg-input-icon .dg-input { padding-inline-start: 45.5px; }
 .dg-combo { position: relative; }
-.dg-combo-list { position: absolute; z-index: 20; inset-inline: 0; top: calc(100% + 6px); max-height: 288px; overflow: auto; padding: var(--space-1); border: 1px solid var(--line-soft); border-radius: var(--radius-md); background: var(--surface-card); box-shadow: var(--shadow-lift); }
+/* بلندی فهرست را روی گوشی کامپوننت تا بالای صفحه‌کلید کم می‌کند (visualViewport). */
+.dg-combo-list { position: absolute; z-index: var(--z-overlay); inset-inline: 0; top: calc(100% + 6px); max-height: 288px; overflow: auto; overscroll-behavior: contain; padding: var(--space-1); border: 1px solid var(--line-soft); border-radius: var(--radius-md); background: var(--surface-card); box-shadow: var(--shadow-overlay); }
 .dg-combo-list[hidden] { display: none; }
-.dg-combo-opt { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); min-height: var(--control-md); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); cursor: pointer; }
-.dg-combo-opt small { color: var(--ink-muted); font-size: 15px; }
+.dg-combo-opt { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); min-height: 52px; padding: var(--space-3); border-radius: calc(var(--radius-md) - var(--space-1)); line-height: 1.6; cursor: pointer; }
+.dg-combo-opt[aria-selected="true"] { font-weight: 700; }
+.dg-combo-opt small { color: var(--ink-muted); font-size: var(--type-small-size); font-weight: 400; }
 .dg-combo-opt[aria-selected="true"], .dg-combo-opt:hover { background: var(--tint-coral); }
-.dg-combo-empty { padding: var(--space-3); color: var(--ink-muted); font-size: 15px; }
+.dg-combo-empty { padding: var(--space-3); color: var(--ink-muted); font-size: var(--type-small-size); }
 
 /* ---------- DatePicker (شمسی) ---------- */
 .dg-cal { inline-size: 100%; max-width: 380px; padding: var(--space-4); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); background: var(--surface-card); }
 .dg-cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-2); }
-.dg-cal-head strong { font-size: 18px; }
-.dg-cal-nav { display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--ink); cursor: pointer; }
+.dg-cal-head strong { font-size: var(--type-body-size); }
+.dg-cal-nav { display: grid; place-items: center; width: var(--control-md); height: var(--control-md); border: 0; border-radius: calc(var(--radius-md) - var(--space-1)); background: transparent; color: var(--ink); cursor: pointer; }
 .dg-cal-nav svg { width: 22px; height: 22px; }
 .dg-cal-nav:hover { background: var(--surface-sand); }
 .dg-cal-nav:disabled { color: var(--line-strong); cursor: not-allowed; background: transparent; }
-.dg-cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; text-align: center; }
-.dg-cal-dow { padding-block: var(--space-1); font-size: 13px; color: var(--ink-muted); }
-.dg-cal-day { display: grid; place-items: center; aspect-ratio: 1; min-height: 40px; border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--ink); font: 16px/1 var(--font-text); cursor: pointer; }
+.dg-cal-nav:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.dg-cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: var(--space-1) 2px; text-align: center; }
+.dg-cal-dow { padding-block: var(--space-1); font-size: var(--type-small-size); line-height: 1.6; color: var(--ink-muted); }
+.dg-cal-dow:last-child { color: var(--status-danger); }
+/* هر روز دست‌کم ۴۴ در ۴۴px؛ رقم روزها ۱rem. */
+.dg-cal-day { display: grid; place-items: center; min-height: 44px; border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--ink); font-family: var(--font-text); font-size: 1rem; line-height: 1; cursor: pointer; }
 .dg-cal-day:hover:not(:disabled) { background: var(--tint-coral); }
 .dg-cal-day:disabled { color: var(--line-strong); cursor: not-allowed; }
 .dg-cal-day.is-today { box-shadow: inset 0 0 0 1.5px var(--line-strong); }
 .dg-cal-day.is-fri:not(:disabled):not([aria-pressed="true"]) { color: var(--status-danger); }
 .dg-cal-day[aria-pressed="true"] { background: var(--action); color: var(--on-action); font-weight: 700; }
 .dg-cal-day:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-@media (max-width: 479px) { .dg-cal { padding: var(--space-2); } }
+@media (max-width: 479.98px) { .dg-cal { padding: var(--space-2); } }
 
 /* ---------- StatusTimeline ---------- */
 .dg-timeline { display: grid; margin: 0; padding: 0; list-style: none; }
@@ -165,7 +242,7 @@ body { margin: 0; font-family: var(--font-text); font-size: 18px; line-height: 1
 .dg-timeline li::before { content: ""; position: absolute; inset-inline-start: 11px; top: 26px; bottom: 0; width: 2px; background: var(--line-soft); }
 .dg-timeline li:last-child { padding-bottom: 0; }
 .dg-timeline li:last-child::before { display: none; }
-.dg-timeline-dot { position: relative; z-index: 1; display: grid; place-items: center; width: 24px; height: 24px; margin-top: 4px; border: 2px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface-card); box-sizing: border-box; }
+.dg-timeline-dot { position: relative; display: grid; place-items: center; width: 24px; height: 24px; margin-top: 4px; border: 2px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface-card); box-sizing: border-box; }
 .dg-timeline .is-done::before { background: var(--status-success); }
 .dg-timeline .is-done .dg-timeline-dot { border-color: var(--status-success); background: var(--status-success); color: var(--on-action); }
 .dg-timeline .is-done .dg-timeline-dot svg { width: 14px; height: 14px; stroke-width: 3; }
@@ -173,10 +250,162 @@ body { margin: 0; font-family: var(--font-text); font-size: 18px; line-height: 1
 .dg-timeline .is-current .dg-timeline-dot::after { content: ""; width: 8px; height: 8px; border-radius: var(--radius-pill); background: var(--status-warning); }
 .dg-timeline-title { display: block; font-weight: 700; line-height: 1.6; }
 .dg-timeline .is-todo .dg-timeline-title { font-weight: 500; color: var(--ink-muted); }
-.dg-timeline-meta { display: block; font-size: 15px; line-height: 1.7; color: var(--ink-muted); }
+.dg-timeline-meta { display: block; font-size: var(--type-small-size); line-height: 1.7; color: var(--ink-muted); }
+
+/* ---------- ProcessSteps: چهار قدم بعد از درخواست، یک متن در همه‌جا ---------- */
+.dg-process { display: grid; gap: var(--space-5); margin: 0; padding: 0; list-style: none; }
+.dg-process > li { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: var(--space-3); align-items: start; }
+.dg-process-n { display: grid; place-items: center; width: 40px; height: 40px; border-radius: var(--radius-pill); background: var(--tint-coral); color: var(--action); font-size: var(--type-body-size); font-weight: 750; line-height: 1; }
+.dg-process-n svg { width: 20px; height: 20px; stroke-width: 2.75; }
+.dg-process-title { margin: 0; font-size: var(--type-body-size); line-height: 1.6; font-weight: 700; }
+.dg-process-text { margin: 2px 0 0; font-size: var(--type-small-size); line-height: 1.7; color: var(--ink-muted); }
+/* صفحه‌ی اول: شماره با سبک number و رنگ brand-coral (پفک فقط همان‌جا). */
+.dg-process--display > li { grid-template-columns: 48px minmax(0, 1fr); }
+.dg-process--display .dg-process-n { width: auto; height: auto; background: none; color: var(--brand-coral); font-family: var(--font-display); font-feature-settings: "ss01"; font-size: var(--type-number-size); line-height: var(--type-number-line); font-weight: var(--type-number-weight); }
+/* با وضعیت («ثبت شد»): انجام‌شده سبز با تیک، فعلی با حاشیه، مانده سفید. */
+.dg-process .is-done .dg-process-n { background: var(--status-success); color: var(--on-action); }
+.dg-process .is-current .dg-process-n { border: 2px solid var(--action); }
+.dg-process .is-todo .dg-process-n { border: 1.5px solid var(--line-strong); background: var(--surface-card); color: var(--ink-muted); }
+@media (min-width: 1000px) {
+  .dg-process--cols { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-6); }
+  .dg-process--cols > li { grid-template-columns: 1fr; row-gap: var(--space-3); }
+}
+
+/* ---------- Breadcrumb ---------- */
+/* هر پیوند ۴۸px بلندی و دست‌کم ۴۴px پهنا؛ فاصله‌ی داخلی‌اش متن را با لبه‌ی محتوا هم‌تراز نگه می‌دارد. */
+.dg-crumbs { margin-inline: calc(-1 * var(--space-2)); }
+.dg-crumbs ol { display: flex; flex-wrap: wrap; align-items: center; margin: 0; padding: 0; list-style: none; font-size: var(--type-small-size); line-height: 1.6; }
+.dg-crumbs li { display: flex; align-items: center; }
+.dg-crumbs a, .dg-crumbs [aria-current="page"] { display: flex; align-items: center; justify-content: center; min-height: var(--control-md); padding: 0 var(--space-2); }
+.dg-crumbs a { min-width: 44px; color: var(--ink-muted); text-underline-offset: 4px; }
+.dg-crumbs a:hover { color: var(--action); }
+.dg-crumbs [aria-current="page"] { color: var(--ink); font-weight: 700; }
+.dg-crumbs svg { flex: none; width: 16px; height: 16px; color: var(--ink-muted); }
+
+/* ---------- Accordion: پرسش‌ها ---------- */
+.dg-accordion { display: grid; border-top: 1px solid var(--line-soft); }
+.dg-accordion details { border-bottom: 1px solid var(--line-soft); }
+.dg-accordion summary { display: flex; align-items: center; gap: var(--space-3); min-height: 56px; padding-block: var(--space-4); cursor: pointer; list-style: none; font-size: var(--type-body-size); line-height: 1.6; font-weight: 700; }
+.dg-accordion summary::-webkit-details-marker { display: none; }
+.dg-accordion summary > span { flex: 1; min-width: 0; }
+.dg-accordion summary svg { flex: none; width: 24px; height: 24px; color: var(--ink-muted); transition: transform var(--duration-base) var(--ease-out); }
+.dg-accordion details[open] summary svg { transform: rotate(180deg); }
+.dg-accordion-answer { display: grid; gap: var(--space-2); max-width: var(--prose-max); padding-bottom: var(--space-4); }
+
+/* ---------- Header: سربرگ سایت ---------- */
+/* همان رنگ صفحه، بی‌گوشه؛ بعد از اسکرول چسبان با shadow-card. ۵۶px روی گوشی، ۷۲px از bp-md. */
+.dg-header { position: sticky; top: 0; z-index: var(--z-header); background: var(--surface-page); transition: box-shadow var(--duration-base) var(--ease-out); }
+.dg-header.is-scrolled { box-shadow: var(--shadow-card); }
+.dg-header-inner { display: flex; align-items: center; gap: var(--space-6); min-height: var(--header-h); }
+/* دکمه‌ی آخر سربرگ با فاصله‌ی داخلی‌اش لبه را می‌گیرد تا آیکنش با لبه‌ی محتوا هم‌تراز شود. */
+.dg-header-actions { display: flex; align-items: center; gap: var(--space-1); margin-inline: auto calc(-1 * var(--space-3)); }
+.dg-brand { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--control-md); color: var(--ink); text-decoration: none; }
+.dg-brand:hover { color: var(--ink); }
+.dg-brand svg { flex: none; width: 38px; height: 34px; }
+.dg-brand-name { font-family: var(--font-display); font-feature-settings: "ss01"; font-weight: var(--type-display-sm-weight); font-size: var(--type-display-sm-size); line-height: 1; padding-top: 4px; }
+.dg-header-nav { display: none; gap: var(--space-1); }
+.dg-header-nav a { display: inline-flex; align-items: center; min-height: var(--control-md); padding: 0 var(--space-3); border-radius: var(--radius-md); color: var(--ink); text-decoration: none; font-size: var(--type-body-size); font-weight: 500; white-space: nowrap; }
+.dg-header-nav a:hover { background: var(--surface-sand); color: var(--ink); }
+.dg-header-nav a[aria-current="page"] { background: var(--surface-sand); font-weight: 700; }
+@media (min-width: 760px) { .dg-brand svg { width: 44px; height: 40px; } }
+@media (min-width: 1000px) { .dg-header-nav { display: flex; } .dg-header-actions { margin-inline-end: 0; } }
+
+/* ---------- MobileMenu: منوی گوشی ---------- */
+/* پنجره‌ی تمام‌صفحه با همان سربرگ؛ دکمه‌ی منو «بستن» می‌شود. چهار خدمت مستقیم در منو. */
+.dg-menu { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: var(--surface-page); color: var(--ink); overscroll-behavior: contain; }
+.dg-menu[open] { display: flex; flex-direction: column; }
+.dg-menu::backdrop { background: rgba(74, 44, 58, 0.45); }
+@media (prefers-reduced-motion: no-preference) { .dg-menu[open] { animation: dg-menu-in var(--duration-base) var(--ease-out); } }
+@keyframes dg-menu-in { from { opacity: 0; transform: translateY(-8px); } }
+.dg-menu-head { border-bottom: 1px solid var(--line-soft); }
+.dg-menu-nav { flex: 1; overflow-y: auto; padding-block: var(--space-2) var(--space-6); }
+.dg-menu-title { padding-top: var(--space-1); font-size: var(--type-label-size); line-height: 1.6; font-weight: 700; color: var(--ink-muted); }
+.dg-menu-nav ul { margin: var(--space-1) 0 0; padding: 0; list-style: none; }
+.dg-menu-nav ul + ul { margin-top: var(--space-2); padding-top: var(--space-2); border-top: 1px solid var(--line-soft); }
+.dg-menu-nav a { display: flex; align-items: center; gap: var(--space-3); min-height: var(--control-md); color: var(--ink); font-size: var(--type-body-size); line-height: 1.4; text-decoration: none; }
+.dg-menu-nav a svg { flex: none; width: 24px; height: 24px; }
+.dg-menu-nav .dg-menu-services a { font-weight: 700; }
+.dg-menu-nav a[aria-current="page"] { color: var(--action); }
+
+/* ---------- StickyBar: نوار پایین ---------- */
+/* زمینه‌ی سفید و خط line-soft بالا (سایه‌ی درونی، تا ارتفاع همان bar-h بماند)، فاصله‌ی امن پایین گوشی. */
+.dg-bar { position: sticky; bottom: 0; z-index: var(--z-sticky); display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4) calc(var(--space-3) + env(safe-area-inset-bottom)); background: var(--surface-card); box-shadow: inset 0 1px 0 var(--line-soft); }
+.dg-bar > .dg-btn { flex: 1 1 0; }
+.dg-bar > .dg-btn--secondary { flex: 0 1 auto; padding-inline: var(--space-4); }
+/* تا وقتی فیلد متنی فوکوس دارد (صفحه‌کلید باز است) نوار دیده نمی‌شود و جای خود را نگه می‌دارد. */
+.dg-bar.is-typing { visibility: hidden; }
+/* نوار صفحه‌ها: وقتی دکمه‌ی اصلی صفحه از دید رفت؛ از bp-lg سربرگ دکمه دارد. */
+.dg-bar--page { display: none; }
+.dg-bar--page.is-shown { display: flex; }
+@media (min-width: 1000px) { .dg-bar--page, .dg-bar--page.is-shown { display: none; } }
+/* نوار فرم: روی گوشی چسبان؛ از bp-md یک ردیف عادی زیر فرم. */
+@media (min-width: 760px) {
+  .dg-bar--form, .dg-bar--form.is-typing { position: static; visibility: visible; padding: 0; background: none; box-shadow: none; }
+  .dg-bar--form > .dg-btn { flex: 0 0 auto; }
+  .dg-bar--form > .dg-btn--primary { margin-inline-start: auto; }
+}
+
+/* ---------- FlowShell: قاب فرم ---------- */
+/* سربرگ ساده (لوگو، تلفن پشتیبانی، «خروج») که چسبان نیست، و به جای پانویس سایت یک خط. */
+.dg-flow { display: flex; flex-direction: column; min-height: 100dvh; }
+.dg-flow-head { display: flex; align-items: center; gap: var(--space-1); min-height: var(--header-h); }
+.dg-flow-head .dg-brand { margin-inline-end: auto; }
+.dg-flow-head .dg-btn:last-child { margin-inline-end: calc(-1 * var(--space-3)); }
+.dg-flow-main { flex: 1; }
+.dg-flow-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--space-4); padding-block: var(--space-2) var(--space-4); border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: var(--type-small-size); line-height: 1.6; }
+.dg-flow-foot a { display: flex; align-items: center; min-height: 44px; color: var(--ink-muted); }
+.dg-flow-foot a:hover { color: var(--ink); }
+.dg-flow-foot span { margin-inline-start: auto; }
+
+/* ---------- Footer: پانویس سایت ---------- */
+.dg-footer { padding-block: var(--space-8) var(--space-6); background: var(--surface-sand); }
+.dg-footer-about p { margin: var(--space-3) 0 0; max-width: 30em; color: var(--ink-muted); font-size: var(--type-small-size); line-height: var(--type-small-line); }
+/* پیوندها دو ستونی و هر کدام ۴۴px؛ در hover زیرخط و همان رنگ ink (۱۰:۱ روی surface-sand). */
+.dg-footer-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(4, auto); grid-auto-flow: column; column-gap: var(--space-4); margin: var(--space-6) 0 0; padding: 0; list-style: none; }
+.dg-footer-links a { display: flex; align-items: center; min-height: 44px; color: var(--ink); font-size: var(--type-small-size); line-height: 1.6; text-decoration: none; }
+.dg-footer-links a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: .3em; }
+/* نماد اعتماد کنار تماس؛ وقتی ستون باریک است (۷۶۰ تا ۹۹۹) زیر آن می‌رود و از صفحه بیرون نمی‌زند. */
+.dg-footer-contact { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: var(--space-4); margin-top: var(--space-6); }
+.dg-footer-contact > div { display: flex; flex-direction: column; min-width: 0; }
+.dg-footer-row { display: flex; align-items: center; gap: var(--space-2); min-height: 44px; margin: 0; color: var(--ink); font-size: var(--type-small-size); line-height: 1.6; text-decoration: none; }
+.dg-footer-row svg { flex: none; width: 20px; height: 20px; }
+a.dg-footer-row:hover { color: var(--ink); text-decoration: underline; }
+/* جای نماد اعتماد تا وقتی صادر شود؛ مثل بقیه‌ی چیزهای هنوز نیامده. */
+.dg-enamad { flex: none; display: grid; place-items: center; width: 88px; height: 88px; padding: var(--space-2); border-radius: var(--radius-md); background: var(--tint-amber); color: var(--status-warning); font-size: var(--type-small-size); line-height: 1.4; font-weight: 700; text-align: center; }
+.dg-footer-bottom { margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--line-soft); color: var(--ink-muted); font-size: var(--type-small-size); line-height: var(--type-small-line); }
+.dg-footer-bottom p { margin: 0; }
+/* تبلت: درباره و پیوندها کنار هم، تماس و نماد اعتماد یک ردیف کامل زیرشان؛ از bp-lg سه ستون. */
+@media (min-width: 760px) {
+  .dg-footer-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: var(--space-6) var(--space-8); align-items: start; }
+  .dg-footer-contact { grid-column: 1 / -1; justify-content: flex-start; gap: var(--space-4) var(--space-12); }
+  .dg-footer-links, .dg-footer-contact { margin-top: 0; }
+  .dg-footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); }
+}
+@media (min-width: 1000px) {
+  .dg-footer-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 2fr) minmax(0, 1.2fr); gap: var(--space-8); }
+  .dg-footer-contact { grid-column: auto; justify-content: space-between; gap: var(--space-4); }
+}
+
+/* ---------- Summary: خلاصه‌ی درخواست کنار فرم (دسکتاپ) ---------- */
+.dg-summary { padding: var(--space-6); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); background: var(--surface-card); }
+.dg-summary h2 { margin: 0 0 var(--space-3); font-size: var(--type-body-size); line-height: 1.6; font-weight: 750; }
+.dg-summary dl { display: grid; margin: 0; }
+.dg-summary dl > div { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: var(--space-2); align-items: baseline; padding-block: var(--space-1); border-top: 1px solid var(--line-soft); }
+.dg-summary dl > div:first-child { border-top: 0; }
+.dg-summary dt { color: var(--ink-muted); font-size: var(--type-small-size); }
+/* دکمه‌ی ویرایش داخل dd است: dl فقط dt و dd می‌گیرد. */
+.dg-summary dd { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); margin: 0; font-size: var(--type-small-size); font-weight: 700; line-height: 1.7; }
+.dg-summary dd > span { min-width: 0; overflow-wrap: anywhere; }
+.dg-summary .dg-btn--text { flex: none; min-height: 44px; font-size: var(--type-small-size); }
+.dg-summary-empty { margin: 0; color: var(--ink-muted); font-size: var(--type-small-size); line-height: var(--type-small-line); }
+
+/* ---------- CodeBox: کد پیگیری ---------- */
+/* رقم‌ها در همه‌ی عرض‌ها ۳۲px. */
+.dg-codebox { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3) var(--space-4); padding: var(--space-4) var(--space-5); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); background: var(--surface-card); }
+.dg-codebox-label { margin: 0; color: var(--ink-muted); font-size: var(--type-label-size); line-height: var(--type-label-line); font-weight: 700; }
+.dg-codebox-code { margin: var(--space-1) 0 0; direction: ltr; text-align: right; font-size: 2rem; line-height: 1.3; font-weight: 750; letter-spacing: .08em; }
 
 @media (prefers-reduced-motion: reduce) {
-  .dg-btn, .dg-choice, .dg-service, .dg-chip span { transition: none; }
   .dg-service:hover { transform: none; }
   .dg-btn--loading::before { animation: none; }
 }

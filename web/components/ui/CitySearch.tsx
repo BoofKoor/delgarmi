@@ -22,7 +22,16 @@ export type CitySearchProps<T extends City> = {
   unavailable?: boolean;
 };
 
-/** Combobox with suggestions: ARIA 1.2 pattern, arrows to move, Enter to pick, Esc to close. */
+/** Phones: below bp-md the field moves to the top of the screen on focus, so the list has room above the keyboard. */
+const PHONE = '(max-width: 759.98px)';
+/** The list never grows past this, nor shrinks under three options. */
+const LIST_MAX = 288;
+const LIST_MIN = 160;
+
+/**
+ * Combobox with suggestions: ARIA 1.2 pattern, arrows to move, Enter to pick, Esc to close.
+ * On a phone the list ends where the keyboard starts (window.visualViewport) and scrolls inside.
+ */
 export function CitySearch<T extends City>({
   id,
   cities,
@@ -41,7 +50,10 @@ export function CitySearch<T extends City>({
   const [items, setItems] = useState<T[]>([]);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
+  const [listMax, setListMax] = useState<number | undefined>(undefined);
   const input = useRef<HTMLInputElement>(null);
+  const field = useRef<HTMLDivElement>(null);
+  const list = useRef<HTMLDivElement>(null);
   const listId = `${id}-list`;
   const helpId = `${id}-help`;
   const errorId = `${id}-error`;
@@ -60,6 +72,39 @@ export function CitySearch<T extends City>({
   useEffect(() => {
     if (document.activeElement === input.current && text && !city) search(text);
   }, [cities]);
+
+  // While the list is open, keep it above the phone keyboard.
+  useEffect(() => {
+    if (!open) return;
+    const vv = window.visualViewport;
+    const fit = () => {
+      const top = list.current?.getBoundingClientRect().top;
+      if (top === undefined || !vv) return;
+      const room = vv.offsetTop + vv.height - top - 8;
+      setListMax(Math.max(LIST_MIN, Math.min(LIST_MAX, Math.floor(room))));
+    };
+    fit();
+    vv?.addEventListener('resize', fit);
+    vv?.addEventListener('scroll', fit);
+    window.addEventListener('scroll', fit, { passive: true });
+    return () => {
+      vv?.removeEventListener('resize', fit);
+      vv?.removeEventListener('scroll', fit);
+      window.removeEventListener('scroll', fit);
+    };
+  }, [open, items.length]);
+
+  /** On a phone, bring the field to the top of the screen, once the keyboard has opened too. */
+  function onFocus() {
+    if (!window.matchMedia(PHONE).matches) return;
+    const toTop = () => field.current?.scrollIntoView({ block: 'start' });
+    window.requestAnimationFrame(toTop);
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const once = () => { toTop(); vv.removeEventListener('resize', once); };
+    vv.addEventListener('resize', once);
+    window.setTimeout(() => vv.removeEventListener('resize', once), 1000);
+  }
 
   function pick(index: number) {
     const c = items[index];
@@ -80,9 +125,15 @@ export function CitySearch<T extends City>({
     else if (e.key === 'Escape') { e.preventDefault(); setOpen(false); setActive(-1); }
   }
 
-  const describedBy = [helpId, error ? errorId : null].filter(Boolean).join(' ');
+  // The highlighted option stays in view when the arrows move it inside a short list.
+  useEffect(() => {
+    if (active < 0) return;
+    document.getElementById(`${listId}-o${active}`)?.scrollIntoView({ block: 'nearest' });
+  }, [active, listId]);
+
+  const describedBy = [error ? errorId : null, helpId].filter(Boolean).join(' ');
   return (
-    <div className={cx('dg-field', Boolean(error) && 'dg-field--error')}>
+    <div className={cx('dg-field', Boolean(error) && 'dg-field--error')} ref={field}>
       <label className="dg-label" htmlFor={id}>{label}</label>
       <div className="dg-combo">
         <div className="dg-input-icon">
@@ -105,11 +156,12 @@ export function CitySearch<T extends City>({
             value={text}
             onChange={(e) => { setText(e.target.value); if (city) choose(null); search(e.target.value); }}
             onKeyDown={onKeyDown}
+            onFocus={onFocus}
             onBlur={() => { setOpen(false); setActive(-1); }}
           />
         </div>
         {items.length ? (
-          <div className="dg-combo-list" id={listId} role="listbox" aria-label="شهرها" hidden={!open}>
+          <div className="dg-combo-list" id={listId} role="listbox" aria-label="شهرها" hidden={!open} ref={list} style={listMax ? { maxHeight: listMax } : undefined}>
             {items.map((c, i) => (
               <div
                 key={`${c.name}-${c.province}`}
@@ -125,15 +177,15 @@ export function CitySearch<T extends City>({
             ))}
           </div>
         ) : (
-          <div className="dg-combo-list" id={listId} hidden={!open}>
+          <div className="dg-combo-list" id={listId} hidden={!open} ref={list}>
             <div className="dg-combo-empty" role="status">
               {loading ? 'فهرست شهرها در حال آماده شدن است…' : 'شهری با این نام پیدا نشد. اسم شهر را بدون پیشوند بنویسید.'}
             </div>
           </div>
         )}
       </div>
-      <p className="dg-help" id={helpId}>{city ? `استان ${city.province}` : help}</p>
       {error ? <p className="dg-error" id={errorId}>{error}</p> : null}
+      <p className="dg-help" id={helpId}>{city ? `استان ${city.province}` : help}</p>
     </div>
   );
 }

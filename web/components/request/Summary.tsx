@@ -20,20 +20,20 @@ function rows(def: FormDefinition, s: FormState, today: number | null): Row[] {
     }
   });
   if (isInPerson(form, s.answers)) {
-    if (s.city) out.push({ label: 'شهر', value: s.neighbourhood.trim() ? `${s.city.name}، ${s.neighbourhood.trim()}` : s.city.name, screen: 'place' });
+    if (s.city) out.push({ label: 'شهر', value: s.neighbourhood.trim() ? `${s.city.name}، ${s.neighbourhood.trim()}` : s.city.name, screen: 'where' });
   } else if (s.answers.session) {
-    out.push({ label: 'مکان', value: 'آنلاین', screen: 'place' });
+    out.push({ label: 'مکان', value: 'آنلاین', screen: `detail-${form.screens.findIndex((x) => x.questions.includes('session'))}` });
   }
   if (asksStart(form, s.answers) && s.start) {
     const t = def.place.start;
     const value = s.start.kind === 'asap' ? t.asap
       : s.start.kind === 'tomorrow' ? (today !== null ? fill(t.tomorrow, { day: dayLabel(today + 1) }) : null)
       : s.start.date !== null ? dayLabel(s.start.date) : null;
-    if (value) out.push({ label: 'شروع', value, screen: 'place' });
+    if (value) out.push({ label: 'شروع', value, screen: 'when' });
   }
   if (asksTimeWindow(form, s.answers) && s.timeWindow) {
     const label = def.place.timeWindow.options.find((o) => o.value === s.timeWindow)?.label;
-    if (label) out.push({ label: 'ساعت', value: label, screen: 'place' });
+    if (label) out.push({ label: 'ساعت', value: label, screen: 'when' });
   }
   const name = s.name.trim();
   const mobile = normalizeMobile(s.mobile);
@@ -50,7 +50,7 @@ export function Summary({ def, state, today, onEdit }: { def: FormDefinition; st
   const list = rows(def, state, today);
   return (
     <aside className="form-aside" aria-labelledby="summary-title">
-      <div className="summary">
+      <div className="dg-summary">
         <h2 id="summary-title">خلاصه‌ی درخواست</h2>
         {list.length ? (
           <dl>
@@ -59,13 +59,13 @@ export function Summary({ def, state, today, onEdit }: { def: FormDefinition; st
                 <dt>{r.label}</dt>
                 <dd>
                   <span>{r.value}</span>
-                  <button type="button" className="link-btn" aria-label={`ویرایش ${r.label}`} onClick={() => onEdit(r.screen)}>ویرایش</button>
+                  <button type="button" className="dg-btn dg-btn--text" aria-label={`ویرایش ${r.label}`} onClick={() => onEdit(r.screen)}>ویرایش</button>
                 </dd>
               </div>
             ))}
           </dl>
         ) : (
-          <p className="summary-empty">پاسخ‌هایتان اینجا جمع می‌شود تا پیش از ثبت، همه را یک‌جا ببینید.</p>
+          <p className="dg-summary-empty">پاسخ‌هایتان اینجا جمع می‌شود تا پیش از ثبت، همه را یک‌جا ببینید.</p>
         )}
       </div>
       <ul className="reassure">

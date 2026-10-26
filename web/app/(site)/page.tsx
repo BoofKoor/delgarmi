@@ -1,4 +1,4 @@
-import { BadgeCheck, CalendarDays, FileBadge, Lock, PhoneCall, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, BadgeCheck, CalendarDays, FileBadge, Lock, PhoneCall, ShieldCheck } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { preload } from 'react-dom';
@@ -9,16 +9,20 @@ import { JsonLd } from '@/components/site/JsonLd';
 import { Pending, PhoneLink } from '@/components/site/Missing';
 import { Rays } from '@/components/site/Rays';
 import { StickyCta } from '@/components/site/StickyCta';
-import { ServiceCard, StatusBadge, StatusTimeline } from '@/components/ui';
+import { ProcessSteps, ServiceCard, StatusBadge, StatusTimeline } from '@/components/ui';
 import { FACTS } from '@/content/facts';
 import { HOME_FAQ } from '@/content/faq';
+import { PROCESS } from '@/content/process';
 import { SERVICE_LIST } from '@/content/services';
 import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 
+/** The sample tracking page: two steps done, one under way, two to come. */
+const SAMPLE_PATH = ['done', 'done', 'current', 'todo', 'todo'] as const;
+
 export default function Home() {
-  // Pofak is only on this page (hero title, step numbers, closing title).
+  // Pofak is on this page for the hero title, the step numbers and the closing title.
   preload('/fonts/PofakVF.woff2', { as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' });
   return (
     <>
@@ -84,13 +88,16 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <h2 className="h-section" id="services-title">خدمات دلگرمی</h2>
-            <p>هر چهار خدمت را مراکز دارای مجوز ارائه می‌دهند. خدمتی را که لازم دارید انتخاب کنید تا درباره‌اش بیشتر بخوانید یا همان‌جا درخواست بدهید.</p>
+            <p>هر چهار خدمت را مراکز دارای مجوز ارائه می‌دهند. درباره‌ی هر کدام بیشتر بخوانید یا همان‌جا درخواست بدهید.</p>
           </div>
-          <div className="service-grid">
+          {/* Phones: compact rows (the tiles above already lead to the form); wider screens: cards. */}
+          <ul className="dg-service-list service-grid">
             {SERVICE_LIST.map((s) => (
-              <ServiceCard key={s.slug} href={`/services/${s.slug}`} image={s.card.src} alt={s.card.alt} title={s.name} text={s.text} />
+              <li key={s.slug}>
+                <ServiceCard href={`/services/${s.slug}`} image={s.card.src} alt={s.card.alt} title={s.name} text={s.text} />
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -101,21 +108,10 @@ export default function Home() {
               <h2 className="h-section" id="how-title">از ثبت درخواست تا شروع کار</h2>
               <p>شما فقط درخواست را ثبت می‌کنید. پیدا کردن مرکز و پیگیری با ماست.</p>
             </div>
-            <ol className="steps-list">
-              {[
-                ['درخواست را ثبت می‌کنید', 'چند سؤال درباره‌ی نیاز، زمان و شهر. ثبت‌نام لازم نیست.'],
-                ['با شما تماس می‌گیریم', 'همکار دلگرمی جزئیات را می‌پرسد و به سؤال‌هایتان جواب می‌دهد.'],
-                ['مرکز مناسب را پیدا می‌کنیم', 'از بین مراکز دارای مجوز شهر شما، مرکزی که همین خدمت را دارد.'],
-                ['مرکز با شما هماهنگ می‌کند', 'مرکز زمان شروع و هزینه را با شما قطعی می‌کند؛ تا آن موقع تعهدی ندارید.'],
-              ].map(([title, text], i) => (
-                <li key={title}>
-                  <span className="step-num font-display" aria-hidden="true">{i + 1}</span>
-                  <div><h3>{title}</h3><p>{text}</p></div>
-                </li>
-              ))}
-            </ol>
+            <ProcessSteps steps={PROCESS} display />
           </div>
           <figure className="track-card" aria-label="نمونه‌ی صفحه‌ی پیگیری درخواست">
+            <p className="track-label">نمونه‌ی صفحه‌ی پیگیری</p>
             <div className="track-top">
               <div>
                 <strong>درخواست <span className="num">۱۰۴۵۸۲</span></strong>
@@ -123,16 +119,21 @@ export default function Home() {
               </div>
               <StatusBadge status="matching" />
             </div>
-            <StatusTimeline
-              items={[
-                { title: 'جدید', meta: 'سه‌شنبه ۲۱ مهر، ساعت ۱۰:۲۴', state: 'done' },
-                { title: 'در حال تماس', meta: 'ساعت ۱۰:۴۰، جزئیات تلفنی کامل شد', state: 'done' },
-                { title: 'در حال پیدا کردن مرکز', meta: 'مراکز دارای مجوز اصفهان بررسی می‌شوند', state: 'current' },
-                { title: 'معرفی به مرکز', state: 'todo' },
-                { title: 'در حال ارائه‌ی خدمت', state: 'todo' },
-              ]}
-            />
-            <figcaption className="track-caption">نمونه‌ی صفحه‌ی پیگیری؛ شماره و زمان‌ها ساختگی‌اند. وضعیت درخواستتان را هر وقت خواستید با شماره‌ی موبایل خودتان می‌بینید.</figcaption>
+            <div className="track-bar" aria-hidden="true">
+              {SAMPLE_PATH.map((state, i) => <span key={i} className={`is-${state}`} />)}
+            </div>
+            <div className="track-timeline">
+              <StatusTimeline
+                items={[
+                  { title: 'جدید', meta: 'سه‌شنبه ۲۱ مهر، ساعت ۱۰:۲۴', state: 'done' },
+                  { title: 'در حال تماس', meta: 'ساعت ۱۰:۴۰، جزئیات تلفنی کامل شد', state: 'done' },
+                  { title: 'در حال پیدا کردن مرکز', meta: 'مراکز دارای مجوز اصفهان بررسی می‌شوند', state: 'current' },
+                  { title: 'معرفی به مرکز', state: 'todo' },
+                  { title: 'در حال ارائه‌ی خدمت', state: 'todo' },
+                ]}
+              />
+            </div>
+            <figcaption className="track-caption">نمونه؛ شماره ساختگی است. وضعیت درخواستتان را با شماره‌ی موبایل خودتان می‌بینید.</figcaption>
           </figure>
         </div>
       </section>
@@ -144,24 +145,30 @@ export default function Home() {
             <h2 className="h-section" id="vet-title">فقط مراکز دارای مجوز</h2>
             <p>کسی که به خانه‌ی شما می‌آید از طرف یک مرکز رسمی می‌آید. پیش از همکاری با هر مرکز، این‌ها را بررسی می‌کنیم.</p>
           </div>
-          <div className="vet-grid">
-            <div className="vet-item">
+          <ul className="vet-grid">
+            <li className="vet-item">
               <Ic icon={FileBadge} />
-              <h3>مجوز از مرجع خودش</h3>
-              <p><Pending policy="licences">مراکز پرستاری در منزل از دانشگاه علوم پزشکی، مراکز مراقبت از بهزیستی و روان‌درمانگران از سازمان نظام روان‌شناسی و مشاوره مجوز دارند.</Pending></p>
-            </div>
-            <div className="vet-item">
+              <div>
+                <h3>مجوز از مرجع خودش</h3>
+                <p><Pending policy="licences">مراکز پرستاری در منزل از دانشگاه علوم پزشکی، مراکز مراقبت از بهزیستی و روان‌درمانگران از سازمان نظام روان‌شناسی و مشاوره مجوز دارند.</Pending></p>
+              </div>
+            </li>
+            <li className="vet-item">
               <Ic icon={CalendarDays} />
-              <h3>اعتبار مجوز را دنبال می‌کنیم</h3>
-              <p>تاریخ انقضای هر مجوز را ثبت می‌کنیم و مرکزی را که مجوزش تمدید نشده باشد معرفی نمی‌کنیم.</p>
-            </div>
-            <div className="vet-item">
+              <div>
+                <h3>اعتبار مجوز را دنبال می‌کنیم</h3>
+                <p>تاریخ انقضای هر مجوز را ثبت می‌کنیم و مرکزی را که مجوزش تمدید نشده باشد معرفی نمی‌کنیم.</p>
+              </div>
+            </li>
+            <li className="vet-item">
               <Ic icon={ShieldCheck} />
-              <h3>قرارداد با هر مرکز</h3>
-              <p>درخواست شما را فقط به مرکزی می‌سپاریم که با دلگرمی قرارداد دارد.</p>
-            </div>
-          </div>
-          <p className="vet-more"><Link href="/how-we-vet">بیشتر درباره‌ی روش انتخاب مراکز</Link></p>
+              <div>
+                <h3>قرارداد با هر مرکز</h3>
+                <p>درخواست شما را فقط به مرکزی می‌سپاریم که با دلگرمی قرارداد دارد.</p>
+              </div>
+            </li>
+          </ul>
+          <p className="vet-more"><Link className="more-link" href="/how-we-vet">بیشتر درباره‌ی روش انتخاب مراکز<Ic icon={ArrowLeft} /></Link></p>
         </div>
       </section>
 
@@ -169,7 +176,7 @@ export default function Home() {
         <div className="container cover-grid">
           <div className="cover-copy">
             <h2 className="h-section" id="cov-title">دلگرمی در شهر شما فعال است؟</h2>
-            <p>روان‌درمانی آنلاین در همه‌جای ایران فعال است. خدمات حضوری در شهرهایی فعال است که مرکز همکار داریم. اگر در شهرتان هنوز مرکز همکار نداریم، درخواستتان در لیست انتظار ثبت می‌شود و وقتی دلگرمی در شهرتان فعال شد پیامک می‌گیرید.</p>
+            <p>روان‌درمانی آنلاین در همه‌ی ایران فعال است. خدمات حضوری فقط در شهرهایی است که مرکز همکار داریم؛ در بقیه‌ی شهرها درخواست در لیست انتظار می‌ماند و با فعال شدن شهر پیامک می‌گیرید.</p>
             <CityCheck id="home-city" />
           </div>
           <figure className="cover-photo">
@@ -178,17 +185,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section--flush" id="faq" aria-labelledby="faq-title">
+      <section className="section band" id="faq" aria-labelledby="faq-title">
         <div className="container faq-grid">
           <div className="section-head">
             <h2 className="h-section" id="faq-title">سؤال‌های پرتکرار</h2>
-            <p>جواب سؤالتان اینجا نبود؟ <Link href="/faq">همه‌ی سؤال‌ها</Link> را ببینید؛ همکاران ما هم بعد از ثبت درخواست تماس می‌گیرند و می‌توانید همه‌چیز را بپرسید.</p>
+            <p>جواب سؤالتان اینجا نبود؟ همکار ما بعد از ثبت درخواست تماس می‌گیرد و می‌توانید همه‌چیز را بپرسید.</p>
           </div>
-          <FaqList items={HOME_FAQ} />
+          <div>
+            <FaqList items={HOME_FAQ} />
+            <p className="more-row"><Link className="more-link" href="/faq">همه‌ی سؤال‌ها<Ic icon={ArrowLeft} /></Link></p>
+          </div>
         </div>
       </section>
 
-      <section className="section section--flush" id="closing" aria-labelledby="closing-title">
+      <section className="section" id="closing" aria-labelledby="closing-title">
         <div className="container">
           <div className="closing">
             <Rays />

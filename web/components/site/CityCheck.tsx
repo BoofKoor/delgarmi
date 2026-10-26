@@ -36,7 +36,6 @@ export function CityCheck({ id = 'city-check', level = 3 }: { id?: string; level
         cities={cities ?? []}
         loading={!cities && !failed}
         label="شهرتان را بنویسید"
-        placeholder="مثلاً اصفهان"
         help="شهر را بنویسید و از فهرست انتخاب کنید تا خدمت‌های فعالش را ببینید."
         value={city}
         onChange={setCity}

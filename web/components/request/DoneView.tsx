@@ -1,10 +1,12 @@
 'use client';
 
-import { Check } from 'lucide-react';
+import { Check, Copy } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { Fact, PhoneLink } from '@/components/site/Missing';
-import { Button, StatusTimeline, type TimelineItem } from '@/components/ui';
+import { Button, ProcessSteps, type ProcessStep } from '@/components/ui';
+import { processFor } from '@/content/process';
+import { isServiceSlug } from '@/content/services';
 import { fa } from '@/lib/digits';
 import { formatMobile } from '@/lib/form';
 import { DONE_KEY, myRequest, type MyRequest } from './api';
@@ -13,7 +15,8 @@ type View = { kind: 'loading' } | { kind: 'shown'; request: MyRequest } | { kind
 
 /**
  * The «ثبت شد» page. It reads the request back from the server with the token the form kept in
- * this tab; later, or on another device, it shows the code and points to tracking instead.
+ * this tab; later, or on another device, it shows the code only. Until tracking exists (stage 5)
+ * its main button goes back to the home page, so nothing here promises a page that is not there.
  */
 export function DoneView({ code }: { code: string | null }) {
   const [view, setView] = useState<View>({ kind: 'loading' });
@@ -41,12 +44,21 @@ export function DoneView({ code }: { code: string | null }) {
     }
   }
 
-  const actions = (
-    <div className="actions done-actions">
-      <Link className="dg-btn dg-btn--primary dg-btn--lg" href="/track">پیگیری درخواست</Link>
-      <Link className="dg-btn dg-btn--secondary dg-btn--lg" href="/">بازگشت به صفحه‌ی اول</Link>
+  const home = <Link className="dg-btn dg-btn--primary dg-btn--lg done-home" href="/">بازگشت به صفحه‌ی اول</Link>;
+
+  const codeBox = code ? (
+    <div className="dg-codebox done-code-box">
+      <div>
+        <p className="dg-codebox-label">کد پیگیری</p>
+        <p className="dg-codebox-code done-code"><span className="num">{fa(code)}</span></p>
+      </div>
+      <Button variant="secondary" onClick={() => void copy()}>
+        {copied === 'yes' ? <><Check aria-hidden="true" focusable="false" strokeWidth={1.75} />کپی شد</> : <><Copy aria-hidden="true" focusable="false" strokeWidth={1.75} />کپی کد</>}
+      </Button>
+      <p className="vh" role="status">{copied === 'yes' ? 'کد پیگیری کپی شد.' : copied === 'no' ? `کپی نشد. کد پیگیری: ${fa(code)}` : null}</p>
+      {copied === 'no' ? <p className="small done-copy-failed">کپی نشد؛ کد را از همین‌جا بنویسید.</p> : null}
     </div>
-  );
+  ) : null;
 
   if (view.kind === 'loading') {
     return (
@@ -63,13 +75,16 @@ export function DoneView({ code }: { code: string | null }) {
         <h1 className="done-title" ref={heading} tabIndex={-1}>{code ? 'کد پیگیری درخواست شما' : 'درخواستی اینجا نیست'}</h1>
         {code ? (
           <>
-            <p className="done-code"><span className="num">{fa(code)}</span></p>
-            <p className="lead">برای دیدن وضعیت درخواست، در صفحه‌ی پیگیری با همان شماره‌ی موبایل و یک کد پیامکی وارد شوید.</p>
+            {codeBox}
+            <p className="lead">همکار دلگرمی با همان شماره‌ای که تأیید کردید تماس می‌گیرد. اگر سؤالی دارید، این کد را به پشتیبانی بگویید.</p>
+            {home}
           </>
         ) : (
-          <p className="lead">برای ثبت درخواست تازه، فرم را از اول پر کنید.</p>
+          <>
+            <p className="lead">برای ثبت درخواست تازه، فرم را از اول پر کنید.</p>
+            <Link className="dg-btn dg-btn--primary dg-btn--lg done-home" href="/request">ثبت درخواست</Link>
+          </>
         )}
-        {code ? actions : <div className="actions done-actions"><Link className="dg-btn dg-btn--primary dg-btn--lg" href="/request">ثبت درخواست</Link></div>}
       </section>
     );
   }
@@ -77,37 +92,33 @@ export function DoneView({ code }: { code: string | null }) {
   const r = view.request;
   const waitlist = r.status === 'waitlist';
   const where = r.city?.name ?? 'شهر شما';
-  const items: TimelineItem[] = waitlist
+  const steps = processFor(isServiceSlug(r.service.slug) ? r.service.slug : null);
+  const items: ProcessStep[] = waitlist
     ? [
-        { title: 'لیست انتظار', meta: `درخواست شما محفوظ است و با فعال شدن ${where} به وضعیت «جدید» برمی‌گردد.`, state: 'current' },
-        { title: 'پیامک فعال شدن شهر', meta: 'همکار ما بعد از آن تماس می‌گیرد.', state: 'todo' },
+        { title: 'ثبت در لیست انتظار', text: 'همین حالا ثبت شد.', state: 'done' },
+        { title: 'فعال شدن شهر', text: `درخواست شما محفوظ است و با فعال شدن ${where} پیامک می‌گیرید.`, state: 'current' },
+        { title: steps[1].title, text: 'همکار ما بعد از آن تماس می‌گیرد؛ لازم نیست دوباره درخواست ثبت کنید.', state: 'todo' },
       ]
     : [
-        { title: 'همکار ما تماس می‌گیرد', meta: <><Fact name="callback" />. جزئیات را کامل می‌کنیم و به سؤال‌هایتان جواب می‌دهیم.</>, state: 'current' },
-        { title: 'مرکز مناسب را پیدا می‌کنیم', meta: r.online ? 'از بین درمانگران دارای پروانه‌ی مراکز همکار. وضعیت را در صفحه‌ی پیگیری می‌بینید.' : `از بین مراکز دارای مجوز ${where}. وضعیت را در صفحه‌ی پیگیری می‌بینید.`, state: 'todo' },
-        { title: 'مرکز با شما هماهنگ می‌کند', meta: 'زمان شروع و هزینه پیش از شروع کار قطعی می‌شود.', state: 'todo' },
+        { title: steps[0].title, text: 'همین حالا ثبت شد.', state: 'done' },
+        { title: steps[1].title, text: <><Fact name="callback" />. جزئیات را کامل می‌کنیم و به سؤال‌هایتان جواب می‌دهیم.</>, state: 'current' },
+        { title: steps[2].title, text: r.online ? 'از بین درمانگران دارای پروانه‌ی مراکز همکار.' : `از بین مراکز دارای مجوز ${where}.`, state: 'todo' },
+        { title: steps[3].title, text: 'مرکز زمان شروع و هزینه را پیش از شروع کار با شما قطعی می‌کند.', state: 'todo' },
       ];
 
   return (
     <section className="done container">
+      <span className="done-mark" aria-hidden="true"><Check focusable="false" strokeWidth={2.5} /></span>
       <h1 className="done-title" ref={heading} tabIndex={-1}>{waitlist ? 'در لیست انتظار ثبت شدید' : 'درخواست شما ثبت شد'}</h1>
       <p className="lead">
         پیامک تأیید و کد پیگیری به <span className="num">{formatMobile(r.mobile)}</span> فرستاده شد.
         {waitlist ? ` هنوز در ${where} مرکز همکار ${r.service.name} نداریم؛ به محض فعال شدن شهر پیامک می‌گیرید و درخواستتان بدون ثبت دوباره بررسی می‌شود.` : null}
       </p>
-      <div className="done-code-box">
-        <span className="done-code-label">کد پیگیری</span>
-        <span className="done-code num">{fa(r.code)}</span>
-        <Button variant="secondary" onClick={() => void copy()}>
-          {copied === 'yes' ? <><Check className="ic" aria-hidden="true" focusable="false" strokeWidth={1.75} />کپی شد</> : 'کپی کد'}
-        </Button>
-        <p className="vh" role="status">{copied === 'yes' ? 'کد پیگیری کپی شد.' : copied === 'no' ? `کپی نشد. کد پیگیری: ${fa(r.code)}` : null}</p>
-        {copied === 'no' ? <p className="small done-copy-failed">کپی نشد؛ کد را از همین‌جا بنویسید.</p> : null}
-      </div>
+      {codeBox}
       <h2 className="h-card done-next">بعد چه می‌شود؟</h2>
-      <StatusTimeline items={items} />
+      <ProcessSteps steps={items} />
       <p className="done-help small">ساعت کاری: <Fact name="hours" />. سؤالی دارید؟ <PhoneLink /></p>
-      {actions}
+      {home}
     </section>
   );
 }

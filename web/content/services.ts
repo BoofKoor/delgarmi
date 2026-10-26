@@ -26,8 +26,6 @@ export type ServiceContent = {
   icon: LucideIcon;
   /** Available online in every city; in person only where switched on (therapy). */
   onlineEverywhere?: boolean;
-  /** Overrides for steps 3 and 4 of the after-request flow. */
-  flow?: { title: string; text: string }[];
   /** Photo on the home card and in «خدمات دیگر». */
   card: Photo;
   /** One line under the name in «خدمات دیگر». */
@@ -261,12 +259,6 @@ export const SERVICES: Record<ServiceSlug, ServiceContent> = {
     text: 'جلسه‌ی آنلاین یا حضوری با درمانگر دارای پروانه.',
     icon: MessageCircleHeart,
     onlineEverywhere: true,
-    flow: [
-      { title: 'ثبت درخواست', text: 'نوع جلسه، برای چه کسی، و درمانگر خانم باشد یا آقا.' },
-      { title: 'تماس همکار دلگرمی', text: 'ترجیح‌هایتان را می‌پرسیم و به سؤال‌هایتان جواب می‌دهیم.' },
-      { title: 'معرفی درمانگر', text: 'درمانگری دارای پروانه که با همین گروه کار کرده است.' },
-      { title: 'جلسه‌ی اول', text: 'مرکز زمان و هزینه‌ی جلسه را پیش از شروع با شما قطعی می‌کند.' },
-    ],
     card: { src: '/images/card-therapy.webp', alt: 'دو استکان چای کنار هم روی میز', width: 800, height: 600 },
     short: 'آنلاین یا حضوری',
     title: 'روان‌درمانی، آنلاین یا حضوری',

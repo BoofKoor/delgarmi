@@ -1,12 +1,14 @@
 'use client';
 
-import { ChevronRight, Phone } from 'lucide-react';
+import { ArrowLeft, CalendarDays, ChevronRight, Clock, Phone } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { Button, Checkbox, ChoiceCards, ChoiceChips, CitySearch, DatePicker, dayLabel, Notice, QuestionGroup, Stepper, TextField } from '@/components/ui';
 import { SERVICES, SERVICE_LIST, type ServiceSlug } from '@/content/services';
 import type { CityItem } from '@/lib/api';
+import { cx } from '@/lib/cx';
 import { d2g, tehranToday } from '@/lib/jalali';
+import { typingWithKeyboard, watchTyping } from '@/lib/keyboard';
 import {
   answersToSend,
   asksStart,
@@ -24,7 +26,7 @@ import { DONE_KEY, submitRequest } from './api';
 import { clearDraft, hasAnswers, loadDraft, saveDraft, type FormState, type Start } from './draft';
 import { QuestionField } from './QuestionField';
 import { Summary } from './Summary';
-import { MobileVerify, useOtp } from './Verify';
+import { CodeStep, OtpNoticeBox, useOtp } from './Verify';
 
 type Errors = Record<string, string>;
 
@@ -40,15 +42,24 @@ export type RequestFormProps = {
 
 const SERVICE_ICON_ORDER = SERVICE_LIST.map((s) => s.slug);
 
-function screensFor(def: FormDefinition, service: ServiceSlug | null): string[] {
-  const detail = service ? def.services[service].screens.map((_, i) => `detail-${i}`) : ['detail-0'];
-  return ['service', ...detail, 'place', 'contact'];
+/**
+ * The screens in order. Step 3 is two screens, «در کدام شهر؟» and «از کی شروع شود؟» (each only
+ * when it asks something), step 4 is the contact screen and the code screen.
+ */
+function screensFor(def: FormDefinition, state: FormState): string[] {
+  const form = state.service ? def.services[state.service] : null;
+  const detail = form ? form.screens.map((_, i) => `detail-${i}`) : ['detail-0'];
+  const out = ['service', ...detail];
+  if (!form || isInPerson(form, state.answers)) out.push('where');
+  if (!form || asksStart(form, state.answers) || asksTimeWindow(form, state.answers)) out.push('when');
+  out.push('contact', 'code');
+  return out;
 }
 
 function stepOf(screen: string): number {
   if (screen === 'service') return 1;
   if (screen.startsWith('detail-')) return 2;
-  return screen === 'place' ? 3 : 4;
+  return screen === 'where' || screen === 'when' ? 3 : 4;
 }
 
 function isoDate(jdn: number): string {
@@ -73,6 +84,7 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
   const [switchedOnline, setSwitchedOnline] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<ErrorCode | null>(null);
+  const [typing, setTyping] = useState(false);
   const otp = useOtp();
   const ready = useRef(false);
   const moved = useRef(false);
@@ -81,11 +93,13 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
   const citiesLoading = useRef(false);
 
   const form = state.service ? def.services[state.service] : null;
-  const screens = useMemo(() => screensFor(def, state.service), [def, state.service]);
+  const screens = useMemo(() => screensFor(def, state), [def, state]);
   const inPerson = form ? isInPerson(form, state.answers) : true;
   const startAsked = form ? asksStart(form, state.answers) : false;
   const windowAsked = form ? asksTimeWindow(form, state.answers) : false;
   const waitlisted = Boolean(form && state.service && inPerson && state.city && !state.city.active.includes(state.service));
+  const mobile = normalizeMobile(state.mobile);
+  const verified = otp.otp.phase === 'verified' && otp.otp.mobile === mobile;
 
   // After the first paint: today's date in Tehran, and a saved draft if there is one.
   useEffect(() => {
@@ -95,9 +109,11 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
       const sameService = !linkedService || draft.state.service === linkedService;
       if (sameService) {
         const restored: FormState = { ...draft.state, answers: { ...draft.state.answers, ...linked }, city: linkedCity ?? draft.state.city };
-        const known = screensFor(def, restored.service);
+        const known = screensFor(def, restored);
+        // Drafts from before step 3 was split had one «place» screen; the code check is never kept.
+        const saved = draft.screen === 'place' ? known.find((s) => s === 'where' || s === 'when') ?? first : draft.screen === 'code' ? 'contact' : draft.screen;
         setState(restored);
-        setScreen(known.includes(draft.screen) ? draft.screen : first);
+        setScreen(known.includes(saved) ? saved : first);
         setResumed(true);
       }
     }
@@ -113,12 +129,18 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
   useEffect(() => {
     if (!moved.current) return;
     topRef.current?.scrollIntoView({ block: 'start' });
-    titleRef.current?.focus({ preventScroll: true });
+    if (screen !== 'code') titleRef.current?.focus({ preventScroll: true });
   }, [screen]);
+
+  // The bottom bar steps aside while the phone keyboard is up (design system v8 StickyBar), and
+  // comes back when the keyboard closes, even if the field keeps its focus (lib/keyboard.ts).
+  useEffect(() => watchTyping(() => setTyping(typingWithKeyboard())), []);
+  // Once the number is verified the code field turns read-only: «ثبت درخواست» shows again.
+  useEffect(() => setTyping(typingWithKeyboard()), [verified]);
 
   // The city list (about 18 KB) is fetched once, when the city question is near.
   useEffect(() => {
-    if (screen !== 'place' || !inPerson || cities || citiesLoading.current) return;
+    if (screen !== 'where' || !inPerson || cities || citiesLoading.current) return;
     citiesLoading.current = true;
     setCitiesFailed(false);
     fetch('/api/cities')
@@ -169,10 +191,13 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
       }
       return e;
     }
-    if (at === 'place') {
-      const p = def.place;
+    const p = def.place;
+    if (at === 'where') {
       if (inPerson && !state.city) e.city = p.city.error;
       if (inPerson && state.neighbourhood.trim().length > p.neighbourhood.max) e.neighbourhood = p.neighbourhood.tooLong;
+      return e;
+    }
+    if (at === 'when') {
       if (startAsked) {
         if (!state.start) e.start = p.start.error;
         else if (state.start.kind === 'date') {
@@ -184,29 +209,34 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
       return e;
     }
     const c = def.contact;
+    if (at === 'code') {
+      if (otp.otp.phase === 'sent') e.code = c.code.missing;
+      return e;
+    }
     const name = state.name.trim();
     if (name.length < 2) e.name = c.name.error;
     else if (name.length > c.name.max) e.name = c.name.tooLong;
-    const mobile = normalizeMobile(state.mobile);
-    if (otp.otp.phase === 'verified') {
-      // fine
-    } else if (!mobile) e.mobile = c.mobile.error;
-    else if (otp.otp.phase === 'sent') e.code = c.code.missing;
-    else e.mobile = c.code.notVerified;
+    if (!mobile) e.mobile = c.mobile.error;
     if (!state.bestTime) e['best-time'] = def.choiceErrors.single;
     if (!state.consent) e.consent = c.consent.error;
     return e;
   }
 
+  /** The first question with an error comes to the top of the screen, and its first control gets the cursor. */
   function focusFirst(e: Errors) {
     const key = Object.keys(e)[0];
     if (!key) return;
     requestAnimationFrame(() => {
       const box = document.querySelector<HTMLElement>(`[data-field="${key}"]`);
       const target = box?.querySelector<HTMLElement>('input:not([type=hidden]):not([disabled]), button:not([disabled])') ?? box;
-      box?.scrollIntoView({ block: 'center' });
+      box?.scrollIntoView({ block: 'start' });
       target?.focus({ preventScroll: true });
     });
+  }
+
+  function fail(e: Errors) {
+    setErrors(e);
+    focusFirst(e);
   }
 
   async function submit() {
@@ -231,7 +261,7 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
     setSubmitError(null);
     const result = await submitRequest(payload, otp.otp.token);
     if (result.ok) {
-      try { window.sessionStorage.setItem(DONE_KEY, JSON.stringify({ code: result.data.code, token: otp.otp.token })); } catch { /* the page then asks to use tracking */ }
+      try { window.sessionStorage.setItem(DONE_KEY, JSON.stringify({ code: result.data.code, token: otp.otp.token })); } catch { /* the page then shows the code only */ }
       clearDraft();
       router.push(`/request/done?code=${result.data.code}`);
       return;
@@ -241,22 +271,41 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
     setSubmitError(result.error === 'token' || result.error === 'invalid' || result.error === 'network' ? (result.error as ErrorCode) : 'server');
   }
 
+  /** «دریافت کد تأیید»: a code for this number, unless one is already on its way or the number is checked. */
+  async function getCode() {
+    if (!mobile) return;
+    if (verified) { void submit(); return; }
+    if (otp.otp.phase === 'sent' && otp.otp.mobile === mobile) { go('code'); return; }
+    otp.reset();
+    const sent = await otp.send(mobile);
+    if (sent === 'sent') go('code');
+    else if (sent === 'mobile') fail({ mobile: def.contact.mobile.error });
+  }
+
   function onNext(event: FormEvent) {
     event.preventDefault();
-    if (submitting) return;
+    if (submitting || otp.busy) return;
     const e = validate(screen);
-    if (Object.keys(e).length) {
-      setErrors(e);
-      focusFirst(e);
+    if (Object.keys(e).length) { fail(e); return; }
+    if (screen === 'contact') { void getCode(); return; }
+    if (screen === 'code') {
+      if (otp.otp.phase === 'verified') void submit();
+      else void getCode();
       return;
     }
-    if (screen === 'contact') { void submit(); return; }
     go(screens[screens.indexOf(screen) + 1]);
   }
 
   function onBack() {
     const i = screens.indexOf(screen);
     if (i > 0) go(screens[i - 1]);
+  }
+
+  function editNumber() {
+    otp.reset();
+    setSubmitError(null);
+    go('contact');
+    requestAnimationFrame(() => document.getElementById('f-mobile')?.focus());
   }
 
   function startOver() {
@@ -269,13 +318,17 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
 
   function switchToOnline() {
     setState((s) => ({ ...s, answers: { ...s.answers, session: 'online' }, city: null, neighbourhood: '' }));
-    setErrors({});
     setSwitchedOnline(true);
+    go('when');
   }
 
   const step = stepOf(screen);
-  const isLast = screen === 'contact';
-  const nextLabel = isLast ? (waitlisted ? 'ثبت در لیست انتظار' : 'ثبت درخواست') : 'مرحله‌ی بعد';
+  const submitLabel = waitlisted ? 'ثبت در لیست انتظار' : 'ثبت درخواست';
+  const nextLabel =
+    screen === 'contact' ? (verified ? submitLabel : def.contact.mobile.send)
+    : screen === 'code' ? (otp.otp.phase === 'idle' ? def.contact.mobile.send : submitLabel)
+    : 'مرحله‌ی بعد';
+  const withArrow = screen !== 'code' && !(screen === 'contact' && verified);
 
   return (
     <div className="form-page">
@@ -288,7 +341,7 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
           {resumed ? (
             <Notice title="پاسخ‌های قبلی‌تان سر جایشان است" className="resume" live={false}>
               از همان‌جایی که بودید ادامه دهید.{' '}
-              <button type="button" className="link-btn" onClick={startOver}>شروع از اول</button>
+              <Button variant="text" className="inline-text-btn" onClick={startOver}>شروع از اول</Button>
             </Notice>
           ) : null}
           <form className="dg-form" noValidate onSubmit={onNext}>
@@ -296,14 +349,17 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
             {submitError ? (
               <Notice tone="danger" title={def.errors[submitError].title} className="submit-error">{def.errors[submitError].text}</Notice>
             ) : null}
-            <div className="form-nav">
+            <div className={cx('dg-bar dg-bar--form form-nav', typing && 'is-typing')}>
               {screen !== 'service' ? (
                 <Button variant="secondary" size="lg" className="back" onClick={onBack}>
-                  <ChevronRight aria-hidden="true" focusable="false" strokeWidth={1.75} />
-                  مرحله‌ی قبل
+                  <ChevronRight aria-hidden="true" focusable="false" strokeWidth={2} />
+                  قبلی
                 </Button>
               ) : null}
-              <Button type="submit" size="lg" className="next" loading={submitting}>{nextLabel}</Button>
+              <Button type="submit" size="lg" className="next" loading={submitting || otp.busy}>
+                {nextLabel}
+                {withArrow ? <ArrowLeft aria-hidden="true" focusable="false" strokeWidth={2} /> : null}
+              </Button>
             </div>
           </form>
         </section>
@@ -312,7 +368,7 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
     </div>
   );
 
-  function head(title: string, sub?: string) {
+  function head(title: string, sub?: ReactNode) {
     return (
       <div className="screen-head">
         <h2 className="screen-title" ref={titleRef} tabIndex={-1}>{title}</h2>
@@ -358,7 +414,7 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
                 <span className="numbers">
                   {warning.numbers.map((n) => (
                     <a className="dg-btn dg-btn--secondary" key={n.tel} href={`tel:${n.tel}`}>
-                      <Phone className="ic" aria-hidden="true" focusable="false" strokeWidth={1.75} />{n.label}
+                      <Phone aria-hidden="true" focusable="false" strokeWidth={1.75} />{n.label}
                     </a>
                   ))}
                 </span>
@@ -368,64 +424,69 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
         </>
       );
     }
-    if (screen === 'place') {
-      const p = def.place;
+    const p = def.place;
+    if (screen === 'where') {
       const serviceName = SERVICES[state.service].name;
       return (
         <>
-          {head(inPerson ? p.title : p.titleOnline, inPerson ? p.sub : p.subOnline)}
+          {head(p.title, p.sub)}
+          <div className="screen-body screen-body--fields">
+            <div data-field="city" className="place-city">
+              <CitySearch
+                id="f-city"
+                cities={cities ?? []}
+                loading={!cities && !citiesFailed}
+                unavailable={citiesFailed}
+                label={p.city.label}
+                help={p.city.help}
+                value={state.city}
+                onChange={(c) => update({ city: c }, ['city'])}
+                error={errors.city ?? (citiesFailed ? p.city.loadError : undefined)}
+              />
+              {state.city ? (
+                waitlisted ? (
+                  <Notice tone="warning" icon={Clock} title={fill(p.waitlist.title, { city: state.city.name, service: serviceName })}>
+                    {fill(p.waitlist.text, { city: state.city.name })}
+                    {form.inPerson ? (
+                      <span className="therapy-switch">
+                        {p.therapyOnline.text}{' '}
+                        <Button variant="text" className="inline-text-btn" onClick={switchToOnline}>{p.therapyOnline.button}</Button>
+                      </span>
+                    ) : null}
+                  </Notice>
+                ) : (
+                  <Notice tone="success" title={fill(p.active.title, { city: state.city.name })}>{p.active.text}</Notice>
+                )
+              ) : null}
+            </div>
+            <div data-field="neighbourhood">
+              <TextField
+                id="f-neighbourhood"
+                label={<>{p.neighbourhood.label} <span className="dg-optional">(اختیاری)</span></>}
+                help={p.neighbourhood.help}
+                autoComplete="address-level3"
+                maxLength={p.neighbourhood.max + 20}
+                value={state.neighbourhood}
+                error={errors.neighbourhood}
+                onChange={(e) => update({ neighbourhood: e.target.value }, ['neighbourhood'])}
+              />
+            </div>
+          </div>
+        </>
+      );
+    }
+    if (screen === 'when') {
+      // The screen title is the first question itself, so that question's own legend is hidden.
+      const title = startAsked ? (inPerson ? p.start.label : p.titleOnline) : p.timeWindow.label;
+      return (
+        <>
+          {head(title, !inPerson ? p.subOnline : undefined)}
           <div className="screen-body">
             {switchedOnline ? <Notice tone="success" title={p.therapyOnline.done} /> : null}
-            {inPerson ? (
-              <div data-field="city" className="place-city">
-                <CitySearch
-                  id="f-city"
-                  cities={cities ?? []}
-                  loading={!cities && !citiesFailed}
-                  unavailable={citiesFailed}
-                  label={p.city.label}
-                  placeholder={p.city.placeholder}
-                  help={p.city.help}
-                  value={state.city}
-                  onChange={(c) => update({ city: c }, ['city'])}
-                  error={errors.city ?? (citiesFailed ? p.city.loadError : undefined)}
-                />
-                {state.city ? (
-                  waitlisted ? (
-                    <Notice title={fill(p.waitlist.title, { city: state.city.name, service: serviceName })}>
-                      {fill(p.waitlist.text, { city: state.city.name })}
-                      {form.inPerson ? (
-                        <span className="therapy-switch">
-                          {p.therapyOnline.text}{' '}
-                          <button type="button" className="link-btn" onClick={switchToOnline}>{p.therapyOnline.button}</button>
-                        </span>
-                      ) : null}
-                    </Notice>
-                  ) : (
-                    <Notice tone="success" title={fill(p.active.title, { city: state.city.name })}>{p.active.text}</Notice>
-                  )
-                ) : null}
-              </div>
-            ) : null}
-            {inPerson ? (
-              <div data-field="neighbourhood">
-                <TextField
-                  id="f-neighbourhood"
-                  label={<>{p.neighbourhood.label} <span className="dg-optional">(اختیاری)</span></>}
-                  placeholder={p.neighbourhood.placeholder}
-                  help={p.neighbourhood.help}
-                  autoComplete="address-level3"
-                  maxLength={p.neighbourhood.max + 20}
-                  value={state.neighbourhood}
-                  error={errors.neighbourhood}
-                  onChange={(e) => update({ neighbourhood: e.target.value }, ['neighbourhood'])}
-                />
-              </div>
-            ) : null}
             {startAsked ? <StartField def={def} today={today} value={state.start} error={errors.start} onChange={(v) => update({ start: v }, ['start'])} /> : null}
             {windowAsked ? (
               <div data-field="time-window">
-                <QuestionGroup legend={p.timeWindow.label} why={p.timeWindow.why} error={errors['time-window']} errorId="time-window-error">
+                <QuestionGroup legend={p.timeWindow.label} hideLegend={!startAsked} why={p.timeWindow.why} error={errors['time-window']} errorId="time-window-error">
                   <ChoiceChips
                     name="time-window"
                     value={state.timeWindow}
@@ -441,10 +502,24 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
       );
     }
     const c = def.contact;
+    if (screen === 'code') {
+      return (
+        <>
+          {head(c.code.title)}
+          <CodeStep
+            def={def}
+            otp={otp}
+            error={errors.code}
+            onTyped={() => setErrors((e) => { const { code: _, ...rest } = e; return rest; })}
+            onEditNumber={editNumber}
+          />
+        </>
+      );
+    }
     return (
       <>
         {head(c.title, c.sub)}
-        <div className="screen-body">
+        <div className="screen-body screen-body--fields">
           <div data-field="name">
             <TextField
               id="f-name"
@@ -457,15 +532,21 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
               onChange={(e) => update({ name: e.target.value }, ['name'])}
             />
           </div>
-          <MobileVerify
-            def={def}
-            otp={otp}
-            mobile={state.mobile}
-            onMobile={(v) => update({ mobile: v }, ['mobile', 'code'])}
-            mobileError={errors.mobile}
-            codeError={errors.code}
-            onCodeTyped={() => setErrors((e) => { const { code: _, ...rest } = e; return rest; })}
-          />
+          <div data-field="mobile">
+            <TextField
+              id="f-mobile"
+              label={c.mobile.label}
+              type="tel"
+              inputMode="numeric"
+              autoComplete="tel-national"
+              enterKeyHint="next"
+              ltr
+              help={c.mobile.help}
+              error={errors.mobile}
+              value={state.mobile}
+              onChange={(e) => update({ mobile: e.target.value }, ['mobile'])}
+            />
+          </div>
           <div data-field="best-time">
             <QuestionGroup legend={c.bestTime.label} error={errors['best-time']} errorId="best-time-error">
               <ChoiceChips
@@ -477,7 +558,8 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
               />
             </QuestionGroup>
           </div>
-          <div data-field="consent" className={errors.consent ? 'consent consent--error' : 'consent'}>
+          <div data-field="consent" className={cx('dg-group', errors.consent && 'dg-group--error')}>
+            {errors.consent ? <p className="dg-error" id="consent-error">{errors.consent}</p> : null}
             <Checkbox
               id="f-consent"
               checked={state.consent}
@@ -487,21 +569,21 @@ export function RequestForm({ def, service: linkedService, linked, city: linkedC
             >
               {c.consent.text} <a href="/privacy" target="_blank" rel="noopener">{c.consent.link}</a>
             </Checkbox>
-            {errors.consent ? <p className="dg-error" id="consent-error">{errors.consent}</p> : null}
           </div>
+          <OtpNoticeBox def={def} otp={otp} />
         </div>
       </>
     );
   }
 }
 
-/** «از کی شروع شود؟»: as soon as possible, tomorrow, or a day from the calendar. */
+/** «از کی شروع شود؟»: as soon as possible, tomorrow, or a day from the calendar. The screen title asks it. */
 function StartField({ def, today, value, error, onChange }: { def: FormDefinition; today: number | null; value: Start; error?: string; onChange: (value: Start) => void }) {
   const t = def.place.start;
   const kind = value?.kind ?? null;
   return (
     <div data-field="start">
-      <QuestionGroup legend={t.label} error={error} errorId="start-error">
+      <QuestionGroup legend={t.label} hideLegend error={error} errorId="start-error">
         <ChoiceChips
           name="start"
           value={kind}
@@ -510,7 +592,7 @@ function StartField({ def, today, value, error, onChange }: { def: FormDefinitio
           options={[
             { value: 'asap', label: t.asap },
             { value: 'tomorrow', label: today !== null ? fill(t.tomorrow, { day: dayLabel(today + 1) }) : 'فردا' },
-            { value: 'date', label: t.date },
+            { value: 'date', label: t.date, icon: CalendarDays },
           ]}
         />
         {kind === 'date' && today !== null ? (

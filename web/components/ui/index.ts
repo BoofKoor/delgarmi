@@ -7,6 +7,7 @@ export { Counter } from './Counter';
 export { DatePicker, dayLabel } from './DatePicker';
 export { LogoMark } from './Logo';
 export { Notice, type NoticeTone } from './Notice';
+export { ProcessSteps, type ProcessStep } from './ProcessSteps';
 export { QuestionGroup } from './QuestionGroup';
 export { ServiceCard } from './ServiceCard';
 export { StatusBadge } from './StatusBadge';

@@ -1,6 +1,6 @@
 export type NavLink = { href: string; label: string };
 
-/** Header navigation (desktop) and the first part of the phone menu. */
+/** Header navigation from bp-lg (desktop). */
 export const MAIN_NAV: NavLink[] = [
   { href: '/#services', label: 'خدمات' },
   { href: '/how-we-vet', label: 'روش انتخاب مراکز' },
@@ -8,8 +8,8 @@ export const MAIN_NAV: NavLink[] = [
   { href: '/faq', label: 'سؤال‌های پرتکرار' },
 ];
 
+/** The phone menu, under the four services. */
 export const MENU_NAV: NavLink[] = [
-  { href: '/#services', label: 'خدمات' },
   { href: '/how-we-vet', label: 'روش انتخاب مراکز' },
   { href: '/cities', label: 'شهرها' },
   { href: '/faq', label: 'سؤال‌های پرتکرار' },
@@ -17,24 +17,17 @@ export const MENU_NAV: NavLink[] = [
   { href: '/contact', label: 'تماس با ما' },
 ];
 
-/** Footer: two short columns instead of one long one. */
-export const FOOTER_NAV: { title: string; links: NavLink[] }[] = [
-  {
-    title: 'دلگرمی',
-    links: [
-      { href: '/how-we-vet', label: 'روش انتخاب مراکز' },
-      { href: '/cities', label: 'شهرها' },
-      { href: '/faq', label: 'سؤال‌های پرتکرار' },
-      { href: '/track', label: 'پیگیری درخواست' },
-    ],
-  },
-  {
-    title: 'اطلاعات',
-    links: [
-      { href: '/about', label: 'درباره‌ی ما' },
-      { href: '/contact', label: 'تماس با ما' },
-      { href: '/privacy', label: 'حریم خصوصی' },
-      { href: '/terms', label: 'قوانین' },
-    ],
-  },
+/**
+ * Footer links in two columns (design system v8): the site's pages, then the information pages.
+ * The four services are in the menu and on the home page, so the footer does not repeat them.
+ */
+export const FOOTER_NAV: NavLink[] = [
+  { href: '/how-we-vet', label: 'روش انتخاب مراکز' },
+  { href: '/cities', label: 'شهرها' },
+  { href: '/faq', label: 'سؤال‌های پرتکرار' },
+  { href: '/track', label: 'پیگیری درخواست' },
+  { href: '/about', label: 'درباره‌ی ما' },
+  { href: '/contact', label: 'تماس با ما' },
+  { href: '/privacy', label: 'حریم خصوصی' },
+  { href: '/terms', label: 'قوانین' },
 ];

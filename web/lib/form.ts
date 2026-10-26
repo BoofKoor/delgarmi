@@ -45,12 +45,13 @@ export type FormDefinition = {
   service: { title: string; sub: string; legend: string; error: string };
   services: Record<ServiceSlug, ServiceForm>;
   place: {
+    /** The «where» screen; the «when» screen is titled by its first question. */
     title: string;
     titleOnline: string;
     sub: string;
     subOnline: string;
-    city: { label: string; placeholder: string; help: string; error: string; loadError: string };
-    neighbourhood: { label: string; placeholder: string; help: string; max: number; tooLong: string };
+    city: { label: string; help: string; error: string; loadError: string };
+    neighbourhood: { label: string; help: string; max: number; tooLong: string };
     start: { label: string; asap: string; tomorrow: string; date: string; picked: string; error: string; dateError: string; maxDays: number };
     timeWindow: { label: string; why: string; error: string; options: Option[] };
     active: Text;
@@ -61,8 +62,8 @@ export type FormDefinition = {
     title: string;
     sub: string;
     name: { label: string; error: string; max: number; tooLong: string };
-    mobile: { label: string; placeholder: string; help: string; error: string; send: string };
-    code: { label: string; sentTo: string; resendIn: string; resend: string; edit: string; verified: string; editVerified: string; missing: string; notVerified: string };
+    mobile: { label: string; help: string; error: string; send: string };
+    code: { title: string; label: string; sentTo: string; resendIn: string; resend: string; edit: string; verified: string; missing: string };
     bestTime: { label: string; options: Option[] };
     consent: { text: string; link: string; error: string; version: string };
   };

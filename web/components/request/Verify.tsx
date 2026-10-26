@@ -1,10 +1,10 @@
 'use client';
 
-import { Check } from 'lucide-react';
+import { CircleCheck, Pencil } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Button, Notice, TextField } from '@/components/ui';
 import { latin } from '@/lib/digits';
-import { fill, formatMobile, formatSeconds, normalizeMobile, type ErrorCode, type FormDefinition } from '@/lib/form';
+import { fill, formatMobile, formatSeconds, type ErrorCode, type FormDefinition } from '@/lib/form';
 import { sendCode, verifyCode } from './api';
 
 export type OtpState =
@@ -15,6 +15,11 @@ export type OtpState =
 export type OtpNotice = { code: ErrorCode; retryAt?: number };
 
 const NOTICE_CODES: readonly string[] = ['wrong', 'expired', 'voided', 'wait', 'too-many', 'too-many-ip', 'sms-failed', 'network'];
+/** These are about the code itself, so they show under the code field instead of in a notice. */
+const CODE_ERRORS: readonly string[] = ['wrong', 'expired', 'voided'];
+
+/** What sending a code ended in: sent, the number itself was refused, or a notice to show. */
+export type SendResult = 'sent' | 'mobile' | 'notice';
 
 /** The number check: send a code, take it back, keep the short-lived token for the submit. */
 export function useOtp() {
@@ -37,8 +42,7 @@ export function useOtp() {
     setNotice({ code, retryAt });
   }
 
-  /** Returns false when the number itself is wrong (the field shows that). */
-  async function send(mobile: string): Promise<boolean> {
+  async function send(mobile: string): Promise<SendResult> {
     setBusy(true);
     setNotice(null);
     const result = await sendCode(mobile);
@@ -46,11 +50,11 @@ export function useOtp() {
     setNow(Date.now());
     if (result.ok) {
       setOtp({ phase: 'sent', mobile: result.data.mobile, resendAt: Date.now() + result.data.resend_after * 1000 });
-      return true;
+      return 'sent';
     }
-    if (result.error === 'mobile') return false;
+    if (result.error === 'mobile') return 'mobile';
     fail(result.error, result.body.retry_after);
-    return true;
+    return 'notice';
   }
 
   async function verify(code: string): Promise<boolean> {
@@ -77,136 +81,115 @@ export function useOtp() {
 
 export type Otp = ReturnType<typeof useOtp>;
 
-/** Mobile number, «ارسال کد», the code box and its states. */
-export function MobileVerify({
+/** A notice the number check raised (limits, the SMS that did not go): not the code field's own errors. */
+export function OtpNoticeBox({ def, otp }: { def: FormDefinition; otp: Otp }) {
+  const notice = otp.notice;
+  if (!notice || CODE_ERRORS.includes(notice.code)) return null;
+  const retryLeft = notice.retryAt ? (notice.retryAt - otp.now) / 1000 : 0;
+  const text = def.errors[notice.code].text;
+  return (
+    <Notice tone="danger" title={def.errors[notice.code].title}>
+      {notice.retryAt
+        ? (() => {
+            const [before, after] = text.split('{time}');
+            return <>{before}<span className="num">{formatSeconds(retryLeft)}</span>{after}</>;
+          })()
+        : text}
+    </Notice>
+  );
+}
+
+/**
+ * The code screen (design system v8 OtpField): the number it went to with «ویرایش شماره»,
+ * one field for the five digits, which is checked by itself on the fifth digit, then the
+ * resend countdown or «شماره تأیید شد».
+ */
+export function CodeStep({
   def,
   otp,
-  mobile,
-  onMobile,
-  mobileError,
-  codeError,
-  onCodeTyped,
+  error,
+  onTyped,
+  onEditNumber,
 }: {
   def: FormDefinition;
   otp: Otp;
-  mobile: string;
-  onMobile: (value: string) => void;
-  mobileError?: string;
-  codeError?: string;
-  /** Clears the «enter the code» error once the visitor types. */
-  onCodeTyped: () => void;
+  /** «enter the code» when «ثبت درخواست» is pressed too early. */
+  error?: string;
+  /** Clears that error once the visitor types. */
+  onTyped: () => void;
+  onEditNumber: () => void;
 }) {
-  const t = def.contact;
+  const t = def.contact.code;
   const [code, setCode] = useState('');
-  const [badNumber, setBadNumber] = useState(false);
-  const codeInput = useRef<HTMLInputElement>(null);
+  const input = useRef<HTMLInputElement>(null);
   const state = otp.otp;
+  const resendLeft = state.phase === 'sent' ? (state.resendAt - otp.now) / 1000 : 0;
 
-  // New code box: start empty and put the cursor in it.
+  // A new code: start empty and put the cursor in the field, so the phone can offer the SMS code.
   useEffect(() => {
     if (state.phase === 'sent') {
       setCode('');
-      codeInput.current?.focus();
+      input.current?.focus();
     }
   }, [state.phase === 'sent' ? state.resendAt : 0]);
-
-  async function send() {
-    const normalized = normalizeMobile(mobile);
-    if (!normalized) { setBadNumber(true); return; }
-    setBadNumber(false);
-    const ok = await otp.send(normalized);
-    if (!ok) setBadNumber(true);
-  }
 
   async function onCode(value: string) {
     const digits = latin(value).replace(/\D/g, '').slice(0, 5);
     setCode(digits);
-    onCodeTyped();
-    if (digits.length === 5 && !otp.busy) {
+    onTyped();
+    if (otp.notice && CODE_ERRORS.includes(otp.notice.code)) otp.setNotice(null);
+    if (digits.length === 5 && !otp.busy && state.phase === 'sent') {
       const ok = await otp.verify(digits);
-      if (!ok) { setCode(''); codeInput.current?.focus(); }
+      if (!ok) { setCode(''); input.current?.focus(); }
     }
   }
 
-  const notice = otp.notice;
-  const retryLeft = notice?.retryAt ? (notice.retryAt - otp.now) / 1000 : 0;
-  const resendLeft = state.phase === 'sent' ? (state.resendAt - otp.now) / 1000 : 0;
+  const codeError = otp.notice && CODE_ERRORS.includes(otp.notice.code) ? `${def.errors[otp.notice.code].title}. ${def.errors[otp.notice.code].text}` : error;
+  const mobile = state.phase === 'idle' ? null : state.mobile;
+  const [before, after] = t.sentTo.split('{mobile}');
 
   return (
-    <div className="otp">
-      <div className={state.phase === 'idle' ? 'otp-row otp-row--send' : 'otp-row'} data-field="mobile">
-        <TextField
-          id="f-mobile"
-          label={t.mobile.label}
-          type="tel"
-          inputMode="numeric"
-          autoComplete="tel"
-          enterKeyHint="send"
-          ltr
-          placeholder={t.mobile.placeholder}
-          help={t.mobile.help}
-          error={badNumber ? t.mobile.error : mobileError}
-          value={state.phase === 'idle' ? mobile : formatMobile(state.mobile)}
-          readOnly={state.phase !== 'idle'}
-          onChange={(e) => { setBadNumber(false); onMobile(e.target.value); }}
-          onKeyDown={(e) => { if (e.key === 'Enter' && state.phase === 'idle') { e.preventDefault(); void send(); } }}
-        />
-        {state.phase === 'idle' ? (
-          <Button variant="secondary" className="otp-send" loading={otp.busy} onClick={() => void send()}>{t.mobile.send}</Button>
-        ) : null}
-      </div>
-
-      {state.phase === 'sent' ? (
-        <div className="otp-code" data-field="code">
+    <>
+      {mobile ? (
+        <p className="screen-sub" id="code-sent">
+          {before}<span className="num sent-to">{formatMobile(mobile)}</span>{after}
+        </p>
+      ) : null}
+      <Button variant="text" className="edit-number" onClick={onEditNumber}>
+        <Pencil aria-hidden="true" focusable="false" strokeWidth={1.75} />
+        {t.edit}
+      </Button>
+      <div className="screen-body code-body">
+        <div data-field="code">
           <TextField
             id="f-code"
-            label={t.code.label}
+            label={t.label}
             inputMode="numeric"
             autoComplete="one-time-code"
             enterKeyHint="done"
-            ltr
+            inputClassName="dg-otp"
             maxLength={5}
             value={code}
+            readOnly={state.phase === 'verified'}
             error={codeError}
+            describedBy={mobile ? 'code-sent code-status' : 'code-status'}
             onChange={(e) => void onCode(e.target.value)}
-            inputRef={codeInput}
+            inputRef={input}
           />
-          <p className="otp-meta">
-            <span>
-              {(() => {
-                // Isolated: inside Persian text the groups of a bare number would show in reverse.
-                const [before, after] = t.code.sentTo.split('{mobile}');
-                return <>{before}<span className="num">{formatMobile(state.mobile)}</span>{after}</>;
-              })()}
-            </span>
-            {resendLeft > 0 ? (
-              <span>{fill(t.code.resendIn, { time: '' })}<span className="num">{formatSeconds(resendLeft)}</span></span>
-            ) : (
-              <button type="button" className="link-btn" disabled={otp.busy} onClick={() => void otp.send(state.mobile)}>{t.code.resend}</button>
-            )}
-            <button type="button" className="link-btn" onClick={otp.reset}>{t.code.edit}</button>
-          </p>
+          <div id="code-status" className="code-status">
+            {state.phase === 'verified' ? (
+              <p className="dg-ok" role="status"><CircleCheck aria-hidden="true" focusable="false" strokeWidth={2} />{t.verified}</p>
+            ) : state.phase === 'sent' ? (
+              resendLeft > 0 ? (
+                <p className="code-wait">{fill(t.resendIn, { time: '' })}<span className="num">{formatSeconds(resendLeft)}</span></p>
+              ) : (
+                <Button variant="text" disabled={otp.busy} onClick={() => void otp.send(state.mobile)}>{t.resend}</Button>
+              )
+            ) : null}
+          </div>
         </div>
-      ) : null}
-
-      {state.phase === 'verified' ? (
-        <p className="otp-ok" role="status">
-          <Check aria-hidden="true" focusable="false" strokeWidth={1.75} />
-          <span>{t.code.verified}</span>
-          <button type="button" className="link-btn" onClick={otp.reset}>{t.code.editVerified}</button>
-        </p>
-      ) : null}
-
-      {notice ? (
-        <Notice tone="danger" title={def.errors[notice.code].title}>
-          {notice.retryAt
-            ? (() => {
-                const [before, after] = def.errors[notice.code].text.split('{time}');
-                return <>{before}<span className="num">{formatSeconds(retryLeft)}</span>{after}</>;
-              })()
-            : def.errors[notice.code].text}
-        </Notice>
-      ) : null}
-    </div>
+        <OtpNoticeBox def={def} otp={otp} />
+      </div>
+    </>
   );
 }

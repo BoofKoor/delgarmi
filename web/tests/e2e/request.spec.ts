@@ -1,6 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { execSync } from 'node:child_process';
 import { expect, test, type Page } from '@playwright/test';
+import { fakeKeyboard, setKeyboard } from './keyboard';
 
 /*
  * The request form against the real API. Until an SMS account exists the code only goes to the
@@ -76,9 +77,16 @@ async function chooseCity(page: Page, typed: string, name: string) {
   await page.getByRole('option', { name: new RegExp(`^${name}`) }).first().click();
 }
 
-async function verifyNumber(page: Page, mobile: string) {
+/**
+ * The contact step, then the code step (design system v8): the number, when to call and the
+ * consent with one «دریافت کد تأیید», then the code on its own screen.
+ */
+async function contactAndCode(page: Page, mobile: string, bestTime: string) {
   await page.getByLabel('شماره‌ی موبایل').fill(mobile);
-  await page.getByRole('button', { name: 'ارسال کد' }).click();
+  await pick(page, 'best-time', bestTime);
+  await page.getByRole('checkbox').check();
+  await page.getByRole('button', { name: 'دریافت کد تأیید' }).click();
+  await expect(page.getByRole('heading', { level: 2, name: 'کد تأیید را بنویسید' })).toBeVisible();
   const code = await codeFromLog(mobile);
   await page.getByLabel('کد ۵ رقمی').fill(code);
   await expect(page.getByText('شماره تأیید شد')).toBeVisible();
@@ -99,7 +107,7 @@ test('a link from a service page starts at step 2 with its option and city chose
   await expect(page.getByRole('combobox', { name: 'شهر' })).toHaveValue(isfahan.name);
   await expect(page.locator('#f-city-help')).toHaveText(`استان ${isfahan.province}`);
   // Back from the first screen shown goes to step 1, with the service still chosen.
-  for (let i = 0; i < 3; i++) await page.getByRole('button', { name: 'مرحله‌ی قبل' }).click();
+  for (let i = 0; i < 3; i++) await page.getByRole('button', { name: 'قبلی' }).click();
   await expect(stepText(page)).toContainText('مرحله‌ی ۱ از ۴');
   await expect(page.locator('input[name="service"][value="elderly-care"]')).toBeChecked();
 });
@@ -113,7 +121,7 @@ test('an address with an unknown service, option or city starts the form empty',
 test('each step says what is missing and puts the cursor there', async ({ page }) => {
   await page.goto('/request');
   await next(page);
-  await expect(page.locator('#service-error')).toHaveText('یکی از چهار خدمت را انتخاب کنید.');
+  await expect(page.locator('#service-error')).toHaveText('هنوز خدمتی انتخاب نشده است. یکی از چهار خدمت را انتخاب کنید.');
   await expect(page.locator('input[name="service"]').first()).toBeFocused();
   await pick(page, 'service', 'child-care');
   await next(page);
@@ -145,8 +153,13 @@ test('urgent home nursing shows the emergency numbers and does not ask a start d
   await expect(page.getByRole('link', { name: 'اورژانس ۱۱۵' })).toHaveAttribute('href', 'tel:115');
   await pick(page, 'gender', 'female');
   await next(page);
+  await expect(page.getByRole('heading', { level: 2, name: 'در کدام شهر؟' })).toBeVisible();
   await expect(page.getByRole('group', { name: 'از کی شروع شود؟' })).toHaveCount(0);
   await expect(page.getByRole('group', { name: 'چه ساعتی مناسب است؟' })).toHaveCount(0);
+  // From «where» the next screen is already the contact one.
+  await chooseCity(page, 'اصفه', 'اصفهان');
+  await next(page);
+  await expect(page.getByRole('heading', { level: 2, name: 'با چه شماره‌ای تماس بگیریم؟' })).toBeVisible();
 });
 
 test('a waitlisted city: the notice, the button and the «ثبت شد» page say so', async ({ page, request }, info) => {
@@ -164,14 +177,15 @@ test('a waitlisted city: the notice, the button and the «ثبت شد» page say
   await next(page);
   await chooseCity(page, 'یزد', 'یزد');
   await expect(page.getByText('هنوز در یزد مرکز همکار پرستار کودک نداریم')).toBeVisible();
+  if (info.project.name === 'desktop') expect(await axe(page)).toEqual([]);
+  await next(page);
+  await expect(page.getByRole('heading', { level: 2, name: 'از کی شروع شود؟' })).toBeVisible();
   await pick(page, 'start', 'asap');
   await pick(page, 'time-window', 'evening');
   if (info.project.name === 'desktop') expect(await axe(page)).toEqual([]);
   await next(page);
   await page.getByLabel('نام و نام خانوادگی').fill('مریم احمدی');
-  await verifyNumber(page, freshMobile());
-  await pick(page, 'best-time', 'morning');
-  await page.getByRole('checkbox').check();
+  await contactAndCode(page, freshMobile(), 'morning');
   if (info.project.name === 'desktop') expect(await axe(page)).toEqual([]);
   await page.getByRole('button', { name: 'ثبت در لیست انتظار' }).click();
   await expect(page).toHaveURL(/\/request\/done\?code=\d{6}$/);
@@ -199,6 +213,7 @@ test('an active city and a start day from the calendar reach the team as «جد�
   await chooseCity(page, 'اصفه', 'اصفهان');
   await expect(page.getByText('در اصفهان مرکز همکار داریم')).toBeVisible();
   await page.getByLabel('محله').fill('جلفا');
+  await next(page);
   await pick(page, 'start', 'date');
   await page.locator('.dg-cal-day:not([disabled])').nth(3).click();
   await expect(page.locator('.start-picked')).toContainText('شروع:');
@@ -206,10 +221,8 @@ test('an active city and a start day from the calendar reach the team as «جد�
   await next(page);
   await page.getByLabel('نام و نام خانوادگی').fill('علی رضایی');
   const mobile = freshMobile();
-  await verifyNumber(page, mobile);
-  await pick(page, 'best-time', 'any');
-  await page.getByRole('checkbox').check();
-  if (info.project.name === 'desktop') expect(await numberShown(page, '.summary', mobile), 'summary').toBe('left to right');
+  await contactAndCode(page, mobile, 'any');
+  if (info.project.name === 'desktop') expect(await numberShown(page, '.dg-summary', mobile), 'summary').toBe('left to right');
   await page.getByRole('button', { name: 'ثبت درخواست' }).click();
   await expect(page.getByRole('heading', { level: 1, name: 'درخواست شما ثبت شد' })).toBeVisible();
   await expect(page.locator('.lead')).toContainText(faMobile(mobile));
@@ -230,17 +243,51 @@ test('online therapy asks no city, and a wrong code shows the design-system noti
   await page.getByLabel('نام و نام خانوادگی').fill('سارا محمدی');
   const mobile = freshMobile();
   await page.getByLabel('شماره‌ی موبایل').fill(mobile);
-  await page.getByRole('button', { name: 'ارسال کد' }).click();
-  await expect(page.locator('.otp-meta')).toContainText(faMobile(mobile));
-  expect(await numberShown(page, '.otp-meta', mobile), '«کد به … پیامک شد»').toBe('left to right');
+  await pick(page, 'best-time', 'evening');
+  await page.getByRole('checkbox').check();
+  // One main action per step: before the number is checked the bar asks for the code.
+  await expect(page.getByRole('button', { name: 'ثبت درخواست' })).toHaveCount(0);
+  await page.getByRole('button', { name: 'دریافت کد تأیید' }).click();
+  await expect(page.locator('#code-sent')).toContainText(faMobile(mobile));
+  expect(await numberShown(page, '#code-sent', mobile), '«کد ۵ رقمی به … پیامک شد»').toBe('left to right');
+  // «ثبت درخواست» before the code: the field says what is missing.
+  await page.getByRole('button', { name: 'ثبت درخواست' }).click();
+  await expect(page.getByText('کد ۵ رقمی پیامک‌شده را وارد کنید.')).toBeVisible();
   const code = await codeFromLog(mobile);
   const wrong = code === '11111' ? '22222' : '11111';
   await page.getByLabel('کد ۵ رقمی').fill(wrong);
-  await expect(page.getByText('کد تأیید درست نیست')).toBeVisible();
+  await expect(page.locator('#f-code-error')).toHaveText('کد تأیید درست نیست. کد را دوباره وارد کنید یا کد جدید بخواهید.');
   await page.getByLabel('کد ۵ رقمی').fill(code);
   await expect(page.getByText('شماره تأیید شد')).toBeVisible();
+  await page.getByRole('button', { name: 'ثبت درخواست' }).click();
+  await expect(page.getByRole('heading', { level: 1, name: 'درخواست شما ثبت شد' })).toBeVisible();
+});
+
+test('on a phone, «ثبت درخواست» comes back as soon as the code is verified, keyboard still up', async ({ page, isMobile }) => {
+  test.skip(!isMobile, 'the bar sticks only on phones');
+  test.skip(!logCmd, 'needs OTP_LOG_CMD to read the code');
+  await fakeKeyboard(page);
+  await page.goto('/request?service=therapy&for=self');
+  await pick(page, 'session', 'online');
+  await pick(page, 'gender', 'any');
+  await next(page);
+  await pick(page, 'start', 'tomorrow');
+  await pick(page, 'time-window', 'night');
+  await next(page);
+  await page.getByLabel('نام و نام خانوادگی').fill('سارا محمدی');
+  const mobile = freshMobile();
+  await page.getByLabel('شماره‌ی موبایل').fill(mobile);
   await pick(page, 'best-time', 'evening');
   await page.getByRole('checkbox').check();
+  await page.getByRole('button', { name: 'دریافت کد تأیید' }).click();
+  const field = page.getByLabel('کد ۵ رقمی');
+  await field.focus();
+  await setKeyboard(page, 336);
+  await expect(page.locator('.form-nav')).toBeHidden();
+  await field.fill(await codeFromLog(mobile));
+  await expect(page.getByText('شماره تأیید شد')).toBeVisible();
+  // The field is read-only now and keeps the focus; the keyboard has not been closed.
+  await expect(field).toBeFocused();
   await page.getByRole('button', { name: 'ثبت درخواست' }).click();
   await expect(page.getByRole('heading', { level: 1, name: 'درخواست شما ثبت شد' })).toBeVisible();
 });

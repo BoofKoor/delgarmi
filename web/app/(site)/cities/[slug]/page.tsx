@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
 import { Crumbs } from '@/components/site/Crumbs';
-import { Flow } from '@/components/site/Flow';
 import { Ic } from '@/components/site/Ic';
 import { StickyCta } from '@/components/site/StickyCta';
 import { SERVICES, isServiceSlug } from '@/content/services';
 import { getCities, getCity, type CityDetail } from '@/lib/api';
+import { ProcessSteps } from '@/components/ui';
+import { PROCESS } from '@/content/process';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -118,7 +119,7 @@ export default async function CityPage({ params }: Props) {
               <Link href="/how-we-vet">چطور مراکز را انتخاب می‌کنیم</Link>
             </p>
           </div>
-          <Flow />
+          <ProcessSteps steps={PROCESS} columns />
         </div>
       </section>
 

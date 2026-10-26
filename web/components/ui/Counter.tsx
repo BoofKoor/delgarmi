@@ -1,5 +1,6 @@
 'use client';
 
+import { Minus, Plus } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { fa } from '@/lib/digits';
 
@@ -13,7 +14,7 @@ export type CounterProps = {
   onChange?: (value: number) => void;
 };
 
-/** Small counts such as «تعداد کودکان». The buttons disable at the limits. */
+/** Small counts such as «تعداد کودکان». The 48px buttons disable at the limits. */
 export function Counter({ labelId, min = 1, max = 6, value, defaultValue, onChange }: CounterProps) {
   const [inner, setInner] = useState(defaultValue ?? min);
   const current = value ?? inner;
@@ -31,9 +32,13 @@ export function Counter({ labelId, min = 1, max = 6, value, defaultValue, onChan
 
   return (
     <div className="dg-counter" role="group" aria-labelledby={labelId}>
-      <button ref={less} type="button" aria-label="یکی کمتر" disabled={current <= min} onClick={() => step(-1)}>−</button>
+      <button ref={less} type="button" aria-label="یکی کمتر" disabled={current <= min} onClick={() => step(-1)}>
+        <Minus aria-hidden="true" focusable="false" strokeWidth={2} />
+      </button>
       <output aria-live="polite">{fa(current)}</output>
-      <button ref={more} type="button" aria-label="یکی بیشتر" disabled={current >= max} onClick={() => step(1)}>+</button>
+      <button ref={more} type="button" aria-label="یکی بیشتر" disabled={current >= max} onClick={() => step(1)}>
+        <Plus aria-hidden="true" focusable="false" strokeWidth={2} />
+      </button>
     </div>
   );
 }

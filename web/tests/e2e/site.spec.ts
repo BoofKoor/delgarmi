@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
+import { fakeKeyboard, setKeyboard } from './keyboard';
 
 // The public pages need the API (cities); run them against `next start` with the API running,
 // or against the whole stack behind nginx (BASE_URL).
@@ -184,14 +185,23 @@ test('service pages send the request form the service they are about', async ({ 
 test('the phone menu opens as a dialog, closes with Esc and gives focus back', async ({ page }, info) => {
   test.skip(info.project.name !== 'phone', 'the menu button only shows on phones');
   await page.goto('/');
-  const button = page.getByRole('button', { name: 'باز کردن منو' });
+  // The button says «منو» in words, not only with an icon (design system v8).
+  const button = page.getByRole('button', { name: 'منو', exact: true });
+  await expect(button).toHaveText('منو');
+  await expect(button).toHaveAttribute('aria-expanded', 'false');
   await button.click();
   const dialog = page.getByRole('dialog', { name: 'منو' });
   await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole('button', { name: 'بستن' })).toBeVisible();
+  // The four services are in the menu itself.
+  for (const name of ['مراقبت سالمند', 'پرستاری در منزل', 'پرستار کودک', 'روان‌درمانی']) {
+    await expect(dialog.getByRole('link', { name, exact: true })).toBeVisible();
+  }
   await expect(dialog.getByRole('link', { name: 'سؤال‌های پرتکرار' })).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(dialog).toBeHidden();
   await expect(button).toBeFocused();
+  await expect(button).toHaveAttribute('aria-expanded', 'false');
 
   await button.click();
   await dialog.getByRole('link', { name: 'سؤال‌های پرتکرار' }).click();
@@ -201,8 +211,9 @@ test('the phone menu opens as a dialog, closes with Esc and gives focus back', a
 
 test('on phones the request button sticks to the bottom once the hero buttons scroll away', async ({ page }, info) => {
   test.skip(info.project.name !== 'phone', 'the sticky bar is for phones');
+  await fakeKeyboard(page);
   await page.goto('/');
-  const bar = page.locator('.sticky-cta');
+  const bar = page.locator('.dg-bar--page');
   await expect(bar).toBeHidden();
   await page.locator('#how').scrollIntoViewIfNeeded();
   await expect(bar).toBeVisible();
@@ -210,13 +221,16 @@ test('on phones the request button sticks to the bottom once the hero buttons sc
   await page.locator('#closing').scrollIntoViewIfNeeded();
   await expect(bar).toBeHidden();
 
-  // It steps aside while the keyboard is up for the city field.
+  // It steps aside while the keyboard is up for the city field, and comes back when the keyboard
+  // closes, even with the field still focused (Android's back button).
   const field = page.getByRole('combobox', { name: 'شهرتان را بنویسید' });
   await field.scrollIntoViewIfNeeded();
   await expect(bar).toBeVisible();
   await field.focus();
+  await setKeyboard(page, 336);
   await expect(bar).toBeHidden();
-  await field.blur();
+  await setKeyboard(page, 0);
+  await expect(field).toBeFocused();
   await expect(bar).toBeVisible();
 });
 

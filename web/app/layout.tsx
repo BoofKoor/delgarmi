@@ -19,7 +19,8 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: pageColor, width: 'device-width', initialScale: 1, viewportFit: 'cover' };
+// color-scheme: the site has a light theme only, so the browser keeps its own controls light too.
+export const viewport: Viewport = { themeColor: pageColor, colorScheme: 'light', width: 'device-width', initialScale: 1, viewportFit: 'cover' };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   preload('/fonts/IRANYekanXVFaNumVF.woff2', { as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' });
