@@ -94,6 +94,31 @@ test('keyboard focus never sits under the bottom bar, 390×844 with the errors s
   await tabThrough(page, 8);
 });
 
+test('the form fills the phone screen: full width, and the bar at the bottom edge on short steps too', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 664 });
+  const layout = async () => {
+    await page.waitForTimeout(300);
+    return page.evaluate(() => {
+      const box = (s: string) => document.querySelector(s)!.getBoundingClientRect();
+      const bar = box('.form-nav');
+      return { main: Math.round(box('.form-main').width), title: Math.round(box('.screen-title').width), bar: [Math.round(bar.left), Math.round(bar.right), Math.round(bar.bottom)] };
+    });
+  };
+  // 390 minus the 16px gutter on each side; the bar runs edge to edge and sits on the bottom edge.
+  const filled = { main: 358, title: 358, bar: [0, 390, 664] };
+  await page.goto('/request?service=therapy&for=self');
+  expect(await layout(), 'a short step, as the page opens').toEqual(filled);
+  await pick(page, 'session', 'online');
+  await pick(page, 'gender', 'any');
+  await next(page);
+  expect(await layout(), 'a short step after «مرحله‌ی بعد», scrolled to the question').toEqual(filled);
+  await pick(page, 'start', 'tomorrow');
+  await pick(page, 'time-window', 'night');
+  await next(page);
+  await expect(page.getByLabel('نام و نام خانوادگی')).toBeVisible();
+  expect(await layout(), 'the contact step').toEqual(filled);
+});
+
 test('the bar steps aside while the keyboard is up, and comes back when it closes with the field still focused', async ({ page }) => {
   await fakeKeyboard(page);
   await page.setViewportSize({ width: 390, height: 844 });

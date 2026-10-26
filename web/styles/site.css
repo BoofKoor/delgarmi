@@ -380,9 +380,13 @@ main:focus { outline: none; }
    step the screen grows, so the bar still sits at the bottom of the phone screen, not mid-page. */
 @media (max-width: 759.98px) {
   .form-nav { margin: var(--space-8) calc(-1 * var(--space-4)) 0; }
-  .dg-flow-main:has(.form-page) { display: flex; flex-direction: column; min-height: calc(100vh - var(--header-h)); min-height: calc(100dvh - var(--header-h)); }
+  /* A full screen, not a screen minus the header: after «مرحله‌ی بعد» the page scrolls the header
+     away, and the bar must still reach the bottom edge, with the footer line below the fold. */
+  .dg-flow-main:has(.form-page) { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
   .form-page { flex: 1; display: flex; flex-direction: column; padding-bottom: 0; }
-  .form-page > .form-grid, .form-main, .form-main > .dg-form { flex: 1; display: flex; flex-direction: column; }
+  /* stretch: .form-grid's align-items: start would shrink the column to its content, and the form
+     (a size container) has no content width, so the column would collapse to the stepper text. */
+  .form-page > .form-grid, .form-main, .form-main > .dg-form { flex: 1; display: flex; flex-direction: column; align-items: stretch; }
   .dg-form > .screen { flex: 1; }
 }
 
