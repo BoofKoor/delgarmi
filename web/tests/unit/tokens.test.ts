@@ -2,11 +2,14 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error -- plain ES module without type declarations
-import { buildTokensCss, phoneQuery } from '../../scripts/build-tokens.mjs';
+import { BLOCK_END, BLOCK_START, buildTokensCss, bundleBlock, phoneQuery } from '../../scripts/build-tokens.mjs';
 import tokens from '@/design/tokens.json';
 
 const root = join(__dirname, '..', '..');
+/** styles/tokens.css, and the block the bundle (design/components.css) carries: together every variable. */
 const css: string = buildTokensCss(tokens);
+const block: string = bundleBlock(tokens);
+const bundle = readFileSync(join(root, 'design', 'components.css'), 'utf8');
 
 function cssFiles(dir: string): string[] {
   return readdirSync(dir).flatMap((name) => {
@@ -24,7 +27,7 @@ const styles: Style[] = tokens.type.groups.flatMap((g) => g.styles as Style[]);
 
 describe('tokens.css', () => {
   it('defines every variable the stylesheets use', () => {
-    const defined = new Set([...css.matchAll(/--([a-z0-9-]+):/g)].map((m) => m[1]));
+    const defined = new Set([...`${css}\n${block}`.matchAll(/--([a-z0-9-]+):/g)].map((m) => m[1]));
     expect(stylesheets.length).toBeGreaterThan(2);
     const missing: string[] = [];
     for (const file of stylesheets) {
@@ -55,6 +58,20 @@ describe('tokens.css', () => {
     broken.color.tokens.push({ name: 'focus-ring-2', value: '{no-such-token}', usage: '' });
     expect(() => buildTokensCss(broken)).toThrow(/unknown token no-such-token/);
   });
+
+  it('keeps the generated block of the bundle as tokens.json gives it (node scripts/build-tokens.mjs --bundle)', () => {
+    const start = bundle.indexOf(BLOCK_START);
+    const end = bundle.indexOf(BLOCK_END);
+    expect(start, 'start marker').toBeGreaterThanOrEqual(0);
+    expect(bundle.slice(start, end + BLOCK_END.length)).toBe(block);
+  });
+
+  it('declares each variable once: the type styles in the bundle block, the rest in tokens.css', () => {
+    const inCss = [...css.matchAll(/--([a-z0-9-]+):/g)].map((m) => m[1]);
+    const inBlockRoot = [...block.slice(0, block.indexOf('@media')).matchAll(/--([a-z0-9-]+):/g)].map((m) => m[1]);
+    expect(inCss.filter((n) => inBlockRoot.includes(n))).toEqual([]);
+    expect(inBlockRoot.every((n) => n.startsWith('type-'))).toBe(true);
+  });
 });
 
 describe('design system v8 (UI review of 4 Aban 1405)', () => {
@@ -65,8 +82,8 @@ describe('design system v8 (UI review of 4 Aban 1405)', () => {
 
   it('gives phones the smaller titles and header (findings 4 and 15)', () => {
     expect(phoneQuery(tokens)).toBe('(max-width: 759.98px)');
-    const block = css.slice(css.indexOf(`@media ${phoneQuery(tokens)}`));
-    const phone = Object.fromEntries([...block.slice(0, block.indexOf('\n}\n')).matchAll(/--([a-z0-9-]+): ([^;]+);/g)].map((m) => [m[1], m[2]]));
+    const media = block.slice(block.indexOf(`@media ${phoneQuery(tokens)}`));
+    const phone = Object.fromEntries([...media.slice(0, media.indexOf('\n}\n')).matchAll(/--([a-z0-9-]+): ([^;]+);/g)].map((m) => [m[1], m[2]]));
     // 30, 26, 21, 19 and 36 px at the browser's default 16px.
     expect(phone).toMatchObject({
       'type-title-size': '1.875rem',
@@ -81,8 +98,8 @@ describe('design system v8 (UI review of 4 Aban 1405)', () => {
   });
 
   it('switches every animation off for people who ask for less motion', () => {
-    const block = css.slice(css.indexOf('@media (prefers-reduced-motion: reduce)'));
-    for (const t of tokens.duration.tokens) expect(block).toContain(`--${t.name}: 0ms;`);
+    const media = block.slice(block.indexOf('@media (prefers-reduced-motion: reduce)'));
+    for (const t of tokens.duration.tokens) expect(media).toContain(`--${t.name}: 0ms;`);
   });
 
   it('lets the stylesheets use only the breakpoints of the system (finding 6)', () => {

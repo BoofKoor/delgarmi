@@ -1,5 +1,73 @@
 /* دلگرمی — کامپوننت‌ها، نسخه‌ی ۸. همه‌ی مقادیر از tokens.json می‌آیند. پیشوند کلاس‌ها: dg- */
 
+/* سبک‌های متن به شکل متغیر، اندازه‌های گوشی و حذف حرکت را صفحه‌ی سیستم طراحی خودش از tokens.json نمی‌سازد؛
+   این بخش آن‌ها را می‌دهد. دستی عوضش نکن: بعد از تغییر tokens.json در مخزن سایت
+   node scripts/build-tokens.mjs --bundle را اجرا کن و همین فایل را دوباره در bundle.css بگذار. */
+/* ---------- tokens: generated from tokens.json by web/scripts/build-tokens.mjs --bundle; do not edit by hand ---------- */
+:root {
+  --type-display-family: var(--font-display);
+  --type-display-size: 3.75rem;
+  --type-display-line: 1.35;
+  --type-display-weight: 800;
+  --type-display-sm-family: var(--font-display);
+  --type-display-sm-size: 2.25rem;
+  --type-display-sm-line: 1.35;
+  --type-display-sm-weight: 800;
+  --type-number-family: var(--font-display);
+  --type-number-size: 3rem;
+  --type-number-line: 1;
+  --type-number-weight: 800;
+  --type-title-family: var(--font-text);
+  --type-title-size: 2.5rem;
+  --type-title-line: 1.45;
+  --type-title-weight: 750;
+  --type-heading-1-family: var(--font-text);
+  --type-heading-1-size: 2rem;
+  --type-heading-1-line: 1.5;
+  --type-heading-1-weight: 750;
+  --type-heading-2-family: var(--font-text);
+  --type-heading-2-size: 1.5rem;
+  --type-heading-2-line: 1.5;
+  --type-heading-2-weight: 750;
+  --type-lead-family: var(--font-text);
+  --type-lead-size: 1.3125rem;
+  --type-lead-line: 1.8;
+  --type-lead-weight: 400;
+  --type-body-family: var(--font-text);
+  --type-body-size: 1.125rem;
+  --type-body-line: 1.9;
+  --type-body-weight: 400;
+  --type-small-family: var(--font-text);
+  --type-small-size: 0.9375rem;
+  --type-small-line: 1.8;
+  --type-small-weight: 400;
+  --type-label-family: var(--font-text);
+  --type-label-size: 0.9375rem;
+  --type-label-line: 1.6;
+  --type-label-weight: 700;
+  --type-button-family: var(--font-text);
+  --type-button-size: 1.125rem;
+  --type-button-line: 1.2;
+  --type-button-weight: 700;
+}
+@media (max-width: 759.98px) {
+  :root {
+    --type-display-size: 2.25rem;
+    --type-title-size: 1.875rem;
+    --type-heading-1-size: 1.625rem;
+    --type-heading-2-size: 1.3125rem;
+    --type-lead-size: 1.1875rem;
+    --header-h: 56px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+  }
+}
+/* ---------- tokens: end of the generated block ---------- */
+
 /* آیکن‌هایی که CSS خودش می‌کشد (Lucide، لایسنس ISC). سفیدِ داخل آیکن روی action همان on-action است. */
 :root {
   color-scheme: light;
@@ -332,7 +400,8 @@ body { margin: 0; font-family: var(--font-text); font-size: var(--type-body-size
 .dg-bar { position: sticky; bottom: 0; z-index: var(--z-sticky); display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4) calc(var(--space-3) + env(safe-area-inset-bottom)); background: var(--surface-card); box-shadow: inset 0 1px 0 var(--line-soft); }
 .dg-bar > .dg-btn { flex: 1 1 0; }
 .dg-bar > .dg-btn--secondary { flex: 0 1 auto; padding-inline: var(--space-4); }
-/* تا وقتی فیلد متنی فوکوس دارد (صفحه‌کلید باز است) نوار دیده نمی‌شود و جای خود را نگه می‌دارد. */
+/* تا وقتی صفحه‌کلید گوشی باز است و فیلد متنی فوکوس دارد، نوار دیده نمی‌شود و جای خود را نگه می‌دارد.
+   «باز بودن صفحه‌کلید» از visualViewport سنجیده می‌شود، نه از فوکوس تنها: دکمه‌ی برگشت اندروید صفحه‌کلید را می‌بندد و فوکوس را نگه می‌دارد. */
 .dg-bar.is-typing { visibility: hidden; }
 /* نوار صفحه‌ها: وقتی دکمه‌ی اصلی صفحه از دید رفت؛ از bp-lg سربرگ دکمه دارد. */
 .dg-bar--page { display: none; }
